@@ -31,7 +31,6 @@ namespace FroSidanMVC
         {
             var connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FroSidanDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-            //services.AddTransient<ProductsService>();
             services.AddDbContext<MyIdentityContext>(o =>
             o.UseSqlServer(connString));
 
@@ -52,6 +51,8 @@ namespace FroSidanMVC
 
             services.AddControllersWithViews();
             services.AddTransient<MembersService>();
+            services.AddTransient<ProductsService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
