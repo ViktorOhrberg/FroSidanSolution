@@ -22,6 +22,5 @@ namespace FroSidanMVC.Controls
         {
             return View();
         }
-        
     }
 }

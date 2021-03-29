@@ -6,6 +6,12 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
+    <nav>
+        <a asp-controller="Products" asp-action="Index">Startsida</a>
+        <a asp-controller="Products" asp-action="Shop">Bläddra</a>
+        <a asp-controller="Products" asp-action="MyPages">Mina sidor</a>
+    </nav>
+
     <div>
         @RenderBody()
     </div>
