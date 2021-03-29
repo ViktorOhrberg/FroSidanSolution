@@ -17,11 +17,11 @@ namespace FroSidanMVC.Controls
         }
 
         [Route("")]
+        [Route("products/index")]
         public IActionResult Index()
         {
-            return Content("tjohej world");
-            //return View();
+            return View();
         }
-        // Test
+        
     }
 }
