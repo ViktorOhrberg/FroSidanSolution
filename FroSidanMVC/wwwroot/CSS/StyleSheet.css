@@ -11,7 +11,15 @@ footer {
     text-align: center;
 }
 
-.mx-auto:hover{
-    border-color:black;
+.card:hover {
+    border-color: black;
+    border-style: solid;
+}
 
+.card-title{
+    position:center;
+}
+
+.row{
+    width:500px;
 }
