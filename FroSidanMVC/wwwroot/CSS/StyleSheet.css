@@ -6,13 +6,14 @@ footer {
     background-color: #e7e7e7;
 }
 
-.col {
+#h1Index {
     text-align: center;
 }
 
-.card:hover {
-    border-color: black;
-    border-style: solid;
+/*Cards*/
+/*-----*/
+.col {
+    text-align: center;
 }
 
 .row {
@@ -21,6 +22,18 @@ footer {
     justify-content: center;
 }
 
-#h1Index {
-    text-align: center;
+.card:hover {
+    border-color: black;
+    border-style: solid;
 }
+
+.card:hover {
+    transition: transform 0.4s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    border: 1px solid #cccccc;
+    background-color: white;
+    transform: scale(1.05);
+    transform-origin: 50% 50%;
+}
+/*-----*/
