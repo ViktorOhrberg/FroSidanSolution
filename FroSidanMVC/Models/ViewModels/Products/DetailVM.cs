@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FroSidanMVC.Models.ViewModels.Products
 {
-    public class IndexVM
+    public class DetailVM
     {
     }
 }
