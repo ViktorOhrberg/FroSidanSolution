@@ -1,4 +1,5 @@
 using FroSidanMVC.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -28,18 +29,27 @@ namespace FroSidanMVC
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            var connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FrosidanDB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            var connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FroSidanDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             services.AddControllersWithViews();
+            services.AddTransient<MembersService>();
+
             //services.AddTransient<ProductsService>();
             services.AddDbContext<MyIdentityContext>(o =>
             o.UseSqlServer(connString));
             services.AddIdentity<MyIdentityUser, IdentityRole>(o =>
-            o.Password.RequireNonAlphanumeric = false)
+            {
+                o.Password.RequireNonAlphanumeric = false;
+                o.Password.RequiredLength = 6;
+            })
                 .AddEntityFrameworkStores<MyIdentityContext>()
                 .AddDefaultTokenProviders();
 
             services.ConfigureApplicationCookie(o =>
-            o.LoginPath = "/LogIn");
+                o.LoginPath = "/LogIn");
+
+            services.AddAuthentication(
+                CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(o => o.LoginPath = "/Members/Login");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
