@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using FroSidanMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,11 @@ namespace FroSidanMVC.Controllers
 {
     public class MembersController : Controller
     {
+        MembersService mService; 
+        public MembersController(MembersService mService)
+        {
+            this.mService = mService;
+        }
         [Authorize]
         public IActionResult Members()
         {
