@@ -15,7 +15,6 @@ namespace FroSidanMVC.Models
         {
             this.shoppingCart = shoppingCart;
             this.context = context;
-
         }
 
         public void AddToCart(int id)
