@@ -13,7 +13,7 @@ namespace FroSidanMVC.Models
                 : base(options)
         {
 
-            var result = Database.EnsureCreated();
+            //var result = Database.EnsureCreated();
         }
     }
 }
