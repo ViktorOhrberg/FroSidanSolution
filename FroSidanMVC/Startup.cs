@@ -19,6 +19,9 @@ namespace FroSidanMVC
         {
             services.AddControllersWithViews();
             services.AddTransient<ProductsService>();
+
+            services.ConfigureApplicationCookie(o =>
+            o.LoginPath = "/LogIn");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -30,7 +33,9 @@ namespace FroSidanMVC
             }
 
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseRouting();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
