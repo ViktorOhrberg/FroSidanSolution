@@ -2,6 +2,8 @@ using FroSidanMVC.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -17,8 +19,15 @@ namespace FroSidanMVC
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            string connString = "";
             services.AddControllersWithViews();
             services.AddTransient<ProductsService>();
+            services.AddDbContext<MyIdentityContext>(o =>
+            o.UseSqlServer(connString));
+            services.AddIdentity<MyIdentityUser, IdentityRole>(o =>
+            o.Password.RequireNonAlphanumeric = false)
+                .AddEntityFrameworkStores<MyIdentityContext>()
+                .AddDefaultTokenProviders();
 
             services.ConfigureApplicationCookie(o =>
             o.LoginPath = "/LogIn");
