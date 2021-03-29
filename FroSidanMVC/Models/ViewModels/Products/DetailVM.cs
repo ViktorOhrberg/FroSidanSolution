@@ -11,5 +11,6 @@ namespace FroSidanMVC.Models.ViewModels.Products
         public string ProductName { get; set; }
         public string Description { get; set; }
         public string Url { get; set; }
+        public int Price { get; set; }
     }
 }
