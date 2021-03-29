@@ -28,7 +28,7 @@ namespace FroSidanMVC
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            string connString = configuration.GetConnectionString("DefaultConnection"); ;
+            var connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FrosidanDB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             services.AddControllersWithViews();
             //services.AddTransient<ProductsService>();
             services.AddDbContext<MyIdentityContext>(o =>
