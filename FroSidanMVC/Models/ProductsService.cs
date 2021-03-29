@@ -1,4 +1,5 @@
 ﻿using FroSidanMVC.Models.Entities;
+using FroSidanMVC.Models.ViewModels.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,23 @@ namespace FroSidanMVC.Models
             return shoppingCart
                 .Where(p => p.Id == id)
                 .Count();
+        }
+        public DetailVM GetSeedById(int id)
+        {
+
+            var q = context.Products
+                .Where(x => x.Id == id)
+                .FirstOrDefault();
+            var seed = context.Products
+                .Select(x => new DetailVM
+                {
+                    ProductName = q.Name,
+                    Price = Convert.ToInt32(q.Price),
+                    Description = q.Description,
+                    Url = q.ImgRef,
+                }).First();
+
+            return seed;
         }
     }
 }
