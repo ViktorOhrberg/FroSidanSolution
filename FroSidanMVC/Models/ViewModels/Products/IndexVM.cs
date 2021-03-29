@@ -7,5 +7,8 @@ namespace FroSidanMVC.Models.ViewModels.Products
 {
     public class IndexVM
     {
+        public string SubCategory { get; set; }
+        public string Category { get; set; }
+
     }
 }
