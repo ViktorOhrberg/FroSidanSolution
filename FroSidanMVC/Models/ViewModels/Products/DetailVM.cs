@@ -7,5 +7,9 @@ namespace FroSidanMVC.Models.ViewModels.Products
 {
     public class DetailVM
     {
+        public int Id { get; set; }
+        public string ProductName { get; set; }
+        public string Description { get; set; }
+        public string Url { get; set; }
     }
 }
