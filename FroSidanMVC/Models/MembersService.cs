@@ -27,5 +27,7 @@ namespace FroSidanMVC.Models
             var result = await userManager.CreateAsync(
                 new MyIdentityUser { FirstName = createVm.FirstName, LastName = createVm.LastName, UserName = createVm.Email, Email = createVm.Email }, createVm.Password);
         }
+
+        
     }
 }
