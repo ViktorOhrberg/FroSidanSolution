@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FroSidanMVC.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,34 +8,38 @@ namespace FroSidanMVC.Models
 {
     public class ProductsService
     {
-        List<int> shoppingCart; // Ska vara av typen product
+        List<Product> shoppingCart; // Ska vara av typen product
+        readonly FrosidanContext context;
 
-
-        
-
-        public ProductsService(List<int> shoppingCart)
+        public ProductsService(List<Product> shoppingCart, FrosidanContext context)
         {
             this.shoppingCart = shoppingCart;
+            this.context = context;
 
         }
 
-        public void AddToCart( /*ProduktId*/ )
+        public void AddToCart(int id)
         {
-            shoppingCart.Add(1);
+            shoppingCart.Add(GetProductByID(id));
         }
-        public void RemoveFromCart( /*ProduktId*/ )
+
+        private Product GetProductByID(int id)
         {
-            //shoppingCart
-            //    .FirstOrDefault(/*p => p.ID == ProductID*/)
-            //    .Remove();
+            return context.Products
+                .FirstOrDefault(p => p.Id == id);
         }
-        public int QuantityInCart( /*ProduktId*/ )
+
+        public void RemoveFromCart(int id)
         {
-            int quantity = 1;
-            //shoppingCart
-            //    .Where(p => p.ID == ProduktId)
-            //    .Count();
-            return quantity;
+            var q = shoppingCart
+                .FirstOrDefault(p => p.Id == id);
+            shoppingCart.Remove(q);
+        }
+        public int QuantityInCart(int id)
+        {
+            return shoppingCart
+                .Where(p => p.Id == id)
+                .Count();
         }
     }
 }
