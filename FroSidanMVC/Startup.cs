@@ -30,7 +30,7 @@ namespace FroSidanMVC
         {
             string connString = configuration.GetConnectionString("DefaultConnection"); ;
             services.AddControllersWithViews();
-            services.AddTransient<ProductsService>();
+            //services.AddTransient<ProductsService>();
             services.AddDbContext<MyIdentityContext>(o =>
             o.UseSqlServer(connString));
             services.AddIdentity<MyIdentityUser, IdentityRole>(o =>
