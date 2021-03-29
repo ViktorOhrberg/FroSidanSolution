@@ -9,12 +9,12 @@ namespace FroSidanMVC.Controls
 {
     public class ProductsController : Controller
     {
-        private readonly ProductsService service;
+        //private readonly ProductsService service;
 
-        public ProductsController(ProductsService service)
-        {
-            this.service = service;
-        }
+        //public ProductsController(ProductsService service)
+        //{
+        //    this.service = service;
+        //}
 
         [Route("")]
         [Route("products/index")]

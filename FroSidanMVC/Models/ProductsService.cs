@@ -9,9 +9,13 @@ namespace FroSidanMVC.Models
     {
         List<int> shoppingCart; // Ska vara av typen product
 
+
+        
+
         public ProductsService(List<int> shoppingCart)
         {
             this.shoppingCart = shoppingCart;
+
         }
 
         public void AddToCart( /*ProduktId*/ )
