@@ -30,11 +30,6 @@ namespace FroSidanMVC.Controls
             return View();
         }
 
-        [Route("products/mypages")]
-        [HttpGet]
-        public IActionResult MyPages()
-        {
-            return View();
-        }
+
     }
 }
