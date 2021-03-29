@@ -23,6 +23,13 @@ namespace FroSidanMVC.Controls
             return View();
         }
 
+        [Route("products/{id}")]
+        public IActionResult Detail(int id)
+        {
+            var product = pService.GetProductByID(id);
+            return View(product);
+        }
+
         [Route("products/shop")]
         [HttpGet]
         public IActionResult Shop()

@@ -21,7 +21,7 @@ namespace FroSidanMVC.Models
             shoppingCart.Add(GetProductByID(id));
         }
 
-        private Product GetProductByID(int id)
+        public Product GetProductByID(int id)
         {
             return context.Products
                 .FirstOrDefault(p => p.Id == id);
