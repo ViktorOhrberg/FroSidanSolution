@@ -10,3 +10,8 @@ footer {
     color: white;
     text-align: center;
 }
+
+.mx-auto:hover{
+    border-color:black;
+
+}
