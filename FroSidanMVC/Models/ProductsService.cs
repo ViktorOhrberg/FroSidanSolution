@@ -11,9 +11,8 @@ namespace FroSidanMVC.Models
         List<Product> shoppingCart; // Ska vara av typen product
         readonly FrosidanContext context;
 
-        public ProductsService(List<Product> shoppingCart, FrosidanContext context)
+        public ProductsService(FrosidanContext context)
         {
-            this.shoppingCart = shoppingCart;
             this.context = context;
         }
 

@@ -1,4 +1,5 @@
 using FroSidanMVC.Models;
+using FroSidanMVC.Models.Entities;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +34,8 @@ namespace FroSidanMVC
 
             services.AddDbContext<MyIdentityContext>(o =>
             o.UseSqlServer(connString));
+            services.AddDbContext<FrosidanContext>(o =>
+          o.UseSqlServer(connString));
 
             services.AddIdentity<MyIdentityUser, IdentityRole>(o =>
             {
