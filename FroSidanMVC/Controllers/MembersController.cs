@@ -14,5 +14,11 @@ namespace FroSidanMVC.Controllers
         {
             return View();
         }
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
     }
 }
