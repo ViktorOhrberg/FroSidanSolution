@@ -2,12 +2,11 @@
 }
 
 footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: lightsalmon;
-    color: white;
+    text-align: center;
+    background-color: #e7e7e7;
+}
+
+.col {
     text-align: center;
 }
 
@@ -16,10 +15,12 @@ footer {
     border-style: solid;
 }
 
-.row{
-    width:500px;
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#h1Index{
-    text-align:center;
+#h1Index {
+    text-align: center;
 }
