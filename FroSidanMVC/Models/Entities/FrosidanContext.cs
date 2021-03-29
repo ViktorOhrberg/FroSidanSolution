@@ -24,6 +24,7 @@ namespace FroSidanMVC.Models.Entities
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -123,6 +124,23 @@ namespace FroSidanMVC.Models.Entities
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.AspNetUserTokens)
                     .HasForeignKey(d => d.UserId);
+            });
+
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.Property(e => e.Category)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.ImgRef).HasMaxLength(100);
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.SubCategory).HasMaxLength(100);
+
+                entity.Property(e => e.ThumbRef).HasMaxLength(100);
             });
 
             OnModelCreatingPartial(modelBuilder);
