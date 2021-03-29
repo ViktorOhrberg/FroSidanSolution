@@ -9,17 +9,25 @@ namespace FroSidanMVC.Models
 {
     public class ProductsService
     {
-        List<Product> shoppingCart; // Ska vara av typen product
+        List<Product> shoppingCart; 
         readonly FrosidanContext context;
 
         public ProductsService(FrosidanContext context)
         {
             this.context = context;
+            shoppingCart = new List<Product>();
         }
 
-        public void AddToCart(int id)
+        public bool AddToCart(int id)
         {
-            shoppingCart.Add(GetProductByID(id));
+            Product p = GetProductByID(id);
+            if (p.Balance > 0)
+            {
+                shoppingCart.Add(p);
+                return true;
+            }
+            else
+                return false;
         }
 
         public Product GetProductByID(int id)
