@@ -54,7 +54,24 @@ namespace FroSidanMVC.Controls
         {
             bool q = await pService.AddToCartAsync(id);
 
+            return Content(pService.QuantityInCart(id).ToString()); // Vad är en lämplig return???
+        }
+
+        [HttpGet]
+        [Route("ClearCart")]
+
+        public IActionResult ClearCart()
+        {
+            pService.DeleteCart();
             return Content(pService.GetShoppingCart().Count().ToString()); // Vad är en lämplig return???
+        }
+        [HttpGet]
+        [Route("RemoveSingleFromCart/{id}")]
+
+        public IActionResult RemoveSingleFromCart(int id)
+        {
+            pService.RemoveSingleFromCart(id);
+            return Content(pService.QuantityInCart(id).ToString());
         }
     }
 }
