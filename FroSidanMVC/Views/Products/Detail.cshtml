@@ -1,2 +1,11 @@
 ﻿@model DetailVM
 
+
+<div class="card" style="width: 30rem;">
+    <img src="/Images/@Model.Url" class="card-img-top" alt="Produktbild">
+    <div class="card-body">
+        <h3>@Model.ProductName</h3>
+        <p class="card-text">@Model.Description</p>
+        <h6>@Model.Price kr</h6> @*Lägg till en Add to cart knapp här*@
+    </div>
+</div>

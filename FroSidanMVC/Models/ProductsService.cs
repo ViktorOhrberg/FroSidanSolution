@@ -48,13 +48,11 @@ namespace FroSidanMVC.Models
                 .Where(p => p.Id == id)
                 .Count();
         }
-        public DetailVM GetSeedById(int id)
+        public DetailVM GetProductDetailVM(int id)
         {
 
-            var q = context.Products
-                .Where(x => x.Id == id)
-                .FirstOrDefault();
-            var seed = context.Products
+            var q = GetProductByID(id);
+            var product = context.Products
                 .Select(x => new DetailVM
                 {
                     ProductName = q.Name,
@@ -63,7 +61,8 @@ namespace FroSidanMVC.Models
                     Url = q.ImgRef,
                 }).First();
 
-            return seed;
+            return product;
+            
         }
     }
 }

@@ -27,7 +27,7 @@ namespace FroSidanMVC.Controls
         [Route("products/{id}")]
         public IActionResult Detail(int id)
         {
-            var product = pService.GetSeedById(id);
+            var product = pService.GetProductDetailVM(id);
             return View(product);
         }
 
