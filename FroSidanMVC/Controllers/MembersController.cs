@@ -1,4 +1,5 @@
 ﻿using FroSidanMVC.Models;
+using FroSidanMVC.Models.ViewModels.Members;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,10 +24,33 @@ namespace FroSidanMVC.Controllers
         }
         [AllowAnonymous]
         [HttpGet]
-        [Route("mypages")]
-        public IActionResult Login()
+        [Route("login")]
+        public IActionResult Login(string returnUrl)
         {
-            return View();
+            return View(new MembersLoginVM { ReturnUrl = returnUrl });
+            
+        }
+        [HttpPost]
+        [Route("login")]
+        public async Task<IActionResult> LoginAsync(MembersLoginVM viewModel)
+        {
+            if (!ModelState.IsValid)
+                return View(viewModel);
+
+            // Check if credentials is valid (and set auth cookie)
+            var success = await mService.TryLoginAsync(viewModel);
+            if (!success)
+            {
+                // Show error
+                ModelState.AddModelError(nameof(MembersLoginVM.Username), "Login failed");
+                return View(viewModel);
+            }
+
+            // Redirect user
+            if (string.IsNullOrWhiteSpace(viewModel.ReturnUrl))
+                return RedirectToAction(nameof(Members));
+            else
+                return Redirect(viewModel.ReturnUrl);
         }
 
         [Route("products/mypages")]
@@ -46,12 +70,12 @@ namespace FroSidanMVC.Controllers
             var success = await mService.TryRegisterAsync(vM);
             if (!success)
             {
-                // Show error
+                // if not succesful, Show error
                 ModelState.AddModelError(string.Empty, "Misslyckades att skapa konto");
                 return View(vM);
             }
 
-            // Redirect user
+            // if succesful, redirect user
             return RedirectToAction(nameof(Login));
         }
     }

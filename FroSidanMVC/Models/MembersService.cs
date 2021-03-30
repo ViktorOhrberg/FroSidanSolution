@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using FroSidanMVC.Models.ViewModels.Members;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,14 @@ namespace FroSidanMVC.Models
             var result = await userManager.CreateAsync(
                 new MyIdentityUser
                 { FirstName = memberRegisterVm.FirstName, LastName = memberRegisterVm.LastName, UserName = memberRegisterVm.Email, Email = memberRegisterVm.Email }, memberRegisterVm.Password);
+            return result.Succeeded;
+        }
+
+        public async Task<bool> TryLoginAsync(MembersLoginVM viewModel)
+        {
+            var result = await signInManager.PasswordSignInAsync(
+                viewModel.Username, viewModel.Password, false, false);
+
             return result.Succeeded;
         }
 
