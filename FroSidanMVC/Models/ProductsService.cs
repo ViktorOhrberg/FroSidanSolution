@@ -126,7 +126,7 @@ namespace FroSidanMVC.Models
                 AddToShoppingCartCookie(shoppingCart);
             }
         }
-        public void RemoveAllFromCart(int id)
+        public void RemoveAllFromCart(int id) //verkar inte användas, kan kanske plockas bort?
         {
             var shoppingCart = GetShoppingCart();
             var q = QuantityInCart(id);
@@ -157,7 +157,7 @@ namespace FroSidanMVC.Models
                 .Select(x => new DetailVM
                 {
                     ProductName = q.Name,
-                    Price = Convert.ToInt32(q.Price),
+                    Price = q.Price,
                     Description = q.Description,
                     Url = q.ImgRef,
                 }).FirstOrDefaultAsync();
