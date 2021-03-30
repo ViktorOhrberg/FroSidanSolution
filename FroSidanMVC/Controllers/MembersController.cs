@@ -47,7 +47,7 @@ namespace FroSidanMVC.Controllers
             if (!success)
             {
                 // Show error
-                ModelState.AddModelError(string.Empty, "Failed to create user");
+                ModelState.AddModelError(string.Empty, "Misslyckades att skapa konto");
                 return View(vM);
             }
 
