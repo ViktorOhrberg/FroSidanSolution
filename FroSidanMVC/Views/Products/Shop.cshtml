@@ -8,17 +8,17 @@
         @foreach (var item in Model)
         {
             <div class="col-md-3">
+                        <a asp-controller="Products" asp-action="Detail" asp-route-id=@item.Id> @*Länkning funkar ej, glöm inte fixa*@
                 <div class="card text-center">
                     <img src="~/Images/@item.ThumbnailUrl" width="100%;" />
                     <div class="card-body">
                         <h5 class="card-title">@item.Name </h5>
-                        <a asp-controller="Products" asp-action="Detail" asp-route-id=@item.Id> @*Länkning funkar ej, glöm inte fixa*@
                             <p class="card-text">@item.SubKategori</p>
-                        </a>
                         <a href="#" onclick="AddToCart(@item.Id)" class="btn btn-success">Lägg till i varukorg 🛒</a>
                         <a href="#" onclick="RemoveSingle(@item.Id)" class="btn btn-success">Ta bort (1)</a>
                     </div>
                 </div>
+                        </a>
             </div>
         }
         <div class="col-md-3">
