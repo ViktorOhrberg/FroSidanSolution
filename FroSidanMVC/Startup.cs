@@ -35,7 +35,7 @@ namespace FroSidanMVC
             services.AddDbContext<MyIdentityContext>(o =>
             o.UseSqlServer(connString));
             services.AddDbContext<FrosidanContext>(o =>
-          o.UseSqlServer(connString));
+            o.UseSqlServer(connString));
 
             services.AddIdentity<MyIdentityUser, IdentityRole>(o =>
             {
