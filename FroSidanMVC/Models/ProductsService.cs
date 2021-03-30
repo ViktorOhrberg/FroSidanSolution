@@ -1,34 +1,67 @@
 ﻿using FroSidanMVC.Models.Entities;
 using FroSidanMVC.Models.ViewModels.Products;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace FroSidanMVC.Models
 {
     public class ProductsService
     {
-        public List<Product> shoppingCart; 
         readonly FrosidanContext context;
+        private readonly IHttpContextAccessor accessor;
 
-        public ProductsService(FrosidanContext context)
+        public ProductsService(FrosidanContext context, IHttpContextAccessor accessor)
         {
             this.context = context;
-            shoppingCart = new List<Product>();
+            this.accessor = accessor;
         }
 
         public async Task<bool> AddToCartAsync(int id)
         {
+
+            var shoppingCart = GetShoppingCart();
+
             Product p = await GetProductByIDAsync(id);
             if (p.Balance > 0)
             {
-                shoppingCart.Add(p);
+                shoppingCart.Add(id);
+                AddToShoppingCartCookie(shoppingCart);
                 return true;
             }
             else
                 return false;
+        }
+
+        private void AddToShoppingCartCookie(List<int> shoppingCart)
+        {
+            CookieOptions option = new CookieOptions
+            {
+                Expires = DateTime.Now.AddSeconds(10)
+            };
+            string shoppingCartJson = JsonConvert.SerializeObject(shoppingCart);
+            accessor.HttpContext.Response.Cookies.Append("shoppingCart", shoppingCartJson, option);
+        }
+        public void DeleteCartCookie()
+        {
+            accessor.HttpContext.Response.Cookies.Delete("shoppingCart");
+        }
+
+        public List<int> GetShoppingCart()
+        {
+            var q =  accessor.HttpContext.Request.Cookies["shoppingCart"];
+            if (q == null)
+            {
+                return new List<int>();
+            }
+            else
+            {
+                return JsonConvert.DeserializeObject<List<int>>(q);
+            }
         }
 
         public async Task<Product> GetProductByIDAsync(int id)
@@ -39,14 +72,21 @@ namespace FroSidanMVC.Models
 
         public void RemoveFromCart(int id)
         {
-            var q = shoppingCart
-                .FirstOrDefault(p => p.Id == id);
-            shoppingCart.Remove(q);
+            var shoppingCart = GetShoppingCart();
+            shoppingCart.Remove(id);
+            AddToShoppingCartCookie(shoppingCart);
+        }
+        public void DeleteCart()
+        {
+            var shoppingCart = GetShoppingCart();
+            shoppingCart.Clear();
+            AddToShoppingCartCookie(shoppingCart);
         }
         public int QuantityInCart(int id)
         {
+            var shoppingCart = GetShoppingCart();
             return shoppingCart
-                .Where(p => p.Id == id)
+                .Where(p => p == id)
                 .Count();
         }
         public async Task<DetailVM> GetProductDetailVMAsync(int id)
