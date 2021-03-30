@@ -41,14 +41,16 @@ namespace FroSidanMVC.Models
         {
             CookieOptions option = new CookieOptions
             {
-                Expires = DateTime.Now.AddSeconds(10)
+                Expires = DateTime.Now.AddDays(30),
             };
             string shoppingCartJson = JsonConvert.SerializeObject(shoppingCart);
             accessor.HttpContext.Response.Cookies.Append("shoppingCart", shoppingCartJson, option);
         }
         public void DeleteCartCookie()
         {
+            var shoppingCart = new List<int>();
             accessor.HttpContext.Response.Cookies.Delete("shoppingCart");
+            //AddToShoppingCartCookie(shoppingCart);
         }
 
         public List<int> GetShoppingCart()
