@@ -1,5 +1,6 @@
 ﻿using FroSidanMVC.Models.Entities;
 using FroSidanMVC.Models.ViewModels.Products;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,9 @@ namespace FroSidanMVC.Models
             shoppingCart = new List<Product>();
         }
 
-        public bool AddToCart(int id)
+        public async Task<bool> AddToCartAsync(int id)
         {
-            Product p = GetProductByID(id);
+            Product p = await GetProductByIDAsync(id);
             if (p.Balance > 0)
             {
                 shoppingCart.Add(p);
@@ -30,10 +31,10 @@ namespace FroSidanMVC.Models
                 return false;
         }
 
-        public Product GetProductByID(int id)
+        public async Task<Product> GetProductByIDAsync(int id)
         {
-            return context.Products
-                .FirstOrDefault(p => p.Id == id);
+            return await context.Products
+                .FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public void RemoveFromCart(int id)
@@ -48,18 +49,18 @@ namespace FroSidanMVC.Models
                 .Where(p => p.Id == id)
                 .Count();
         }
-        public DetailVM GetProductDetailVM(int id)
+        public async Task<DetailVM> GetProductDetailVMAsync(int id)
         {
 
-            var q = GetProductByID(id);
-            var product = context.Products
+            var q = await GetProductByIDAsync(id);
+            var product = await context.Products
                 .Select(x => new DetailVM
                 {
                     ProductName = q.Name,
                     Price = Convert.ToInt32(q.Price),
                     Description = q.Description,
                     Url = q.ImgRef,
-                }).First();
+                }).FirstOrDefaultAsync();
 
             return product;
             

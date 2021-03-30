@@ -25,9 +25,9 @@ namespace FroSidanMVC.Controls
         }
 
         [Route("products/{id}")]
-        public IActionResult Detail(int id)
+        public async Task<IActionResult> DetailAsync(int id)
         {
-            var product = pService.GetProductDetailVM(id);
+            var product = await pService.GetProductDetailVMAsync(id);
             return View(product);
         }
 
@@ -47,12 +47,12 @@ namespace FroSidanMVC.Controls
         [HttpGet]
         [Route("AddToCart/{id}")]
 
-        public IActionResult AddToCart(int id)
+        public async Task<IActionResult> AddToCartAsync(int id)
         {
-            pService.shoppingCart.Add(pService.GetProductByID(1));
-            pService.shoppingCart.Add(pService.GetProductByID(2));
-            pService.shoppingCart.Add(pService.GetProductByID(3));
-            bool q = pService.AddToCart(id);
+            pService.shoppingCart.Add(await pService.GetProductByIDAsync(1));
+            pService.shoppingCart.Add(await pService.GetProductByIDAsync(2));
+            pService.shoppingCart.Add(await pService.GetProductByIDAsync(3));
+            bool q = await pService.AddToCartAsync(id);
             return Content(q.ToString()); // Vad är en lämplig return???
         }
 
