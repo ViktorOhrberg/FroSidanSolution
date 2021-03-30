@@ -52,12 +52,9 @@ namespace FroSidanMVC.Controls
 
         public async Task<IActionResult> AddToCartAsync(int id)
         {
-            //pService.DeleteCartCookie();
             bool q = await pService.AddToCartAsync(id);
 
-            return Content(pService.GetShoppingCart().Count()+1.ToString()); // Vad är en lämplig return???
+            return Content(pService.GetShoppingCart().Count().ToString()); // Vad är en lämplig return???
         }
-
-
     }
 }
