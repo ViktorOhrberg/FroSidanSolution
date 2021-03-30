@@ -32,6 +32,7 @@ namespace FroSidanMVC
         {
             var connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FroSidanDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+            services.AddHttpContextAccessor();
             services.AddDbContext<MyIdentityContext>(o =>
             o.UseSqlServer(connString));
             services.AddDbContext<FrosidanContext>(o =>

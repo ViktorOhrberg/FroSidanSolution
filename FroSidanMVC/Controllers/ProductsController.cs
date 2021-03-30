@@ -5,6 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Http;
 
 namespace FroSidanMVC.Controls
 {
@@ -49,11 +52,10 @@ namespace FroSidanMVC.Controls
 
         public async Task<IActionResult> AddToCartAsync(int id)
         {
-            pService.shoppingCart.Add(await pService.GetProductByIDAsync(1));
-            pService.shoppingCart.Add(await pService.GetProductByIDAsync(2));
-            pService.shoppingCart.Add(await pService.GetProductByIDAsync(3));
+            //pService.DeleteCartCookie();
             bool q = await pService.AddToCartAsync(id);
-            return Content(q.ToString()); // Vad är en lämplig return???
+
+            return Content(pService.GetShoppingCart().Count()+1.ToString()); // Vad är en lämplig return???
         }
 
 
