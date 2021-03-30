@@ -13,6 +13,7 @@ namespace FroSidanMVC.Models.Entities
             AspNetUserLogins = new HashSet<AspNetUserLogin>();
             AspNetUserRoles = new HashSet<AspNetUserRole>();
             AspNetUserTokens = new HashSet<AspNetUserToken>();
+            Orders = new HashSet<Order>();
         }
 
         public string Id { get; set; }
@@ -37,5 +38,6 @@ namespace FroSidanMVC.Models.Entities
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual ICollection<AspNetUserToken> AspNetUserTokens { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
