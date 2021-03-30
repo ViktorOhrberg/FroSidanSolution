@@ -18,9 +18,11 @@ namespace FroSidanMVC.Controllers
         }
 
         [Authorize]
-        public IActionResult Members()
+        [HttpGet]
+        [Route("MyPages")]
+        public IActionResult MyPages()
         {
-            return View();
+            return View(new MyPagesVM { Username = User.Identity.Name });
         }
         [AllowAnonymous]
         [HttpGet]
@@ -48,18 +50,19 @@ namespace FroSidanMVC.Controllers
 
             // Redirect user
             if (string.IsNullOrWhiteSpace(viewModel.ReturnUrl))
-                return RedirectToAction(nameof(Members));
+                return RedirectToAction(nameof(MyPages));
             else
                 return Redirect(viewModel.ReturnUrl);
         }
 
-        [Route("products/mypages")]
         [HttpGet]
-        public IActionResult MyPages()
+        [Route("register")]
+        public IActionResult Register()
         {
             return View();
         }
-        [Route("members/register")]
+
+        [Route("register")]
         [HttpPost]
         public async Task<IActionResult> RegisterAsync(MemberRegisterVM vM)
         {
