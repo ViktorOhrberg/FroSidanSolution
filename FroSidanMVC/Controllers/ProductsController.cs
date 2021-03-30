@@ -10,7 +10,7 @@ namespace FroSidanMVC.Controls
 {
     public class ProductsController : Controller
     {
-        private readonly ProductsService pService;
+        public ProductsService pService;
 
         public ProductsController(ProductsService pService)
         {
@@ -49,9 +49,11 @@ namespace FroSidanMVC.Controls
 
         public IActionResult AddToCart(int id)
         {
+            pService.shoppingCart.Add(pService.GetProductByID(1));
+            pService.shoppingCart.Add(pService.GetProductByID(2));
+            pService.shoppingCart.Add(pService.GetProductByID(3));
             bool q = pService.AddToCart(id);
-            return Content(q.ToString());
-            //return Content("true");
+            return Content(q.ToString()); // Vad är en lämplig return???
         }
 
 

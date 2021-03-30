@@ -9,7 +9,7 @@ namespace FroSidanMVC.Models
 {
     public class ProductsService
     {
-        List<Product> shoppingCart; 
+        public List<Product> shoppingCart; 
         readonly FrosidanContext context;
 
         public ProductsService(FrosidanContext context)
