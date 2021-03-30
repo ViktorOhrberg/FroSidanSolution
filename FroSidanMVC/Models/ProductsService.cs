@@ -45,7 +45,7 @@ namespace FroSidanMVC.Models
                     Id = x.Id,
                     Name = x.Name,
                     SubKategori = x.SubCategory,
-                    Price = Convert.ToInt32(x.Price),
+                    Price = x.Price,
                     ThumbnailUrl = x.ThumbRef,
                     Description = x.Description
                 })
