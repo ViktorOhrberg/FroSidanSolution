@@ -12,7 +12,9 @@
                     <img src="~/Images/@item.ThumbnailUrl" width="100%;" />
                     <div class="card-body">
                         <h5 class="card-title">@item.Name </h5>
-                        <p class="card-text">@item.SubKategori</p>
+                        <a asp-controller="Products" asp-action="Detail" asp-route-id=@item.Id> @*Länkning funkar ej, glöm inte fixa*@
+                            <p class="card-text">@item.SubKategori</p>
+                        </a>
                         <a href="#" onclick="AddToCart(@item.Id)" class="btn btn-success">Lägg till i varukorg 🛒</a>
                         <a href="#" onclick="RemoveSingle(@item.Id)" class="btn btn-success">Ta bort (1)</a>
                     </div>
@@ -31,67 +33,67 @@
 
 <br />
 
-@*<br />
+    @*<br />
 
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="card text-center">
-                <img src="~/Images/chilipeppar.png" width="100%;" />
-                <div class="card-body">
-                    <h5 class="card-title">Chili</h5>
-                    <p class="card-text">Het chilipeppar</p>
-                    <a href="#" class="btn btn-success">Lägg till i varukorg 🛒</a>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card text-center">
+                    <img src="~/Images/chilipeppar.png" width="100%;" />
+                    <div class="card-body">
+                        <h5 class="card-title">Chili</h5>
+                        <p class="card-text">Het chilipeppar</p>
+                        <a href="#" class="btn btn-success">Lägg till i varukorg 🛒</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card text-center">
-                <img src="~/Images/chilipeppar.png" width="100%;" />
-                <div class="card-body">
-                    <h5 class="card-title">Chili</h5>
-                    <p class="card-text">Het chilipeppar</p>
-                    <a href="#" type="submit" class="btn btn-success">Lägg till i varukorg 🛒</a>
+            <div class="col-sm-6">
+                <div class="card text-center">
+                    <img src="~/Images/chilipeppar.png" width="100%;" />
+                    <div class="card-body">
+                        <h5 class="card-title">Chili</h5>
+                        <p class="card-text">Het chilipeppar</p>
+                        <a href="#" type="submit" class="btn btn-success">Lägg till i varukorg 🛒</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card text-center">
-                <img src="~/Images/chilipeppar.png" width="100%;" />
-                <div class="card-body">
-                    <h5 class="card-title">Chili</h5>
-                    <p class="card-text">Het chilipeppar</p>
-                    <a href="#" class="btn btn-success">Lägg till i varukorg 🛒</a>
+            <div class="col-sm-6">
+                <div class="card text-center">
+                    <img src="~/Images/chilipeppar.png" width="100%;" />
+                    <div class="card-body">
+                        <h5 class="card-title">Chili</h5>
+                        <p class="card-text">Het chilipeppar</p>
+                        <a href="#" class="btn btn-success">Lägg till i varukorg 🛒</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>*@
+        </div>*@
 
 
-@section scripts
+    @section scripts
 {
-    <script type="text/javascript">
-        function AddToCart(id) {
-            $.ajax({
-                url: "/AddToCart/" + id,
-                type: "GET",
-                success: (result) => console.log(result)/*$("#result" + id).html(result)*/
-            });
-        };
+        <script type="text/javascript">
+            function AddToCart(id) {
+                $.ajax({
+                    url: "/AddToCart/" + id,
+                    type: "GET",
+                    success: (result) => console.log(result)/*$("#result" + id).html(result)*/
+                });
+            };
 
-        function ClearCart() {
-            $.ajax({
-                url: "/ClearCart/",
-                type: "GET",
-                success: (result) => console.log(result)
-            });
-        };
+            function ClearCart() {
+                $.ajax({
+                    url: "/ClearCart/",
+                    type: "GET",
+                    success: (result) => console.log(result)
+                });
+            };
 
-        function RemoveSingle(id) {
-            $.ajax({
-                url: "/RemoveSingleFromCart/" + id,
-                type: "GET",
-                success: (result) => console.log(result)
-            });
-        };
-    </script>
-}
+            function RemoveSingle(id) {
+                $.ajax({
+                    url: "/RemoveSingleFromCart/" + id,
+                    type: "GET",
+                    success: (result) => console.log(result)
+                });
+            };
+        </script>
+    }
