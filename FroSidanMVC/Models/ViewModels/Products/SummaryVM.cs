@@ -9,7 +9,6 @@ namespace FroSidanMVC.Models.ViewModels.Products
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public decimal Price { get; set; }
-        public int Price { get; set; }
+        public decimal TempPrice { get; set; }
     }
 }
