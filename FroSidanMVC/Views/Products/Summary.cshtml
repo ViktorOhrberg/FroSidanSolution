@@ -1,2 +1,8 @@
 ﻿@model SummaryVM[]
 
+@foreach (var item in Model)
+{
+    <div>
+        @item.Id - @item.Name - @item.Price - @item.Quantity - @item.TempPrice
+    </div>
+}

@@ -70,6 +70,33 @@ namespace FroSidanMVC.Models
             //AddToShoppingCartCookie(shoppingCart);
         }
 
+        internal async Task<SummaryVM[]> GetSummaryVMAsync()
+        {
+            var q = GetShoppingCart()
+                .OrderBy(p => p)
+                .ToArray();
+
+            List<SummaryVM> myList = new List<SummaryVM>();
+            int LastID = 0;
+            SummaryVM tempSum = new SummaryVM();
+
+            foreach (int item in q)
+            {
+                if(item != LastID)
+                {
+                    Product tempProd = await GetProductByIDAsync(item);
+                    tempSum = new SummaryVM { Id = tempProd.Id, Name = tempProd.Name, Price = tempProd.Price, TempPrice = tempProd.TempPrice, Quantity = 1 };
+                    LastID = tempSum.Id;
+                    myList.Add(tempSum);
+                }
+                else
+                {
+                    tempSum.Quantity++;
+                }
+            };
+            return myList.ToArray();
+        }
+
         public List<int> GetShoppingCart()
         {
             var q = accessor.HttpContext.Request.Cookies["shoppingCart"];

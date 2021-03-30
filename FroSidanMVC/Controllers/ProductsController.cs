@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http;
+using FroSidanMVC.Models.Entities;
 
 namespace FroSidanMVC.Controls
 {
@@ -67,6 +68,16 @@ namespace FroSidanMVC.Controls
         {
             pService.RemoveSingleFromCart(id);
             return Content(pService.QuantityInCart(id).ToString());
+        }
+
+        [HttpGet]
+        [Route("Summary")]
+
+        public async Task<IActionResult> Summary()
+        {
+            SummaryVM[] input = await pService.GetSummaryVMAsync();
+
+            return View(input);
         }
     }
 }
