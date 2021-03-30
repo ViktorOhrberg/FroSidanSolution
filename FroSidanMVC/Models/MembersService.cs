@@ -22,12 +22,15 @@ namespace FroSidanMVC.Models
             this.roleManager = roleManager;
         }
 
-        public async Task CreateUser(CreateVM createVm)
+
+        public async Task<bool> TryRegisterAsync(MemberRegisterVM memberRegisterVm)
         {
             var result = await userManager.CreateAsync(
-                new MyIdentityUser { FirstName = createVm.FirstName, LastName = createVm.LastName, UserName = createVm.Email, Email = createVm.Email }, createVm.Password);
+                new MyIdentityUser
+                { FirstName = memberRegisterVm.FirstName, LastName = memberRegisterVm.LastName, UserName = memberRegisterVm.Email, Email = memberRegisterVm.Email }, memberRegisterVm.Password);
+            return result.Succeeded;
         }
 
-        
+
     }
 }

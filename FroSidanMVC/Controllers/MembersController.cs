@@ -15,6 +15,7 @@ namespace FroSidanMVC.Controllers
         {
             this.mService = mService;
         }
+
         [Authorize]
         public IActionResult Members()
         {
@@ -22,6 +23,7 @@ namespace FroSidanMVC.Controllers
         }
         [AllowAnonymous]
         [HttpGet]
+        [Route("mypages")]
         public IActionResult Login()
         {
             return View();
@@ -32,6 +34,25 @@ namespace FroSidanMVC.Controllers
         public IActionResult MyPages()
         {
             return View();
+        }
+        [Route("members/register")]
+        [HttpPost]
+        public async Task<IActionResult> RegisterAsync(MemberRegisterVM vM)
+        {
+            if (!ModelState.IsValid)
+                return View(vM);
+
+            // Try to register user
+            var success = await mService.TryRegisterAsync(vM);
+            if (!success)
+            {
+                // Show error
+                ModelState.AddModelError(string.Empty, "Failed to create user");
+                return View(vM);
+            }
+
+            // Redirect user
+            return RedirectToAction(nameof(Login));
         }
     }
 }

@@ -2,9 +2,18 @@
 
 namespace FroSidanMVC.Models
 {
-    public class CreateVM
+    public class MemberRegisterVM
     {
-        
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Repeat password")]
+        [Compare(nameof(MemberRegisterVM.Password))]
+        public string PasswordRepeat { get; set; }
+
         public string UserName { get; set; }
         [Required]
         [EmailAddress]
@@ -14,15 +23,6 @@ namespace FroSidanMVC.Models
         [Required]
         public string LastName { get; set; }
 
-        [Required]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Repeat password")]
-        [Compare(nameof(CreateVM.Password))]
-        public string PasswordRepeat { get; set; }
 
     }
 }
