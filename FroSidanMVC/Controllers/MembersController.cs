@@ -81,5 +81,14 @@ namespace FroSidanMVC.Controllers
             // if succesful, redirect user
             return RedirectToAction(nameof(Login));
         }
+
+        [HttpGet]
+        [Route("logout")]
+        public async Task<IActionResult> LogoutAsync()
+        {
+            await mService.SignOutAsync();
+            return RedirectToAction(nameof(Login));
+        }
+
     }
 }
