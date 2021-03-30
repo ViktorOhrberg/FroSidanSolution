@@ -72,7 +72,7 @@ namespace FroSidanMVC.Models
 
         public List<int> GetShoppingCart()
         {
-            var q =  accessor.HttpContext.Request.Cookies["shoppingCart"];
+            var q = accessor.HttpContext.Request.Cookies["shoppingCart"];
             if (q == null)
             {
                 return new List<int>();
@@ -89,10 +89,24 @@ namespace FroSidanMVC.Models
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public void RemoveFromCart(int id)
+        public void RemoveSingleFromCart(int id)
+        {
+            if (QuantityInCart(id) > 0)
+            {
+                var shoppingCart = GetShoppingCart();
+                shoppingCart.Remove(id);
+                DeleteCartCookie();
+                AddToShoppingCartCookie(shoppingCart);
+            }
+        }
+        public void RemoveAllFromCart(int id)
         {
             var shoppingCart = GetShoppingCart();
-            shoppingCart.Remove(id);
+            var q = QuantityInCart(id);
+            for (int i = 0; i < q; i++)
+            {
+                shoppingCart.Remove(id);
+            }
             AddToShoppingCartCookie(shoppingCart);
         }
         public void DeleteCart()
@@ -120,9 +134,7 @@ namespace FroSidanMVC.Models
                     Description = q.Description,
                     Url = q.ImgRef,
                 }).FirstOrDefaultAsync();
-
             return product;
-            
         }
     }
 }

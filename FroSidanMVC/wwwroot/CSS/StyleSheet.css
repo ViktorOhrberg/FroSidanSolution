@@ -1,6 +1,11 @@
 ﻿body {
 }
 
+nav {
+    height: 100px;
+    background-image: linear-gradient(#ccffcc, #ffffff);
+}
+
 footer {
     text-align: center;
     background-color: #e7e7e7;
