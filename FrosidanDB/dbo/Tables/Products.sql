@@ -2,8 +2,8 @@
 (
 	[Id] INT NOT NULL PRIMARY KEY Identity,
 	[Name] nvarchar(100) Not null,
-	[Price] int not null,
-	[TempPrice] int null,
+	[Price] money not null,
+	[TempPrice] money null,
 	[Balance] int not null,
 	[ImgRef] nvarchar(100) null,
 	[ThumbRef] nvarchar(100) null,
