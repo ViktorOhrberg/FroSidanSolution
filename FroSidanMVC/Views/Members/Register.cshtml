@@ -1,24 +1,28 @@
 ﻿@model MemberRegisterVM
-<h3>Registrera</h3>
+<h3>Registrera ny medlem</h3>
 <form asp-controller="Members" asp-action="Register">
-    <label asp-for="Email">Email</label>
     <input asp-for="Email" />
+    <label asp-for="Email">Email</label>
     <span asp-validation-for="Email"></span>
+    <br />
 
-    <label asp-for="Password">Lösenord</label>
     <input asp-for="Password" />
+    <label asp-for="Password">Lösenord</label>
     <span asp-validation-for="Password"></span>
+    <br />
 
-    <label asp-for="PasswordRepeat">Repetera lösenord</label>
     <input asp-for="PasswordRepeat" />
+    <label asp-for="PasswordRepeat">Repetera lösenord</label>
     <span asp-validation-for="PasswordRepeat"></span>
+    <br />
 
-    <label asp-for="FirstName">Förnamn</label>
     <input asp-for="FirstName" />
+    <label asp-for="FirstName">Förnamn</label>
     <span asp-validation-for="FirstName"></span>
+    <br />
 
-    <label asp-for="LastName">Efternamn</label>
     <input asp-for="LastName" />
+    <label asp-for="LastName">Efternamn</label>
     <span asp-validation-for="LastName"></span>
     <br />
     <input type="submit" value="Register" />

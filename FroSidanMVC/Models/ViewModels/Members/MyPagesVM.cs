@@ -7,5 +7,6 @@ namespace FroSidanMVC.Models.ViewModels.Members
 {
     public class MyPagesVM
     {
+        public string Username { get; set; }
     }
 }
