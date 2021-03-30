@@ -1,8 +1,70 @@
 ﻿@model SummaryVM[]
+@{decimal total = 0;}
 
-@foreach (var item in Model)
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Artikelnummer</th>
+            <th scope="col">Namn</th>
+            <th scope="col">Pris</th>
+            <th scope="col">Antal</th>
+            <th scope="col">Ta bort</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row"></th>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Price.ToString("c")</td>
+                <td>
+                    @item.Quantity &#9;
+                <a href="#" text-decoration="none" onclick="AddToCart(@item.Id)">➕</a>
+                <a href="#" text-decoration="none" onclick="RemoveSingleFromCart(@item.Id)">➖</a>
+            </td>
+            <td>
+                <a href="#" text-decoration="none" onclick="RemoveAllFromCart(@item.Id)">❌</a>
+            </td>
+        </tr>
+    }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="2">
+                Summa pris: @Model.Sum(p => p.Price * p.Quantity).ToString("c")
+            </td>
+        </tr>
+    </tbody>
+</table>
+@section scripts
 {
-    <div>
-        @item.Id - @item.Name - @item.Price - @item.Quantity - @item.TempPrice
-    </div>
+    <script type="text/javascript">
+        function AddToCart(id) {
+            $.ajax({
+                url: "/AddToCart/" + id,
+                type: "GET",
+                success: (result) => console.log(result)/*$("#result" + id).html(result)*/
+            });
+        };
+
+        function RemoveAllFromCart(id) {
+            $.ajax({
+                url: "/RemoveAllFromCart/" + id,
+                type: "GET",
+                success: (result) => console.log(result)
+            });
+        };
+
+        function RemoveSingleFromCart(id) {
+            $.ajax({
+                url: "/RemoveSingleFromCart/" + id,
+                type: "GET",
+                success: (result) => console.log(result)
+            });
+        };
+    </script>
 }

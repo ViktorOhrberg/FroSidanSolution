@@ -71,6 +71,15 @@ namespace FroSidanMVC.Controls
         }
 
         [HttpGet]
+        [Route("RemoveAllFromCart/{id}")]
+
+        public IActionResult RemoveAllFromCart(int id)
+        {
+            pService.RemoveAllFromCart(id);
+            return Content(pService.QuantityInCart(id).ToString());
+        }
+
+        [HttpGet]
         [Route("Summary")]
 
         public async Task<IActionResult> Summary()

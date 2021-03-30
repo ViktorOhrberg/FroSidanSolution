@@ -126,7 +126,7 @@ namespace FroSidanMVC.Models
                 AddToShoppingCartCookie(shoppingCart);
             }
         }
-        public void RemoveAllFromCart(int id) //verkar inte användas, kan kanske plockas bort?
+        public void RemoveAllFromCart(int id) 
         {
             var shoppingCart = GetShoppingCart();
             var q = QuantityInCart(id);
