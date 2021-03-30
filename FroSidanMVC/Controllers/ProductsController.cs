@@ -38,14 +38,9 @@ namespace FroSidanMVC.Controls
         [HttpGet]
         public IActionResult Shop()
         {
-            ShopVM[] input =
-            {
-                new ShopVM{Id = 1, Name="A"},
-                new ShopVM{Id = 2, Name="B"},
-                new ShopVM{Id = 3, Name="C"},
-                new ShopVM{Id = 4, Name="D"}
-            };
-            return View(input);
+            var products = pService.GetAllProducts();
+            
+            return View(products);
         }
         [HttpGet]
         [Route("AddToCart/{id}")]

@@ -37,6 +37,23 @@ namespace FroSidanMVC.Models
                 return false;
         }
 
+        internal ShopVM[] GetAllProducts()
+        {
+            var products = context.Products
+                .Select(x => new ShopVM
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    SubKategori = x.SubCategory,
+                    Price = Convert.ToInt32(x.Price),
+                    ThumbnailUrl = x.ThumbRef,
+                    Description = x.Description
+                })
+                .ToArray();
+
+            return products;
+        }
+
         private void AddToShoppingCartCookie(List<int> shoppingCart)
         {
             CookieOptions option = new CookieOptions

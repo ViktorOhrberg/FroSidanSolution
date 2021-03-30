@@ -49,9 +49,9 @@ namespace FroSidanMVC
             services.ConfigureApplicationCookie(o =>
                 o.LoginPath = "/LogIn");
 
-            services.AddAuthentication(
-                CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(o => o.LoginPath = "/Members/Login");
+            //services.AddAuthentication(
+            //    CookieAuthenticationDefaults.AuthenticationScheme)
+            //    .AddCookie(o => o.LoginPath = "/Members/Login");
 
             services.AddControllersWithViews();
             services.AddTransient<MembersService>();
