@@ -22,11 +22,11 @@
                 <td>@item.Price.ToString("c")</td>
                 <td>
                     @item.Quantity &#9;
-                    <a href="#" text-decoration="none" onclick="AddToCart(@item.Id)">➕</a>
-                    <a href="#" text-decoration="none" onclick="RemoveSingleFromCart(@item.Id)">➖</a>
+                    <a href="#" class="text-decoration-none" onclick="AddToCart(@item.Id)">➕</a>
+                    <a href="#" class="text-decoration-none" onclick="RemoveSingleFromCart(@item.Id)">➖</a>
                 </td>
                 <td>
-                    <a href="#" text-decoration="none" onclick="RemoveAllFromCart(@item.Id)">❌</a>
+                    <a href="#" class="text-decoration-none" onclick="RemoveAllFromCart(@item.Id)">❌</a>
                 </td>
             </tr>
         }
@@ -41,8 +41,8 @@
     </tbody>
 </table>
 <div>
-    <button type="button" class="btn btn-secondary" >
-            <a asp-controller="Products" asp-action="Checkout"> Gå vidare </a>
+    <button type="button" class="btn btn-secondary" asp-controller="Products" asp-action="Checkout">
+        Gå vidare
     </button>
 </div>
 
@@ -53,7 +53,7 @@
             $.ajax({
                 url: "/AddToCart/" + id,
                 type: "GET",
-                success: (result) => console.log(result)/*$("#result" + id).html(result)*/
+                success: (result) => console.log(result)
             });
             location.reload();
         };
