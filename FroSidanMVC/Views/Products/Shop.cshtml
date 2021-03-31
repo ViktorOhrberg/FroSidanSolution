@@ -3,21 +3,32 @@
 
 <br />
 <br />
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float: right">
+        Sortera
+    </button>
+    <ul class="dropdown-menu">
+        <li><a asp-controller="Products" asp-action="Shop" asp-route-filter="rekommenderat">Rekommenderat</a></li>
+        <li><a asp-controller="Products" asp-action="Shop" asp-route-filter="price">Pris</a></li>
+        <li><a asp-controller="Products" asp-action="Shop" asp-route-filter="name">Namn</a></li>
+    </ul>
+</div>
+<br />
 <div class="container">
     <div class="row row-cols-4">
         @foreach (var item in Model)
         {
             <div class="col-md-3">
-                        <a asp-controller="Products" asp-action="Detail" asp-route-id=@item.Id> @*Länkning funkar ej, glöm inte fixa*@
-                <div class="card text-center">
-                    <img src="~/Images/@item.ThumbnailUrl" width="100%;" />
-                    <div class="card-body">
-                        <h5 class="card-title">@item.Name </h5>
+                <a asp-controller="Products" asp-action="Detail" asp-route-id=@item.Id>
+                    <div class="card text-center">
+                        <img src="~/Images/@item.ThumbnailUrl" width="100%;" />
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name </h5>
                             <p class="card-text">@item.SubCategory</p>
-                        <a href="#" onclick="AddToCart(@item.Id)" class="btn btn-success">Lägg till i varukorg 🛒</a>
+                            <a href="#" onclick="AddToCart(@item.Id)" class="btn btn-success">Lägg till i varukorg 🛒</a>
+                        </div>
                     </div>
-                </div>
-                        </a>
+                </a>
             </div>
         }
     </div>
@@ -26,31 +37,32 @@
 <br />
 
 
-    @section scripts
+@section scripts
 {
-        <script type="text/javascript">
-            function AddToCart(id) {
-                $.ajax({
-                    url: "/AddToCart/" + id,
-                    type: "GET",
-                    success: (result) => console.log(result)/*$("#result" + id).html(result)*/
-                });
-            };
+    <script type="text/javascript">
+        function AddToCart(id) {
+            $.ajax({
+                url: "/AddToCart/" + id,
+                type: "GET",
+                success: (result) => console.log(result)/*$("#result" + id).html(result)*/
+            });
+        };
 
-            function ClearCart() {
-                $.ajax({
-                    url: "/ClearCart/",
-                    type: "GET",
-                    success: (result) => console.log(result)
-                });
-            };
+        function ClearCart() {
+            $.ajax({
+                url: "/ClearCart/",
+                type: "GET",
+                success: (result) => console.log(result)
+            });
+        };
 
-            function RemoveSingle(id) {
-                $.ajax({
-                    url: "/RemoveSingleFromCart/" + id,
-                    type: "GET",
-                    success: (result) => console.log(result)
-                });
-            };
-        </script>
-    }
+        function RemoveSingle(id) {
+            $.ajax({
+                url: "/RemoveSingleFromCart/" + id,
+                type: "GET",
+                success: (result) => console.log(result)
+            });
+        };
+    </script>
+
+}

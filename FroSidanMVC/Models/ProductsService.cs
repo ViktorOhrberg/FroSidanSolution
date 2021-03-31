@@ -54,6 +54,21 @@ namespace FroSidanMVC.Models
             return products;
         }
 
+        internal ShopVM[] GetSortedByName()
+        {
+            var all = GetAllProducts();
+            var sorted = all.OrderBy(x => x.Name).ToArray();
+            return sorted;
+        }
+
+        internal ShopVM[] GetSortedByPrice()
+        {
+            var all = GetAllProducts();
+            var sorted = all.OrderBy(x => x.Price).ToArray();
+            return sorted;
+            
+        }
+
         private void AddToShoppingCartCookie(List<int> shoppingCart)
         {
             CookieOptions option = new CookieOptions

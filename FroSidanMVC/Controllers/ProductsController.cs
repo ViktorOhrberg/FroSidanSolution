@@ -36,11 +36,22 @@ namespace FroSidanMVC.Controls
             return View(product);
         }
         
+        [Route("Shop/{filter}")]
         [Route("Shop")]
         [Route("products/shop")]
         [HttpGet]
-        public IActionResult Shop()
+        public IActionResult Shop(string filter)
         {
+            if(filter == "price")
+            {
+                ShopVM[] sortedProducts = pService.GetSortedByPrice();
+                return View(sortedProducts);
+            }
+            else if(filter == "name")
+            {
+                ShopVM[] sortedProducts = pService.GetSortedByName();
+                return View(sortedProducts);
+            }
             var products = pService.GetAllProducts();
             
             return View(products);
