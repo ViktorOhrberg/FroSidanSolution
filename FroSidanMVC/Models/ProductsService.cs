@@ -21,7 +21,7 @@ namespace FroSidanMVC.Models
             this.accessor = accessor;
         }
 
-        public async Task<bool> AddToCartAsync(int id)
+        public async Task<List<int>> AddToCartAsync(int id)
         {
 
             var shoppingCart = GetShoppingCart();
@@ -31,10 +31,10 @@ namespace FroSidanMVC.Models
             {
                 shoppingCart.Add(id);
                 AddToShoppingCartCookie(shoppingCart);
-                return true;
+                return shoppingCart;
             }
             else
-                return false;
+                return null;
         }
 
         internal ShopVM[] GetAllProducts()
@@ -66,7 +66,7 @@ namespace FroSidanMVC.Models
             var all = GetAllProducts();
             var sorted = all.OrderBy(x => x.Price).ToArray();
             return sorted;
-            
+
         }
 
         private void AddToShoppingCartCookie(List<int> shoppingCart)
@@ -77,6 +77,8 @@ namespace FroSidanMVC.Models
             };
             string shoppingCartJson = JsonConvert.SerializeObject(shoppingCart);
             accessor.HttpContext.Response.Cookies.Append("shoppingCart", shoppingCartJson, option);
+
+
         }
         public void DeleteCartCookie()
         {
@@ -87,7 +89,12 @@ namespace FroSidanMVC.Models
 
         internal async Task<SummaryVM[]> GetSummaryVMAsync()
         {
-            var q = GetShoppingCart()
+            return await GetSummaryVMAsync(GetShoppingCart());
+        }
+
+        internal async Task<SummaryVM[]> GetSummaryVMAsync(List<int> shoppingCart)
+        {
+            var q = shoppingCart
                 .OrderBy(p => p)
                 .ToArray();
 
@@ -97,7 +104,7 @@ namespace FroSidanMVC.Models
 
             foreach (int item in q)
             {
-                if(item != LastID)
+                if (item != LastID)
                 {
                     Product tempProd = await GetProductByIDAsync(item);
                     tempSum = new SummaryVM { Id = tempProd.Id, Name = tempProd.Name, Price = tempProd.Price, TempPrice = tempProd.TempPrice, Quantity = 1 };
@@ -112,9 +119,12 @@ namespace FroSidanMVC.Models
             return myList.ToArray();
         }
 
+
+
         public List<int> GetShoppingCart()
         {
             var q = accessor.HttpContext.Request.Cookies["shoppingCart"];
+
             if (q == null)
             {
                 return new List<int>();
@@ -131,7 +141,7 @@ namespace FroSidanMVC.Models
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public void RemoveSingleFromCart(int id)
+        public List<int> RemoveSingleFromCart(int id)
         {
             if (QuantityInCart(id) > 0)
             {
@@ -139,9 +149,12 @@ namespace FroSidanMVC.Models
                 shoppingCart.Remove(id);
                 DeleteCartCookie();
                 AddToShoppingCartCookie(shoppingCart);
+                return shoppingCart;
             }
+            else
+                return null;
         }
-        public void RemoveAllFromCart(int id) 
+        public List<int> RemoveAllFromCart(int id)
         {
             var shoppingCart = GetShoppingCart();
             var q = QuantityInCart(id);
@@ -150,6 +163,7 @@ namespace FroSidanMVC.Models
                 shoppingCart.Remove(id);
             }
             AddToShoppingCartCookie(shoppingCart);
+            return shoppingCart;
         }
         public void DeleteCart()
         {

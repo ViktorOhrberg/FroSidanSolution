@@ -1,7 +1,9 @@
 ﻿@model CheckoutVM
 
+<div id="partial">
+    <partial name="_OrderSummary" model="Model.OrderCart" />
+</div>
 
-<div id="CollapseDiv"></div>
 <form asp-controller="Members" asp-action="Login">
     <input asp-for="Name" />
     <label asp-for="Name"></label>
@@ -29,3 +31,33 @@
     <br />
     <input type="submit" value="Fortsätt till betalning" />
 </form>
+
+
+@section scripts
+{
+    <script type="text/javascript">
+        function AddToCart(id) {
+            $.ajax({
+                url: "/AddToCart/" + id,
+                type: "GET",
+                success: (result) => $("#partial").html(result)
+            });
+        };
+
+        function RemoveAllFromCart(id) {
+            $.ajax({
+                url: "/RemoveAllFromCart/" + id,
+                type: "GET",
+                success: (result) => $("#partial").html(result)
+            });
+        };
+
+        function RemoveSingleFromCart(id) {
+            $.ajax({
+                url: "/RemoveSingleFromCart/" + id,
+                type: "GET",
+                success: (result) => $("#partial").html(result)
+            });
+        };
+    </script>
+}
