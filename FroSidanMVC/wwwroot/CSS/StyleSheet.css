@@ -1,4 +1,6 @@
 ﻿body {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 nav {
@@ -9,7 +11,6 @@ nav {
 footer {
     text-align: center;
     background-color: #e7e7e7;
-    margin-bottom: -17px;
 }
 
 #h1Index {
@@ -24,10 +25,14 @@ a {
         color: black;
     }
 
+    .card{
+        text-align: center;
+    }
+
 /*Cards*/
 /*-----*/
-.col {
-    text-align: center;
+.card-img-top {
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1); /*Lite skugga på bilderna i korten.*/
 }
 
 .row {
