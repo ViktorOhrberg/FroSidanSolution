@@ -66,7 +66,6 @@ namespace FroSidanMVC.Controls
         {
             var shoppingCart = await pService.AddToCartAsync(id);
             var model = await pService.GetSummaryVMAsync(shoppingCart);
-            
             return PartialView("_OrderSummary", model);
         }
 
