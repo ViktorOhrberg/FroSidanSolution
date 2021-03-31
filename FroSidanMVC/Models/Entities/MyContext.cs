@@ -150,7 +150,7 @@ namespace FroSidanMVC.Models.Entities
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Orders__Customer__5AEE82B9");
+                    .HasConstraintName("FK__Orders__Customer__74AE54BC");
             });
 
             modelBuilder.Entity<Product>(entity =>

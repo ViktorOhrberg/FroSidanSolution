@@ -25,6 +25,21 @@
     <label asp-for="LastName">Efternamn</label>
     <span asp-validation-for="LastName"></span>
     <br />
+
+    <input asp-for="Street" />
+    <label asp-for="Street">Adress</label>
+    <span asp-validation-for="Street"></span>
+    <br />
+
+    <input asp-for="Zip" />
+    <label asp-for="Zip">Postnummer</label>
+    <span asp-validation-for="Zip"></span>
+    <br />
+
+    <input asp-for="City" />
+    <label asp-for="City">Ort</label>
+    <span asp-validation-for="City"></span>
+    <br />
     <input type="submit" value="Register" />
 </form>
 <div asp-validation-summary="All"></div>

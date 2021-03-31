@@ -28,7 +28,7 @@ namespace FroSidanMVC.Models
         {
             var result = await userManager.CreateAsync(
                 new MyIdentityUser
-                { FirstName = memberRegisterVm.FirstName, LastName = memberRegisterVm.LastName, UserName = memberRegisterVm.Email, Email = memberRegisterVm.Email }, memberRegisterVm.Password);
+                { FirstName = memberRegisterVm.FirstName, LastName = memberRegisterVm.LastName, UserName = memberRegisterVm.Email, Email = memberRegisterVm.Email, City = memberRegisterVm.City, Zip = memberRegisterVm.Zip, Street = memberRegisterVm.Street }, memberRegisterVm.Password);
             return result.Succeeded;
         }
 
