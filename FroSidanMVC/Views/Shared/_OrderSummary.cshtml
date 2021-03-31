@@ -1,5 +1,6 @@
 ﻿@model SummaryVM[]
 <h2>Varukorg</h2>
+
 <table class="table">
     <thead>
         <tr>
@@ -29,28 +30,23 @@
                 </td>
             </tr>
         }
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td colspan="2">
-            Summa pris: @Model.Sum(p => p.Price * p.Quantity).ToString("c")
-        </td>
-        <td></td>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="2">
+                Summa pris: @Model.Sum(p => p.Price * p.Quantity).ToString("c")
+            </td>
+            <td></td>
 
-    </tr>
+        </tr>
     </tbody>
 </table>
-<form asp-controller="Products" asp-action="NotLoggedIn" method="get">
-    <input type="submit" class="btn btn-secondary" value="Gå vidare" />
-</form>
 
-@section scripts
+@*@section scripts
 {
     <script type="text/javascript">
         function AddToCart(id) {
-            //document.location.href = "/AddToCart/" + id; 
-            //Porta hela tabellen till partial
             $.ajax({
                 url: "/AddToCart/" + id,
                 type: "GET",
@@ -76,4 +72,4 @@
             location.reload();
         };
     </script>
-}
+}*@

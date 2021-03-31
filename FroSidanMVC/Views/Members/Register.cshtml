@@ -1,45 +1,57 @@
 ﻿@model MemberRegisterVM
-<h3>Registrera ny medlem</h3>
-<form asp-controller="Members" asp-action="Register">
-    <input asp-for="Email" />
-    <label asp-for="Email">Email</label>
-    <span asp-validation-for="Email"></span>
-    <br />
 
-    <input asp-for="Password" />
-    <label asp-for="Password">Lösenord</label>
-    <span asp-validation-for="Password"></span>
-    <br />
 
-    <input asp-for="PasswordRepeat" />
-    <label asp-for="PasswordRepeat">Repetera lösenord</label>
-    <span asp-validation-for="PasswordRepeat"></span>
-    <br />
 
-    <input asp-for="FirstName" />
-    <label asp-for="FirstName">Förnamn</label>
-    <span asp-validation-for="FirstName"></span>
-    <br />
-
-    <input asp-for="LastName" />
-    <label asp-for="LastName">Efternamn</label>
-    <span asp-validation-for="LastName"></span>
-    <br />
-
-    <input asp-for="Street" />
-    <label asp-for="Street">Adress</label>
-    <span asp-validation-for="Street"></span>
-    <br />
-
-    <input asp-for="Zip" />
-    <label asp-for="Zip">Postnummer</label>
-    <span asp-validation-for="Zip"></span>
-    <br />
-
-    <input asp-for="City" />
-    <label asp-for="City">Ort</label>
-    <span asp-validation-for="City"></span>
-    <br />
-    <input type="submit" value="Register" />
-</form>
-<div asp-validation-summary="All"></div>
+    <div class="wrapper" style="background-image: url('images/1306572.jpg');">
+        <div class="inner">
+            <form asp-controller="Members" asp-action="Register">
+                <h3>Registrera medlem</h3>
+                <div class="form-group">
+                    <div class="form-wrapper">
+                        <label asp-for="FirstName">Förnamn</label>
+                        <input asp-for="FirstName" class="form-control">
+                        <span asp-validation-for="FirstName"></span>
+                    </div>
+                    <div class="form-wrapper">
+                        <label asp-for="LastName">Efternamn</label>
+                        <input asp-for="LastName" class="form-control">
+                        <span asp-validation-for="LastName"></span>
+                    </div>
+                </div>
+                <div class="form-wrapper">
+                    <label asp-for="Email">Epost</label>
+                    <input asp-for="Email" class="form-control">
+                    <span asp-validation-for="Email"></span>
+                </div>
+                <div class="form-wrapper">
+                    <label asp-for="Password">Lösenord</label>
+                    <input asp-for="Password" class="form-control">
+                    <span asp-validation-for="Password"></span>
+                </div>
+                <div class="form-wrapper">
+                    <label asp-for="PasswordRepeat">Repetera Lösenord</label>
+                    <input asp-for="PasswordRepeat" class="form-control">
+                    <span asp-validation-for="PasswordRepeat"></span>
+                </div>
+                <div class="form-wrapper">
+                    <label asp-for="Street">Adress</label>
+                    <input asp-for="Street" class="form-control">
+                    <span asp-validation-for="Street"></span>
+                </div>
+                <div class="form-wrapper">
+                    <label asp-for="City">Ort</label>
+                    <br />
+                    <input asp-for="City" class="form-control">
+                    <span asp-validation-for="City"></span>
+                </div>
+                <div class="form-wrapper">
+                    <label asp-for="Zip">Postnummer</label>
+                    <input asp-for="Zip" class="form-control">
+                    <span asp-validation-for="Zip"></span>
+                </div>
+                <br />
+                <input type="submit" value="Register" />
+                <div asp-validation-summary="All"></div>
+            </form>
+        </div>
+    </div>

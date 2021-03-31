@@ -64,9 +64,9 @@ namespace FroSidanMVC.Controls
 
         public async Task<IActionResult> AddToCartAsync(int id)
         {
-            bool q = await pService.AddToCartAsync(id);
-
-            return Content(pService.QuantityInCart(id).ToString()); // Vad är en lämplig return???
+            var shoppingCart = await pService.AddToCartAsync(id);
+            var model = await pService.GetSummaryVMAsync(shoppingCart);
+            return PartialView("_OrderSummary", model);
         }
 
         [HttpGet]
@@ -80,19 +80,24 @@ namespace FroSidanMVC.Controls
         [HttpGet]
         [Route("RemoveSingleFromCart/{id}")]
 
-        public IActionResult RemoveSingleFromCart(int id)
+        public async Task<IActionResult> RemoveSingleFromCartAsync(int id)
         {
-            pService.RemoveSingleFromCart(id);
-            return Content(pService.QuantityInCart(id).ToString());
+
+            var shoppingCart = pService.RemoveSingleFromCart(id);
+
+            var model = await pService.GetSummaryVMAsync(shoppingCart);
+
+            return PartialView("_OrderSummary", model);
         }
 
         [HttpGet]
         [Route("RemoveAllFromCart/{id}")]
 
-        public IActionResult RemoveAllFromCart(int id)
+        public async Task<IActionResult> RemoveAllFromCartAsync(int id)
         {
-            pService.RemoveAllFromCart(id);
-            return Content(pService.QuantityInCart(id).ToString());
+            var shoppingCart = pService.RemoveAllFromCart(id);
+            var model = await pService.GetSummaryVMAsync(shoppingCart);
+            return PartialView("_OrderSummary", model);
         }
 
         [HttpGet]
@@ -106,6 +111,7 @@ namespace FroSidanMVC.Controls
         }
 
         [Route("Checkout")]
+        [Route("CheckoutAsync")]
         [HttpGet]
         public async Task<IActionResult> CheckoutAsync()
         {
@@ -133,6 +139,20 @@ namespace FroSidanMVC.Controls
             };
 
             return View(input);
+        }
+        [Route("NotLoggedIn")]
+        [HttpGet]
+        public async Task<IActionResult> NotLoggedInAsync()
+        {
+            var q = await mService.GetUser();
+            if (q == null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Checkout");
+            }
         }
     }
 }
