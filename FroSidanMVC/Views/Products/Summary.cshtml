@@ -1,6 +1,5 @@
 ﻿@model SummaryVM[]
-@{decimal total = 0;}
-
+<h2>Varukorg</h2>
 <table class="table">
     <thead>
         <tr>
@@ -30,39 +29,40 @@
                 </td>
             </tr>
         }
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td colspan="2">
-                Summa pris: @Model.Sum(p => p.Price * p.Quantity).ToString("c")
-            </td>
-        </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td colspan="2">
+            Summa pris: @Model.Sum(p => p.Price * p.Quantity).ToString("c")
+        </td>
+        <td></td>
+
+    </tr>
     </tbody>
 </table>
-<div>
-    <button type="button" class="btn btn-secondary" asp-controller="Products" asp-action="Checkout">
-        Gå vidare
-    </button>
-</div>
+<form asp-controller="Products" asp-action="Checkout" method="get">
+    <input type="submit" class="btn btn-secondary" value="Gå vidare" />
+</form>
 
 @section scripts
 {
     <script type="text/javascript">
         function AddToCart(id) {
+            //document.location.href = "/AddToCart/" + id; 
+            //Porta hela tabellen till partial
             $.ajax({
                 url: "/AddToCart/" + id,
                 type: "GET",
-                success: (result) => console.log(result)
+                success: (result) => location.reload()
             });
-            location.reload();
         };
 
         function RemoveAllFromCart(id) {
             $.ajax({
                 url: "/RemoveAllFromCart/" + id,
                 type: "GET",
-                success: (result) => console.log(result)
+                success: (result) => location.reload()
             });
             location.reload();
         };
@@ -71,7 +71,7 @@
             $.ajax({
                 url: "/RemoveSingleFromCart/" + id,
                 type: "GET",
-                success: (result) => console.log(result)
+                success: (result) => location.reload()
             });
             location.reload();
         };
