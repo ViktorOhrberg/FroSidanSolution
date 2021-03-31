@@ -23,6 +23,7 @@ namespace FroSidanMVC.Controls
 
         [Route("")]
         [Route("products/index")]
+        [Route("Index")]
         public IActionResult Index()
         {
             return View();
@@ -34,7 +35,8 @@ namespace FroSidanMVC.Controls
             var product = await pService.GetProductDetailVMAsync(id);
             return View(product);
         }
-
+        
+        [Route("Shop")]
         [Route("products/shop")]
         [HttpGet]
         public IActionResult Shop()
@@ -87,6 +89,13 @@ namespace FroSidanMVC.Controls
             SummaryVM[] input = await pService.GetSummaryVMAsync();
 
             return View(input);
+        }
+
+        [Route("Checkout")]
+        [HttpGet]
+        public IActionResult Checkout()
+        {
+            return View();
         }
     }
 }
