@@ -44,7 +44,7 @@ namespace FroSidanMVC.Models
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    SubKategori = x.SubCategory,
+                    SubCategory = x.SubCategory,
                     Price = x.Price,
                     ThumbnailUrl = x.ThumbRef,
                     Description = x.Description

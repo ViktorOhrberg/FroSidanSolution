@@ -129,28 +129,28 @@ namespace FroSidanMVC.Models.Entities
 
             modelBuilder.Entity<Order>(entity =>
             {
-                entity.Property(e => e.Betalningsmetod)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Cart).IsRequired();
 
-                entity.Property(e => e.Datum).HasColumnType("datetime");
-
-                entity.Property(e => e.Innehåll).IsRequired();
-
-                entity.Property(e => e.KundId)
+                entity.Property(e => e.CustomerId)
                     .IsRequired()
                     .HasMaxLength(450)
-                    .HasColumnName("Kund-ID");
+                    .HasColumnName("Customer-ID");
 
-                entity.Property(e => e.Leveransadress)
+                entity.Property(e => e.Date).HasColumnType("datetime");
+
+                entity.Property(e => e.DeliveryAdress)
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.HasOne(d => d.Kund)
+                entity.Property(e => e.PaymentMethod)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.KundId)
+                    .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Orders__Kund-ID__49C3F6B7");
+                    .HasConstraintName("FK__Orders__Customer__5AEE82B9");
             });
 
             modelBuilder.Entity<Product>(entity =>
