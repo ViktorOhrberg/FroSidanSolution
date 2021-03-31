@@ -1,6 +1,6 @@
 ﻿@model CheckoutVM
 
-
+@Model.Email
 <form asp-controller="Members" asp-action="Login">
     <input asp-for="Name" />
     <label asp-for="Name"></label>
@@ -26,5 +26,5 @@
     <label asp-for="Email"></label>
     <span asp-validation-for="Email"></span>
     <br />
-    <input type="submit" value="Login" />
+    <input type="submit" value="Fortsätt till betalning" />
 </form>

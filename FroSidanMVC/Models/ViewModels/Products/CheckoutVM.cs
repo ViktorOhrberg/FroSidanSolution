@@ -19,6 +19,6 @@ namespace FroSidanMVC.Models.ViewModels.Products
         [Required]
         [EmailAddress]
         public string Email { get; set; }
-
+        public SummaryVM[] OrderCart { get; set; }
     }
 }

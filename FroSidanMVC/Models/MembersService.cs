@@ -1,4 +1,6 @@
-﻿using FroSidanMVC.Models.ViewModels.Members;
+﻿using FroSidanMVC.Models.Entities;
+using FroSidanMVC.Models.ViewModels.Members;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -12,15 +14,18 @@ namespace FroSidanMVC.Models
         UserManager<MyIdentityUser> userManager;
         SignInManager<MyIdentityUser> signInManager;
         RoleManager<IdentityRole> roleManager;
+        private readonly IHttpContextAccessor accessor;
 
         public MembersService(
             UserManager<MyIdentityUser> userManager,
             SignInManager<MyIdentityUser> signInManager,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            IHttpContextAccessor accessor)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.roleManager = roleManager;
+            this.accessor = accessor;
         }
 
 
@@ -45,5 +50,10 @@ namespace FroSidanMVC.Models
             await signInManager.SignOutAsync();
         }
 
+        internal async Task<MyIdentityUser> GetUser()
+        {
+            var user = await userManager.GetUserAsync(accessor.HttpContext.User);
+            return user;
+        }
     }
 }
