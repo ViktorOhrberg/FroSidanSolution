@@ -1,14 +1,15 @@
-﻿CREATE TABLE [dbo].[Products]
-(
-	[Id] INT NOT NULL PRIMARY KEY Identity,
-	[Name] nvarchar(100) Not null,
-	[Price] money not null,
-	[TempPrice] money null,
-	[Balance] int not null,
-	[ImgRef] nvarchar(100) null,
-	[ThumbRef] nvarchar(100) null,
-	[Description] nvarchar(max) Null,
-	[Category] nvarchar(100) not null,
-	[SubCategory] nvarchar(100) null,
-	[Quantity] int not null
-)
+﻿CREATE TABLE [dbo].[Products] (
+    [Id]          INT            IDENTITY (1, 1) NOT NULL,
+    [Name]        NVARCHAR (100) NOT NULL,
+    [Price]       MONEY          NOT NULL,
+    [TempPrice]   MONEY          NULL,
+    [Balance]     INT            NOT NULL,
+    [ImgRef]      NVARCHAR (100) NULL,
+    [ThumbRef]    NVARCHAR (100) NULL,
+    [Description] NVARCHAR (MAX) NULL,
+    [Category]    NVARCHAR (100) NOT NULL,
+    [SubCategory] NVARCHAR (100) NULL,
+    [Quantity]    INT            NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+

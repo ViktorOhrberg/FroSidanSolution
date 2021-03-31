@@ -62,6 +62,9 @@
     <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="SeedData.sql" />
+  </ItemGroup>
+  <ItemGroup>
     <Build Include="dbo\Tables\AspNetRoles.sql" />
     <Build Include="dbo\Tables\AspNetUsers.sql" />
     <Build Include="dbo\Tables\AspNetRoleClaims.sql" />
@@ -71,8 +74,5 @@
     <Build Include="dbo\Tables\AspNetUserTokens.sql" />
     <Build Include="dbo\Tables\Products.sql" />
     <Build Include="dbo\Tables\Orders.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SeedData.sql" />
   </ItemGroup>
 </Project>
