@@ -9,16 +9,19 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http;
 using FroSidanMVC.Models.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace FroSidanMVC.Controls
 {
     public class ProductsController : Controller
     {
         public ProductsService pService;
+        private readonly MembersService mService;
 
-        public ProductsController(ProductsService pService)
+        public ProductsController(ProductsService pService, MembersService mService)
         {
             this.pService = pService;
+            this.mService = mService;
         }
 
         [Route("")]
@@ -35,14 +38,14 @@ namespace FroSidanMVC.Controls
             var product = await pService.GetProductDetailVMAsync(id);
             return View(product);
         }
-        
+
         [Route("Shop")]
         [Route("products/shop")]
         [HttpGet]
         public IActionResult Shop()
         {
             var products = pService.GetAllProducts();
-            
+
             return View(products);
         }
         [HttpGet]
@@ -93,9 +96,32 @@ namespace FroSidanMVC.Controls
 
         [Route("Checkout")]
         [HttpGet]
-        public IActionResult Checkout()
+        public async Task<IActionResult> CheckoutAsync()
         {
-            return View();
+            var User = await mService.GetUser();
+            CheckoutVM input;
+
+            if (User != null)
+            {
+                input = new CheckoutVM
+                {
+                    Name = $"{User.FirstName} {User.LastName}",
+                    Email = User.Email,
+                    Street = User.Street,
+                    Zip = User.Zip,
+                    City = User.City,
+                    OrderCart = await pService.GetSummaryVMAsync()
+                };
+            }
+            else
+            {
+                input = new CheckoutVM
+                {
+                    OrderCart = await pService.GetSummaryVMAsync()
+                };
+            };
+
+            return View(input);
         }
     }
 }
