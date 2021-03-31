@@ -7,8 +7,10 @@ namespace FroSidanMVC.Models.ViewModels.Products
 {
     public class SummaryVM
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public decimal TempPrice { get; set; }
+        public decimal? TempPrice { get; set; }
+        public int Quantity { get; set; }
     }
 }

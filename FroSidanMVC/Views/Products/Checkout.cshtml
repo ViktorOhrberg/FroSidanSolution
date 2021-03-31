@@ -1,0 +1,30 @@
+﻿@model CheckoutVM
+
+
+<form asp-controller="Members" asp-action="Login">
+    <input asp-for="Name" />
+    <label asp-for="Name"></label>
+    <span asp-validation-for="Name"></span>
+    <br />
+
+    <input asp-for="Street" />
+    <label asp-for="Street"></label>
+    <span asp-validation-for="Street"></span>
+    <br />
+
+    <input asp-for="Zip" />
+    <label asp-for="Zip"></label>
+    <span asp-validation-for="Zip"></span>
+    <br />
+
+    <input asp-for="City" />
+    <label asp-for="City"></label>
+    <span asp-validation-for="City"></span>
+    <br />
+
+    <input asp-for="Email" />
+    <label asp-for="Email"></label>
+    <span asp-validation-for="Email"></span>
+    <br />
+    <input type="submit" value="Login" />
+</form>

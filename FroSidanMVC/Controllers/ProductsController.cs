@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http;
+using FroSidanMVC.Models.Entities;
 
 namespace FroSidanMVC.Controls
 {
@@ -22,6 +23,7 @@ namespace FroSidanMVC.Controls
 
         [Route("")]
         [Route("products/index")]
+        [Route("Index")]
         public IActionResult Index()
         {
             return View();
@@ -33,7 +35,8 @@ namespace FroSidanMVC.Controls
             var product = await pService.GetProductDetailVMAsync(id);
             return View(product);
         }
-
+        
+        [Route("Shop")]
         [Route("products/shop")]
         [HttpGet]
         public IActionResult Shop()
@@ -67,6 +70,32 @@ namespace FroSidanMVC.Controls
         {
             pService.RemoveSingleFromCart(id);
             return Content(pService.QuantityInCart(id).ToString());
+        }
+
+        [HttpGet]
+        [Route("RemoveAllFromCart/{id}")]
+
+        public IActionResult RemoveAllFromCart(int id)
+        {
+            pService.RemoveAllFromCart(id);
+            return Content(pService.QuantityInCart(id).ToString());
+        }
+
+        [HttpGet]
+        [Route("Summary")]
+
+        public async Task<IActionResult> Summary()
+        {
+            SummaryVM[] input = await pService.GetSummaryVMAsync();
+
+            return View(input);
+        }
+
+        [Route("Checkout")]
+        [HttpGet]
+        public IActionResult Checkout()
+        {
+            return View();
         }
     }
 }

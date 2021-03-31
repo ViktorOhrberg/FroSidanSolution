@@ -40,6 +40,10 @@ namespace FroSidanMVC.Models
             return result.Succeeded;
         }
 
+        public async Task SignOutAsync()
+        {
+            await signInManager.SignOutAsync();
+        }
 
     }
 }
