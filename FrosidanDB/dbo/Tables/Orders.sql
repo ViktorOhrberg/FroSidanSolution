@@ -7,8 +7,8 @@
     [Street]               NVARCHAR (MAX)     NULL,
     [City]                 NVARCHAR (MAX)     NULL,
     [Zip]                  NVARCHAR (MAX)     NULL,
-    [Customer-ID]    NVARCHAR (450) NOT NULL,
-    [PaymentMethod]  NVARCHAR (50)  NOT NULL,
+    [Customer-ID]    NVARCHAR (450) NULL,
+    [PaymentMethod]  NVARCHAR (50)  NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC),
     FOREIGN KEY ([Customer-ID]) REFERENCES [dbo].[AspNetUsers] ([Id])
 );

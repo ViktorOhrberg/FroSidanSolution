@@ -132,21 +132,17 @@ namespace FroSidanMVC.Models.Entities
                 entity.Property(e => e.Cart).IsRequired();
 
                 entity.Property(e => e.CustomerId)
-                    .IsRequired()
                     .HasMaxLength(450)
                     .HasColumnName("Customer-ID");
 
                 entity.Property(e => e.Date).HasColumnType("datetime");
 
-                entity.Property(e => e.PaymentMethod)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.PaymentMethod).HasMaxLength(50);
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Orders__Customer__6FE99F9F");
+                    .HasConstraintName("FK__Orders__Customer__70DDC3D8");
             });
 
             modelBuilder.Entity<Product>(entity =>

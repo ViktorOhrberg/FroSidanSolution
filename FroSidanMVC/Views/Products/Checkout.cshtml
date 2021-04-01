@@ -10,11 +10,17 @@
 }
 
 
+
 <form asp-controller="Products" asp-action="Checkout">
     <h4>Adress för leverans</h4>
-    <input asp-for="Name" />
-    <label asp-for="Name"></label>
-    <span asp-validation-for="Name"></span>
+    <input asp-for="FirstName" />
+    <label asp-for="FirstName"></label>
+    <span asp-validation-for="FirstName"></span>
+    <br />
+
+    <input asp-for="LastName" />
+    <label asp-for="LastName"></label>
+    <span asp-validation-for="LastName"></span>
     <br />
 
     <input asp-for="Street" />
@@ -35,6 +41,12 @@
     <input asp-for="Email" />
     <label asp-for="Email"></label>
     <span asp-validation-for="Email"></span>
+
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="OrderCart" />
+
+
+
 
     <br />
     <br />

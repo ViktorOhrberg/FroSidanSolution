@@ -173,6 +173,20 @@ namespace FroSidanMVC.Models
 
         internal void PlaceOrder(CheckoutVM input)
         {
+            Order myOrder = new Order
+            {
+                CustomerId = input.Id,
+                FirstName = input.FirstName,
+                LastName = input.LastName,
+                Street = input.Street,
+                Zip = input.Zip,
+                City = input.City,
+                Date = DateTime.Now,
+                Cart = accessor.HttpContext.Request.Cookies["shoppingCart"]
+            };
+
+            context.Orders.Add(myOrder);
+            context.SaveChanges();
 
         }
 
