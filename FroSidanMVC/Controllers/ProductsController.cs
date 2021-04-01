@@ -38,26 +38,41 @@ namespace FroSidanMVC.Controls
             var product = await pService.GetProductDetailVMAsync(id);
             return View(product);
         }
-
-        [Route("Shop/{filter}")]
+        [Route("Shop/{category}/{subcategory}")]
+        [Route("Shop/{category}")]
         [Route("Shop")]
         [Route("products/shop")]
         [HttpGet]
-        public IActionResult Shop(string filter)
+        public IActionResult Shop(string category, string subcategory)
         {
-            if (filter == "price")
+            if(subcategory == null && category == null)
             {
-                ShopVM[] sortedProducts = pService.GetSortedByPrice();
-                return View(sortedProducts);
+                var allProducts = pService.GetAllProducts();
+                return View(allProducts);
             }
-            else if (filter == "name")
+            else if(subcategory == null)
             {
-                ShopVM[] sortedProducts = pService.GetSortedByName();
-                return View(sortedProducts);
-            }
-            var products = pService.GetAllProducts();
+                var productsByCategory = pService.GetProductsByCategory(category);
+                return View(productsByCategory);
 
-            return View(products);
+            }
+            else
+            {
+                var productsBySubCategory = pService.GetProductsBySubCategory(subcategory);
+                return View(productsBySubCategory);
+            }
+
+            
+            //if (filter == "price")
+            //{
+            //    ShopVM[] sortedProducts = pService.GetSortedByPrice();
+            //    return View(sortedProducts);
+            //}
+            //else if (filter == "name")
+            //{
+            //    ShopVM[] sortedProducts = pService.GetSortedByName();
+            //    return View(sortedProducts);
+            //}
         }
         [HttpGet]
         [Route("AddToCart/{id}")]

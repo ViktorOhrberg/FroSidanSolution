@@ -3,7 +3,7 @@ values
 (
 	6,
 	'Miniväxthus',
-	'Tillbehör',
+	'Accessories',
 	'Ett enkelt, men stabilt miniväxthus till ett mycket bra pris.',
 	'minivaxthus-liten-svartsmall.jpg',
 	'minivaxthus-liten-svart.jpg',
@@ -16,7 +16,7 @@ values
 (
 	6,
 	'Miniväxthus',
-	'Tillbehör',
+	'Accessories',
 	'Ett enkelt, men stabilt miniväxthus i en praktiskt storlek till ett mycket bra pris.',
 	'enkelt-minivaxthus-smaltsmall.jpg',
 	'enkelt-minivaxthus-smalt.jpg',
@@ -29,7 +29,7 @@ values
 (
 	6,
 	'Miniväxthus',
-	'Tillbehör',
+	'Accessories',
 	'Enkel och praktisk plantuppdragning med undervärme uppdelat i fyra separata miniväxthus.',
 	'fab-4-minivaxthus-med-undervarmesmall.jpg',
 	'fab-4-minivaxthus-med-undervarme.jpg',
@@ -42,7 +42,7 @@ values
 (
 	6,
 	'Etiketter',
-	'Tillbehör',
+	'Accessories',
 	'Växtetiketter i plast. Längd 10cm, bredd 1,5cm.',
 	'plantetiketter-vitasmall.jpg',
 	'plantetiketter-vita.jpg',
@@ -55,7 +55,7 @@ values
 (
 	6,
 	'Etiketter',
-	'Tillbehör',
+	'Accessories',
 	'Växtetiketter i plast. Längd 10cm, bredd 1,5cm.',
 	'plantetikett-20-pack-blandade-fargersmall.jpg',
 	'plantetikett-20-pack-blandade-farger.jpg',
@@ -68,7 +68,7 @@ values
 (
 	6,
 	'Redskap & Verktyg',
-	'Tillbehör',
+	'Accessories',
 	'Handgjord jordskopa i traditionell design tillverkad i rostfritt stål av hög kvalitet.',
 	'jordskopa-hand-potting-scoopsmall.jpg',
 	'jordskopa-hand-potting-scoop.jpg',
@@ -81,7 +81,7 @@ values
 (
 	6,
 	'Redskap & Verktyg',
-	'Tillbehör',
+	'Accessories',
 	'Handgjord handspade i traditionell design tillverkad i rostfritt stål av hög kvalitet.',
 	'planteringsspade-hand-transplanting-trowelsmall.jpg',
 	'planteringsspade-hand-transplanting-trowel.jpg',
