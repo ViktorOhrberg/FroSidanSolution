@@ -13,8 +13,19 @@
         <li><a asp-controller="Products" asp-action="Shop" asp-route-filter="name">Namn</a></li>
     </ul>
 </div>
+
 <br />
-<div class="container">
+
+<form onsubmit="Search()">
+    <input type="text" value="Skriv in sökord" id="searchStr" />
+    <input type="submit" value="Sök" />
+</form>
+
+<br />
+<div id="partial">
+    <partial name="_ShopProducts" model="Model" />
+</div>
+@*<div class="container">
     <div class="row row-cols-4">
         @foreach (var item in Model)
         {
@@ -32,7 +43,7 @@
             </div>
         }
     </div>
-</div>
+</div>*@
 
 <br />
 
@@ -44,7 +55,7 @@
             $.ajax({
                 url: "/AddToCart/" + id,
                 type: "GET",
-                success: (result) => console.log(result)/*$("#result" + id).html(result)*/
+                success: (result) => console.log(result)
             });
         };
 
@@ -61,6 +72,14 @@
                 url: "/RemoveSingleFromCart/" + id,
                 type: "GET",
                 success: (result) => console.log(result)
+            });
+        };
+
+        function Search() {
+            $.ajax({
+                url: "/Search/" + searchStr.value,
+                type: "GET",
+                success: (result) => $("#partial").html(result)
             });
         };
     </script>

@@ -38,19 +38,19 @@ namespace FroSidanMVC.Controls
             var product = await pService.GetProductDetailVMAsync(id);
             return View(product);
         }
-        
+
         [Route("Shop/{filter}")]
         [Route("Shop")]
         [Route("products/shop")]
         [HttpGet]
         public IActionResult Shop(string filter)
         {
-            if(filter == "price")
+            if (filter == "price")
             {
                 ShopVM[] sortedProducts = pService.GetSortedByPrice();
                 return View(sortedProducts);
             }
-            else if(filter == "name")
+            else if (filter == "name")
             {
                 ShopVM[] sortedProducts = pService.GetSortedByName();
                 return View(sortedProducts);
@@ -153,6 +153,37 @@ namespace FroSidanMVC.Controls
             {
                 return RedirectToAction("Checkout");
             }
+        }
+
+        [HttpGet]
+        [Route("Search/{searchStr}")]
+
+        public async Task<IActionResult> Search(string searchStr)
+        {
+
+            var products = pService.GetAllProducts();
+            List<ShopVM> temp = new List<ShopVM>();
+            var words = searchStr.Split(' ');
+
+
+            foreach (string search in words)
+            {
+                var q = products
+                    .Where(x => x.Name.Contains(search))
+                    .ToList();
+                temp.AddRange(q);
+            }
+            //foreach (string search in words)
+            //{
+            //    var q = products
+            //        .Where(x => x.SubCategory.Contains(search))
+            //        .ToList();
+            //    model.AddRange(q);
+            //}
+
+            var model = temp.ToArray();
+
+            return PartialView("_ShopProducts", model);
         }
     }
 }
