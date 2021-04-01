@@ -16,10 +16,10 @@
 
 <br />
 
-@*<form onsubmit="Search()">
+<form id="searchForm">
     <input type="text" value="Skriv in sökord" id="searchStr" />
-    <input type="submit" value="Sök" />
-</form>*@
+    <input type="submit" value="Sök"/>
+</form>
 
 <br />
 <div id="partial">
@@ -46,7 +46,6 @@
 </div>*@
 
 <br />
-
 
 @section scripts
 {
@@ -75,13 +74,15 @@
             });
         };
 
-        function Search() {
+        $("#searchForm").submit(function (e) {
+            e.preventDefault();
+            search = searchStr.value;
             $.ajax({
-                url: "/Search/" + searchStr.value,
+                url: "/Search/" + search,
                 type: "GET",
                 success: (result) => $("#partial").html(result)
             });
-        };
+        });
     </script>
 
 }
