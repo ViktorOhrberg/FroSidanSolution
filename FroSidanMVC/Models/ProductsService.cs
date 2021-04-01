@@ -101,7 +101,6 @@ namespace FroSidanMVC.Models
         {
             var shoppingCart = new List<int>();
             accessor.HttpContext.Response.Cookies.Delete("shoppingCart");
-            //AddToShoppingCartCookie(shoppingCart);
         }
 
         internal async Task<SummaryVM[]> GetSummaryVMAsync()
@@ -172,16 +171,10 @@ namespace FroSidanMVC.Models
                 return null;
         }
 
-        //internal void PlaceOrder(CheckoutVM input)
-        //{
-        //    context.Products.Add(new Order
-        //    {
-        //        CustomerId = input.Id,
-        //        Date = DateTime.Now,
+        internal void PlaceOrder(CheckoutVM input)
+        {
 
-        //    }
-        //    );
-        //}
+        }
 
         public List<int> RemoveAllFromCart(int id)
         {

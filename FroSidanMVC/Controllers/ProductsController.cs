@@ -159,7 +159,7 @@ namespace FroSidanMVC.Controls
         [HttpPost]
         public IActionResult CheckoutAsync(CheckoutVM input)
         {
-            //pService.PlaceOrder(input);
+            pService.PlaceOrder(input);
             return Redirect("index");
         }
 

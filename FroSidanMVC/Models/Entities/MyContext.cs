@@ -138,10 +138,6 @@ namespace FroSidanMVC.Models.Entities
 
                 entity.Property(e => e.Date).HasColumnType("datetime");
 
-                entity.Property(e => e.DeliveryAdress)
-                    .IsRequired()
-                    .HasMaxLength(100);
-
                 entity.Property(e => e.PaymentMethod)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -150,7 +146,7 @@ namespace FroSidanMVC.Models.Entities
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Orders__Customer__5070F446");
+                    .HasConstraintName("FK__Orders__Customer__6FE99F9F");
             });
 
             modelBuilder.Entity<Product>(entity =>
