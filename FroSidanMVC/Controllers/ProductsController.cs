@@ -173,13 +173,13 @@ namespace FroSidanMVC.Controls
                     .ToList();
                 temp.AddRange(q);
             }
-            //foreach (string search in words)
-            //{
-            //    var q = products
-            //        .Where(x => x.SubCategory.Contains(search))
-            //        .ToList();
-            //    model.AddRange(q);
-            //}
+            foreach (string search in words)
+            {
+                var q = products
+                    .Where(x => x.SubCategory.Contains(search))
+                    .ToList();
+                temp = temp.Union(q).ToList();
+            }
 
             var model = temp.ToArray();
 
