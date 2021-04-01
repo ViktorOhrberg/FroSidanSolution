@@ -136,6 +136,7 @@ namespace FroSidanMVC.Controls
             {
                 input = new CheckoutVM
                 {
+                    Id = User.Id,
                     Name = $"{User.FirstName} {User.LastName}",
                     Email = User.Email,
                     Street = User.Street,
@@ -158,7 +159,7 @@ namespace FroSidanMVC.Controls
         [HttpPost]
         public IActionResult CheckoutAsync(CheckoutVM input)
         {
-            pService.PlaceOrder(input);
+            //pService.PlaceOrder(input);
             return Redirect("index");
         }
 

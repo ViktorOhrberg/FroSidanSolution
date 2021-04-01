@@ -12,10 +12,10 @@ namespace FroSidanMVC.Models
 {
     public class ProductsService
     {
-        readonly FrosidanContext context;
+        readonly MyContext context;
         private readonly IHttpContextAccessor accessor;
 
-        public ProductsService(FrosidanContext context, IHttpContextAccessor accessor)
+        public ProductsService(MyContext context, IHttpContextAccessor accessor)
         {
             this.context = context;
             this.accessor = accessor;
@@ -172,10 +172,16 @@ namespace FroSidanMVC.Models
                 return null;
         }
 
-        internal void PlaceOrder(CheckoutVM input)
-        {
-            throw new NotImplementedException();
-        }
+        //internal void PlaceOrder(CheckoutVM input)
+        //{
+        //    context.Products.Add(new Order
+        //    {
+        //        CustomerId = input.Id,
+        //        Date = DateTime.Now,
+
+        //    }
+        //    );
+        //}
 
         public List<int> RemoveAllFromCart(int id)
         {

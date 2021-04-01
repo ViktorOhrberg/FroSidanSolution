@@ -8,6 +8,7 @@ namespace FroSidanMVC.Models.ViewModels.Products
 {
     public class CheckoutVM
     {
+        public string Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
