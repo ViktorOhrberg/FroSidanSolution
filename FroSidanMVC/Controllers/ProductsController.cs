@@ -173,7 +173,7 @@ namespace FroSidanMVC.Controls
         [HttpGet]
         [Route("Search/{searchStr}")]
 
-        public async Task<IActionResult> Search(string searchStr)
+        public IActionResult Search(string searchStr)
         {
 
             var products = pService.GetAllProducts();
@@ -184,16 +184,9 @@ namespace FroSidanMVC.Controls
             foreach (string search in words)
             {
                 var q = products
-                    .Where(x => x.Name.Contains(search))
+                    .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.SubCategory.ToLower().Contains(search.ToLower())) 
                     .ToList();
                 temp.AddRange(q);
-            }
-            foreach (string search in words)
-            {
-                var q = products
-                    .Where(x => x.SubCategory.Contains(search))
-                    .ToList();
-                temp = temp.Union(q).ToList();
             }
 
             var model = temp.ToArray();
