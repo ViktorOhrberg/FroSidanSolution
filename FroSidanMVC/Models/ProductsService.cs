@@ -154,6 +154,12 @@ namespace FroSidanMVC.Models
             else
                 return null;
         }
+
+        internal void PlaceOrder(CheckoutVM input)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<int> RemoveAllFromCart(int id)
         {
             var shoppingCart = GetShoppingCart();

@@ -30,6 +30,19 @@
                 </td>
             </tr>
         }
+        @if (@Model.Sum(p => p.Price * p.Quantity) < 400)
+        {
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td colspan="2">
+                    Frakt: 49,00 kr
+                </td>
+                <td></td>
+
+            </tr>
+        }
         <tr>
             <td></td>
             <td></td>
@@ -42,34 +55,3 @@
         </tr>
     </tbody>
 </table>
-
-@*@section scripts
-{
-    <script type="text/javascript">
-        function AddToCart(id) {
-            $.ajax({
-                url: "/AddToCart/" + id,
-                type: "GET",
-                success: (result) => location.reload()
-            });
-        };
-
-        function RemoveAllFromCart(id) {
-            $.ajax({
-                url: "/RemoveAllFromCart/" + id,
-                type: "GET",
-                success: (result) => location.reload()
-            });
-            location.reload();
-        };
-
-        function RemoveSingleFromCart(id) {
-            $.ajax({
-                url: "/RemoveSingleFromCart/" + id,
-                type: "GET",
-                success: (result) => location.reload()
-            });
-            location.reload();
-        };
-    </script>
-}*@
