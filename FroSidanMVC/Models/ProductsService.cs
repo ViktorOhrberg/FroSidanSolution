@@ -47,11 +47,28 @@ namespace FroSidanMVC.Models
                     SubCategory = x.SubCategory,
                     Price = x.Price,
                     ThumbnailUrl = x.ThumbRef,
-                    Description = x.Description
+                    Description = x.Description,
+                    Category = x.Category
                 })
                 .ToArray();
 
             return products;
+        }
+
+        internal ShopVM[] GetProductsByCategory(string category)
+        {
+            var q = GetAllProducts();
+            var qq = q.Where(q => q.Category.ToLower() == category.ToLower())
+                .ToArray();
+            return qq;
+        }
+
+        internal ShopVM[] GetProductsBySubCategory(string subcategory)
+        {
+            var q = GetAllProducts();
+            var qq = q.Where(q => q.SubCategory.ToLower() == subcategory.ToLower())
+                .ToArray();
+            return qq;
         }
 
         internal ShopVM[] GetSortedByName()
