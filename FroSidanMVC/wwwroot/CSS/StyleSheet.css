@@ -3,6 +3,9 @@
     padding-right: 10px;
 }
 
+nav {
+}
+
 footer {
     text-align: center;
     background-color: #e7e7e7;
@@ -23,12 +26,15 @@ a {
 
 .card {
     text-align: center;
+    height: 350px;
+    margin-bottom: 20px;
 }
 
 /*Cards*/
 /*-----*/
 .card-img-top {
     box-shadow: 0 5px 10px rgba(0,0,0,0.1); /*Lite skugga på bilderna i korten.*/
+    height: 100px;
 }
 
 .row {
