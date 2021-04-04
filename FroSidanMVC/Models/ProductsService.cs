@@ -55,33 +55,43 @@ namespace FroSidanMVC.Models
             return products;
         }
 
-        internal ShopVM[] GetProductsByCategory(string category)
+        internal ShopVM[] GetProductsByCategory(string category/*, string sortArray*/)
         {
             var q = GetAllProducts();
             var qq = q.Where(q => q.Category.ToLower() == category.ToLower())
                 .ToArray();
             return qq;
+            //if (sortArray == "price")
+            //    return SortByPrice(qq);
+            //else if (sortArray == "name")
+            //    return SortByName(qq);
+            //else return qq.OrderBy(x => x.Id).ToArray();
         }
 
-        internal ShopVM[] GetProductsBySubCategory(string subcategory)
+        internal ShopVM[] GetProductsBySubCategory(string subcategory/*, string sortArray*/)
         {
             var q = GetAllProducts();
             var qq = q.Where(q => q.SubCategory.ToLower() == subcategory.ToLower())
                 .ToArray();
             return qq;
+            //if (sortArray == "price")
+            //    return SortByPrice(qq);
+            //else if (sortArray == "name")
+            //    return SortByName(qq);
+            //else return qq.OrderBy(x => x.Id).ToArray();
         }
 
-        internal ShopVM[] GetSortedByName()
+        internal ShopVM[] SortByName(ShopVM[] list)
         {
-            var all = GetAllProducts();
-            var sorted = all.OrderBy(x => x.Name).ToArray();
+            
+            var sorted = list.OrderBy(x => x.Name).ToArray();
             return sorted;
         }
 
-        internal ShopVM[] GetSortedByPrice()
+        internal ShopVM[] SortByPrice(ShopVM[] list)
         {
-            var all = GetAllProducts();
-            var sorted = all.OrderBy(x => x.Price).ToArray();
+            
+            var sorted = list.OrderBy(x => x.Price).ToArray();
             return sorted;
 
         }

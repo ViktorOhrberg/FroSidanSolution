@@ -8,9 +8,9 @@
         Sortera
     </button>
     <ul class="dropdown-menu">
-        <li><a asp-controller="Products" asp-action="Shop" asp-route-filter="rekommenderat">Rekommenderat</a></li>
-        <li><a asp-controller="Products" asp-action="Shop" asp-route-filter="price">Pris</a></li>
-        <li><a asp-controller="Products" asp-action="Shop" asp-route-filter="name">Namn</a></li>
+        <li><a asp-controller="Products" asp-action="Shop" asp-route-sortBy="rekommenderat">Rekommenderat</a></li>
+        <li><a asp-controller="Products" asp-action="Shop" asp-route-sortBy="price">Pris</a></li>
+        <li><a asp-controller="Products" asp-action="Shop" asp-route-sortBy="name">Namn</a></li>
     </ul>
 </div>
 
@@ -18,32 +18,33 @@
 
 <form id="searchForm">
     <input type="text" value="Skriv in sökord" id="searchStr" />
-    <input type="submit" value="Sök"/>
+    <input type="submit" value="Sök" />
 </form>
 
 <br />
+
 <div id="partial">
     <partial name="_ShopProducts" model="Model" />
 </div>
 @*<div class="container">
-    <div class="row row-sm-4">
-        @foreach (var item in Model)
-        {
-            <div class="col col-sm-3 align-items-stretch">
-                <a asp-controller="Products" asp-action="Detail" asp-route-id=@item.Id>
-                    <div class="card card-body" style="height: 350px">
-                        <img src="~/Images/@item.ThumbnailUrl" style="height: 100px" class="card-img-top" alt="@item.Name" />
-                        <div class="card-body">
-                            <h5 class="card-title">@item.Name </h5>
-                            <p class="card-text">@item.SubCategory</p>
-                            <a href="#" onclick="AddToCart(@item.Id)" class="btn btn-success">Lägg till 🛒</a>
+        <div class="row row-sm-4">
+            @foreach (var item in Model)
+            {
+                <div class="col col-sm-3 align-items-stretch">
+                    <a asp-controller="Products" asp-action="Detail" asp-route-id=@item.Id>
+                        <div class="card card-body" style="height: 350px">
+                            <img src="~/Images/@item.ThumbnailUrl" style="height: 100px" class="card-img-top" alt="@item.Name" />
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Name </h5>
+                                <p class="card-text">@item.SubCategory</p>
+                                <a href="#" onclick="AddToCart(@item.Id)" class="btn btn-success">Lägg till 🛒</a>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-        }
-    </div>
-</div>*@
+                    </a>
+                </div>
+            }
+        </div>
+    </div>*@
 
 <br />
 
