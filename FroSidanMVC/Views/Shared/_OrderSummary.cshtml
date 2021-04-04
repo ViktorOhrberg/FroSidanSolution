@@ -1,75 +1,78 @@
 ﻿@model SummaryVM[]
 <h2>Varukorg</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col"></th>
-            <th scope="col">Artikelnummer</th>
-            <th scope="col">Namn</th>
-            <th scope="col">Pris</th>
-            <th scope="col">Antal</th>
-            <th scope="col">Ta bort</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <th scope="row"></th>
-                <td>@item.Id</td>
-                <td>@item.Name</td>
-                <td>@item.Price.ToString("c")</td>
-                <td>
-                    @item.Quantity &#9;
-                    <a href="#" class="text-decoration-none" onclick="AddToCart(@item.Id)">➕</a>
-                    <a href="#" class="text-decoration-none" onclick="RemoveSingleFromCart(@item.Id)">➖</a>
-                </td>
-                <td>
-                    <a href="#" class="text-decoration-none" onclick="RemoveAllFromCart(@item.Id)">❌</a>
-                </td>
-            </tr>
-        }
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td colspan="2">
-                Summa pris: @Model.Sum(p => p.Price * p.Quantity).ToString("c")
-            </td>
-            <td></td>
 
-        </tr>
-    </tbody>
-</table>
+@{
 
-@*@section scripts
-{
-    <script type="text/javascript">
-        function AddToCart(id) {
-            $.ajax({
-                url: "/AddToCart/" + id,
-                type: "GET",
-                success: (result) => location.reload()
-            });
-        };
+    decimal sum = Model.Sum(p => p.Price * p.Quantity);
+    bool freeShipping = false;
+    if (sum < 400)
+        freeShipping = true;
+    else
+        sum += 49;
 
-        function RemoveAllFromCart(id) {
-            $.ajax({
-                url: "/RemoveAllFromCart/" + id,
-                type: "GET",
-                success: (result) => location.reload()
-            });
-            location.reload();
-        };
+    if (Model.Length == 0)
+    {
+        <p>Varukorgen är tom. Gå till <strong style="color:blue"><a href="shop">shoppen</a></strong></p>
+    }
+    else
+    {
 
-        function RemoveSingleFromCart(id) {
-            $.ajax({
-                url: "/RemoveSingleFromCart/" + id,
-                type: "GET",
-                success: (result) => location.reload()
-            });
-            location.reload();
-        };
-    </script>
-}*@
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Artikelnummer</th>
+                    <th scope="col">Namn</th>
+                    <th scope="col">Pris</th>
+                    <th scope="col">Antal</th>
+                    <th scope="col">Ta bort</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row"></th>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Price.ToString("c")</td>
+                        <td>
+                            @item.Quantity &#9;
+                            <a href="#" class="text-decoration-none" onclick="AddToCart(@item.Id)">➕</a>
+                            <a href="#" class="text-decoration-none" onclick="RemoveSingleFromCart(@item.Id)">➖</a>
+                        </td>
+                        <td>
+                            <a href="#" class="text-decoration-none" onclick="RemoveAllFromCart(@item.Id)">❌</a>
+                        </td>
+                    </tr>
+                }
+                @if (!freeShipping)
+                {
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td colspan="2">
+                            Frakt: 49,00 kr
+                        </td>
+                        <td></td>
+
+                    </tr>
+                }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2">
+                        Summa pris: @sum.ToString("c")
+                    </td>
+                    <td></td>
+
+                </tr>
+            </tbody>
+        </table>
+    }
+}

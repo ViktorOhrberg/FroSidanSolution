@@ -4,10 +4,23 @@
     <partial name="_OrderSummary" model="Model.OrderCart" />
 </div>
 
-<form asp-controller="Members" asp-action="Login">
-    <input asp-for="Name" />
-    <label asp-for="Name"></label>
-    <span asp-validation-for="Name"></span>
+@{
+    if (Model.Email == null)
+    {<p>Du är inte inloggad. Vill du <text><strong style="color:blue"><a href="LogIn">logga in</a></strong></text>?</p>}
+}
+
+
+
+<form asp-controller="Products" asp-action="Checkout">
+    <h4>Adress för leverans</h4>
+    <input asp-for="FirstName" />
+    <label asp-for="FirstName"></label>
+    <span asp-validation-for="FirstName"></span>
+    <br />
+
+    <input asp-for="LastName" />
+    <label asp-for="LastName"></label>
+    <span asp-validation-for="LastName"></span>
     <br />
 
     <input asp-for="Street" />
@@ -28,8 +41,38 @@
     <input asp-for="Email" />
     <label asp-for="Email"></label>
     <span asp-validation-for="Email"></span>
+
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="OrderCart" />
+
+
+
+
     <br />
-    <input type="submit" value="Fortsätt till betalning" />
+    <br />
+    <h4>Betalningsalternativ</h4>
+
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">
+            Kort (Visa/Master Card/American Express)
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+            Faktura
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+        <label class="form-check-label" for="exampleRadios3">
+            Klarna
+        </label>
+    </div>
+    <input type="submit" value="Lägg order" />
+    <br />
+
 </form>
 
 

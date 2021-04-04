@@ -116,7 +116,6 @@ namespace FroSidanMVC.Controls
         }
 
         [Route("Checkout")]
-        [Route("CheckoutAsync")]
         [HttpGet]
         public async Task<IActionResult> CheckoutAsync()
         {
@@ -127,7 +126,9 @@ namespace FroSidanMVC.Controls
             {
                 input = new CheckoutVM
                 {
-                    Name = $"{User.FirstName} {User.LastName}",
+                    Id = User.Id,
+                    FirstName = User.FirstName,
+                    LastName =  User.LastName,
                     Email = User.Email,
                     Street = User.Street,
                     Zip = User.Zip,
@@ -145,19 +146,13 @@ namespace FroSidanMVC.Controls
 
             return View(input);
         }
-        [Route("NotLoggedIn")]
-        [HttpGet]
-        public async Task<IActionResult> NotLoggedInAsync()
+        [Route("Checkout")]
+        [HttpPost]
+        public IActionResult CheckoutAsync(CheckoutVM input)
         {
-            var q = await mService.GetUser();
-            if (q == null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Checkout");
-            }
+            pService.PlaceOrder(input);
+            pService.DeleteCart();
+            return Redirect("index");
         }
 
         [HttpGet]

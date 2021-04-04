@@ -12,10 +12,10 @@ namespace FroSidanMVC.Models
 {
     public class ProductsService
     {
-        readonly FrosidanContext context;
+        readonly MyContext context;
         private readonly IHttpContextAccessor accessor;
 
-        public ProductsService(FrosidanContext context, IHttpContextAccessor accessor)
+        public ProductsService(MyContext context, IHttpContextAccessor accessor)
         {
             this.context = context;
             this.accessor = accessor;
@@ -111,7 +111,6 @@ namespace FroSidanMVC.Models
         {
             var shoppingCart = new List<int>();
             accessor.HttpContext.Response.Cookies.Delete("shoppingCart");
-            //AddToShoppingCartCookie(shoppingCart);
         }
 
         internal async Task<SummaryVM[]> GetSummaryVMAsync()
@@ -181,6 +180,26 @@ namespace FroSidanMVC.Models
             else
                 return null;
         }
+
+        internal void PlaceOrder(CheckoutVM input)
+        {
+            Order myOrder = new Order
+            {
+                CustomerId = input.Id,
+                FirstName = input.FirstName,
+                LastName = input.LastName,
+                Street = input.Street,
+                Zip = input.Zip,
+                City = input.City,
+                Date = DateTime.Now,
+                Cart = accessor.HttpContext.Request.Cookies["shoppingCart"]
+            };
+
+            context.Orders.Add(myOrder);
+            context.SaveChanges();
+
+        }
+
         public List<int> RemoveAllFromCart(int id)
         {
             var shoppingCart = GetShoppingCart();
