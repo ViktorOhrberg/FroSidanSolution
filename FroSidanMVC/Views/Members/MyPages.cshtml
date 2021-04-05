@@ -2,5 +2,8 @@
 @{ViewBag.Title = "Mina sidor";}
 
 <p>Inloggad som @Model.Username</p>
-
+@foreach(var item in Model.Orders)
+            {
+                <p>@item.Date - @item.Id - @item.Cart.ToString() </p>
+            }
 <a asp-action="Logout">Logga ut</a>

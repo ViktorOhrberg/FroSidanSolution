@@ -31,11 +31,16 @@ namespace FroSidanMVC.Models
             this.context = context;
         }
 
-        internal async Task GetOrdersAsync()
+        internal async Task<Order[]> GetOrdersAsync()
         {
             var user = accessor.HttpContext.User.Identity;
-            var orders = context.AspNetUsers.Where(x => x.UserName == user.Name)
-                .Select(x => x.Orders).ToArray();
+            var id = context.AspNetUsers
+                .Where(x => x.UserName == user.Name)
+                .Select(x => x.Id).Single();
+            var orders = context.Orders.Where(x => x.CustomerId == id).ToArray();
+            return orders;
+                
+            //new MyPagesVM { Orders = orders, Username = user.Name };
           
             
             
