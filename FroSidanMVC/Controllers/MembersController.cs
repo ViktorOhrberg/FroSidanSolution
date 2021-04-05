@@ -20,9 +20,10 @@ namespace FroSidanMVC.Controllers
         [Authorize]
         [HttpGet]
         [Route("MyPages")]
-        public IActionResult MyPages()
+        public async Task<IActionResult> MyPagesAsync()
         {
-            return View(new MyPagesVM { Username = User.Identity.Name });
+            //var orders = await mService.GetOrdersAsync();
+            return View(new MyPagesVM { Username = User.Identity.Name/*, Orders = orders */});
         }
         [AllowAnonymous]
         [HttpGet]
@@ -50,7 +51,7 @@ namespace FroSidanMVC.Controllers
 
             // Redirect user
             if (string.IsNullOrWhiteSpace(viewModel.ReturnUrl))
-                return RedirectToAction(nameof(MyPages));
+                return RedirectToAction(nameof(MyPagesAsync));
             else
                 return Redirect(viewModel.ReturnUrl);
         }

@@ -11,6 +11,7 @@ namespace FroSidanMVC.Models
 {
     public class MembersService
     {
+        readonly MyContext context;
         UserManager<MyIdentityUser> userManager;
         SignInManager<MyIdentityUser> signInManager;
         RoleManager<IdentityRole> roleManager;
@@ -20,14 +21,25 @@ namespace FroSidanMVC.Models
             UserManager<MyIdentityUser> userManager,
             SignInManager<MyIdentityUser> signInManager,
             RoleManager<IdentityRole> roleManager,
-            IHttpContextAccessor accessor)
+            IHttpContextAccessor accessor,
+            MyContext context)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.roleManager = roleManager;
             this.accessor = accessor;
+            this.context = context;
         }
 
+        internal async Task GetOrdersAsync()
+        {
+            var user = accessor.HttpContext.User.Identity;
+            var orders = context.AspNetUsers.Where(x => x.UserName == user.Name)
+                .Select(x => x.Orders).ToArray();
+          
+            
+            
+        }
 
         public async Task<bool> TryRegisterAsync(MemberRegisterVM memberRegisterVm)
         {
