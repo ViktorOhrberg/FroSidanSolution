@@ -1,10 +1,8 @@
 ﻿@model ShopVM[]
 @{ViewBag.Title = "Shop";}
 
-<br />
-<br />
-<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float: right">
+<div class="dropdown" >
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float: right" >
         Sortera
     </button>
     <ul class="dropdown-menu">
@@ -14,15 +12,32 @@
     </ul>
 </div>
 
-<br />
 
-<form id="searchForm">
+
+<div class="side-menu">
+    <form id="searchForm">
+        <input type="text" value="Sökfält..." id="searchStr"/>
+        <input type="submit" value="Sök" />
+    </form>
+    <nav>
+        <hr />
+        <p>Frösorter</p>
+        <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds"><i class="fas fa-gavel"></i>   Bläddra alla frön</a>
+        <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds" asp-route-subcategory="tomato"><i class="fas fa-gavel"></i>Tomater</a>
+        <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds" asp-route-subcategory="chili"><i class="fas fa-gavel"></i>   Chili</a>
+        <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds" asp-route-subcategory="squash"><i class="fas fa-gavel"></i>   Squash och Pumpa</a>
+        <hr />
+        <p>Tillbehör</p>
+        <a asp-controller="Products" asp-action="Shop" asp-route-category="accessories" asp-route-subcategory="lamps"><i class="fas fa-gavel"></i>   Lampor</a>
+        <a href="#"><i class="fas fa-gavel"></i>   Övriga tillbehör</a>
+    </nav>
+    
+</div>
+
+@*<form id="searchForm">
     <input type="text" value="Skriv in sökord" id="searchStr" />
-    <input type="submit" value="Sök"/>
-</form>
-
-<br />
-
+    <input type="submit" value="Sök" />
+</form>*@
 <div id="partial">
     <partial name="_ShopProducts" model="Model" />
 </div>

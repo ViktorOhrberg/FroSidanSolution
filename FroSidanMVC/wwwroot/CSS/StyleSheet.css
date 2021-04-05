@@ -1,9 +1,9 @@
 ﻿body {
-    padding-left: 10px;
-    padding-right: 10px;
+    background-color: #FFFFFF;
 }
 
 nav {
+    background-color: #a0cfac;
 }
 
 footer {
@@ -27,6 +27,7 @@ a {
 /*Kortens design i shoppen är separata från övriga sidor*/
 .card {
     text-align: center;
+    position: relative;
 }
 
 .cardGroup {
@@ -99,7 +100,7 @@ a {
 
 form {
     width: 55%;
-    padding-left: 48px;
+    padding-left: 10px;
 }
 
 .form-group {
@@ -136,4 +137,75 @@ form {
     .form-control:focus {
         border: 5px solid #ae3c33;
     }
-/*här slutar formstjafset*/
+/*här slutar formstjafset och vänster navbar tar vid*/
+
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,regular,500,700,900);
+
+* {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+
+.side-menu {
+    width: 200px;
+    height: 100%;
+    padding: 5px 0px ;
+    box-sizing: border-box;
+    background:#a0cfac; 
+    display: flex;
+    flex-flow: column nowrap;
+    box-shadow: 5px 20px 35px 1px rgba(17, 26, 41, 0.6);
+    position: absolute;
+    transition: .5s;
+}
+
+    .side-menu form {
+        display: flex;
+        margin: 10px 10px 0px;
+        border-radius: 100px;
+        border: 1px solid #fff;
+        width: 170px;
+ 
+    }
+
+        .side-menu form input,
+        .side-menu form button {
+            background-color: transparent;
+            color: #fff;
+            border: 1px transparent;
+            padding: 5px 5px;
+            width: 120px;
+            
+        }
+
+nav a {
+    display: block;
+    padding: 8px;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    font-family: 'Noto Sans TC',sans-serif;
+}
+
+    nav a + a::before {
+        content: '';
+        position: absolute;
+        border-top: 1px solid #fff;
+        left: 10px;
+        right: 10px;
+        top: 0;
+    }
+
+    nav a .fas {
+        margin-right: 0.7em;
+        transform: scale(0);
+        transition: .5s;
+    }
+
+    nav a:hover .fas {
+        margin-right: 2.3em;
+        transform: scale(1);
+    }
+    /*här slutar vänster navbar*/
