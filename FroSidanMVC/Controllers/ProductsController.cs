@@ -10,6 +10,7 @@ using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http;
 using FroSidanMVC.Models.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http.Extensions;
 
 namespace FroSidanMVC.Controls
 {
@@ -46,8 +47,14 @@ namespace FroSidanMVC.Controls
         [Route("Shop")]
         [Route("products/shop")]
         [HttpGet]
-        public IActionResult Shop(string category, string subcategory/*, string sortBy*/)
+        public IActionResult Shop(string category, string subcategory, string sortBy)
         {
+            string kategori = category;
+            string subkategori = subcategory;
+            string a = Request.GetDisplayUrl();
+            string[] b = a.Split('&', '?');
+
+
             if (subcategory == null && category == null)
             {
                 var allProducts = pService.GetAllProducts();

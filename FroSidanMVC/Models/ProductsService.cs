@@ -70,6 +70,7 @@ namespace FroSidanMVC.Models
 
         internal ShopVM[] GetProductsBySubCategory(string subcategory/*, string sortArray*/)
         {
+            
             var q = GetAllProducts();
             var qq = q.Where(q => q.SubCategory.ToLower() == subcategory.ToLower())
                 .ToArray();

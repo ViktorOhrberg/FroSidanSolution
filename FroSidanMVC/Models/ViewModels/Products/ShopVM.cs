@@ -15,5 +15,9 @@ namespace FroSidanMVC.Models.ViewModels.Products
         public decimal Price { get; set; }
 
         public string ThumbnailUrl { get; set; }
+
+       
+
+
     }
 }
