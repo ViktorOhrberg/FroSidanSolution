@@ -55,38 +55,35 @@ namespace FroSidanMVC.Models
             return products;
         }
 
-        internal ShopVM[] GetProductsByCategory(string category/*, string sortArray*/)
+        internal ShopVM[] GetProductsByCategory(string category, string sortArray)
         {
             var q = GetAllProducts();
             var qq = q.Where(q => q.Category.ToLower() == category.ToLower())
                 .ToArray();
-            return qq;
-            //if (sortArray == "price")
-            //    return SortByPrice(qq);
-            //else if (sortArray == "name")
-            //    return SortByName(qq);
-            //else return qq.OrderBy(x => x.Id).ToArray();
+            if (sortArray == "price")
+                return SortByPrice(qq);
+            else if (sortArray == "name")
+                return SortByName(qq);
+            else return qq.OrderBy(x => x.Id).ToArray();
         }
 
-        internal ShopVM[] GetProductsBySubCategory(string subcategory/*, string sortArray*/)
+        internal ShopVM[] GetProductsBySubCategory(string subcategory, string sortArray)
         {
             
             var q = GetAllProducts();
             var qq = q.Where(q => q.SubCategory.ToLower() == subcategory.ToLower())
                 .ToArray();
-            return qq;
-            //if (sortArray == "price")
-            //    return SortByPrice(qq);
-            //else if (sortArray == "name")
-            //    return SortByName(qq);
-            //else return qq.OrderBy(x => x.Id).ToArray();
+            if (sortArray == "price")
+                return SortByPrice(qq);
+            else if (sortArray == "name")
+                return SortByName(qq);
+            else return qq.OrderBy(x => x.Id).ToArray();
         }
 
         internal ShopVM[] SortByName(ShopVM[] list)
         {
             
-            var sorted = list.OrderBy(x => x.Name).ToArray();
-            return sorted;
+            return list.OrderBy(x => x.Name).ToArray();
         }
 
         internal ShopVM[] SortByPrice(ShopVM[] list)

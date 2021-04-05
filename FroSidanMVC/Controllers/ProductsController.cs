@@ -39,22 +39,12 @@ namespace FroSidanMVC.Controls
             var product = await pService.GetProductDetailVMAsync(id);
             return View(product);
         }
-        //[Route("Shop/{sortBy}")]
-        //[Route("Shop/{category}/{sortBy}")]
-        //[Route("Shop/{category}/{subcategory}/{sortBy}")]
-        [Route("Shop/{category}/{subcategory}")]
-        [Route("Shop/{category}")]
+
         [Route("Shop")]
         [Route("products/shop")]
         [HttpGet]
         public IActionResult Shop(string category, string subcategory, string sortBy)
         {
-            string kategori = category;
-            string subkategori = subcategory;
-            string a = Request.GetDisplayUrl();
-            string[] b = a.Split('&', '?');
-
-
             if (subcategory == null && category == null)
             {
                 var allProducts = pService.GetAllProducts();
@@ -62,12 +52,12 @@ namespace FroSidanMVC.Controls
             }
             else if(subcategory == null)
             {
-                var productsByCategory = pService.GetProductsByCategory(category/*, sortBy*/);
+                var productsByCategory = pService.GetProductsByCategory(category, sortBy);
                 return View(productsByCategory);
             }
             else
             {
-                var productsBySubCategory = pService.GetProductsBySubCategory(subcategory/*, sortBy*/);
+                var productsBySubCategory = pService.GetProductsBySubCategory(subcategory, sortBy);
                 return View(productsBySubCategory);
             }
         }

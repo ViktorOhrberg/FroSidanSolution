@@ -8,9 +8,9 @@
         Sortera
     </button>
     <ul class="dropdown-menu">
-        <li><a href="">Rekommenderat</a></li>
-        <li><a asp-controller="Products" asp-action="Shop" asp-route-sortBy="price">Pris</a></li>
-        <li><a asp-controller="Products" asp-action="Shop" asp-route-sortBy="name">Namn</a></li>
+        <li><a href="/products/shop?category=@Context.Request.Query["category"]&subcategory=@Context.Request.Query["subcategory"]&sortBy=recommeded">Rekommenderat</a></li>
+        <li><a href="/products/shop?category=@Context.Request.Query["category"]&subcategory=@Context.Request.Query["subcategory"]&sortBy=price">Pris</a></li>
+        <li><a href="/products/shop?category=@Context.Request.Query["category"]&subcategory=@Context.Request.Query["subcategory"]&sortBy=name">Namn</a></li>
     </ul>
 </div>
 
