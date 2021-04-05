@@ -4,6 +4,14 @@
 <p>Inloggad som @Model.Username</p>
 @foreach(var item in Model.Orders)
             {
-                <p>@item.Date - @item.Id - @item.Cart.ToString() </p>
+                <p>Beställningstid - @item.Date<br />
+                OrderID @item.Id 
+                </p> 
+
+                @*detta måste givetvis fixas, mest för att se så allt funkar. diskutera vad som ska visas? 
+                  bilder eller produktnamn och pris direkt här eller klickbar länk?
+                  bör pris på varukorgen kanske sparas som en prop?
+                  ändras priset efter ordern är lagd kommer priset bli ett annat..? *@
+    
             }
 <a asp-action="Logout">Logga ut</a>

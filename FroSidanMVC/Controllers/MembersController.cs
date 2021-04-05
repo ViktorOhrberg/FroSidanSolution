@@ -20,9 +20,10 @@ namespace FroSidanMVC.Controllers
         [Authorize]
         [HttpGet]
         [Route("MyPages")]
-        public async Task<IActionResult> MyPagesAsync()
+        public IActionResult MyPagesAsync()
         {
-            var orders = await mService.GetOrdersAsync();
+            var orders = mService.GetOrdersAsync();
+            
             return View(new MyPagesVM { Username = User.Identity.Name, Orders = orders});
         }
         [AllowAnonymous]

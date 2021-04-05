@@ -31,19 +31,14 @@ namespace FroSidanMVC.Models
             this.context = context;
         }
 
-        internal async Task<Order[]> GetOrdersAsync()
+        internal  Order[] GetOrdersAsync()
         {
             var user = accessor.HttpContext.User.Identity;
             var id = context.AspNetUsers
                 .Where(x => x.UserName == user.Name)
                 .Select(x => x.Id).Single();
-            var orders = context.Orders.Where(x => x.CustomerId == id).ToArray();
-            return orders;
-                
-            //new MyPagesVM { Orders = orders, Username = user.Name };
-          
-            
-            
+            return context.Orders.Where(x => x.CustomerId == id).ToArray();
+             //går det möjligen få detta till ett db-anrop istället för 2?
         }
 
         public async Task<bool> TryRegisterAsync(MemberRegisterVM memberRegisterVm)
