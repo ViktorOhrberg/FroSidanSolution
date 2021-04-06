@@ -6,7 +6,7 @@
 
 @{
     if (Model.Email == null)
-    {<p>Du är inte inloggad. Vill du <text><strong style="color:blue"><a href="LogIn">logga in</a></strong></text>?</p>}
+    {<p>Du är inte inloggad. Vill du <text><strong style="color:blue"><a asp-controller="Members" asp-action="Login" asp-route-returnUrl="Checkout">logga in</a></strong></text>?</p>}
 }
 
 

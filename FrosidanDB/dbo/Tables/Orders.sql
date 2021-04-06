@@ -9,6 +9,7 @@
     [Zip]                  NVARCHAR (MAX)     NULL,
     [Customer-ID]    NVARCHAR (450) NULL,
     [PaymentMethod]  NVARCHAR (50)  NULL,
+    [TotPrice]       MONEY null,
     PRIMARY KEY CLUSTERED ([Id] ASC),
     FOREIGN KEY ([Customer-ID]) REFERENCES [dbo].[AspNetUsers] ([Id])
 );

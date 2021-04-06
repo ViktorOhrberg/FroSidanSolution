@@ -1,11 +1,32 @@
 ﻿@model DetailVM
 
 
-<div class=".container-lg" style="width: 30rem;">
+<div class=".container-lg" style="
+    width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px">
     <img src="/Images/@Model.Url" class="card-img-top" alt="Produktbild">
     <div class="card-img-top">
+        <br />
         <h3>@Model.ProductName</h3>
+        <br />
         <p class="card-text">@Model.Description</p>
-        <h6>@Model.Price kr</h6> @*Lägg till en Add to cart knapp här samt*@
+        <h6>@Model.Price.ToString("c")</h6> <a href="#" onclick="AddToCart(@Model.Id)" class="btn btn-success" style="background-color: #c1292eff; border: 1px transparent; border-radius: 0px; width: 170px;">Lägg i varukorg 🛒</a>
     </div>
 </div>
+
+
+
+@section scripts
+{
+    <script type="text/javascript">
+        function AddToCart(id) {
+            $.ajax({
+                url: "/AddToCart/" + id,
+                type: "GET",
+                success: (result) => console.log(result)
+            });
+        };
+    </script>
+}

@@ -233,6 +233,7 @@ namespace FroSidanMVC.Models
                     Price = q.Price,
                     Description = q.Description,
                     Url = q.ImgRef,
+                    Id = id
                 }).FirstOrDefaultAsync();
             return product;
         }
