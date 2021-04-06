@@ -24,6 +24,10 @@ a {
         color: black;
     }
 
+#emptyCart{
+    text-align: center;
+}
+
 /*Kortens design i shoppen är separata från övriga sidor*/
 .card {
     text-align: center;
