@@ -24,9 +24,20 @@ a {
         color: black;
     }
 
-#emptyCart{
+#emptyCart {
     text-align: center;
 }
+
+#btnLogOut {
+    margin-left: 20px;
+    background-color: #b9d2b1ff;
+    font-size: 23px;
+}
+
+    #btnLogOut:hover {
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        transform: scale(1.05);
+    }
 
 /*Kortens design i shoppen är separata från övriga sidor*/
 .card {
@@ -53,6 +64,7 @@ a {
     border-radius: 10px;
     font-size: 13px;
 }
+
     .btn:hover {
         background-color: #f29e4cff;
     }
@@ -182,7 +194,6 @@ form {
         border-radius: 100px;
         border: 1px solid #fff;
         width: 170px;
- 
     }
 
         .side-menu form input,
@@ -192,7 +203,6 @@ form {
             border: 1px transparent;
             padding: 5px 5px;
             width: 120px;
-            
         }
 
 nav a {
@@ -223,4 +233,4 @@ nav a {
         margin-right: 2.2em;
         transform: scale(1);
     }
-    /*här slutar vänster navbar*/
+/*här slutar vänster navbar*/
