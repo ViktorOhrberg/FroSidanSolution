@@ -9,10 +9,10 @@
                     <a asp-controller="Products" asp-action="Detail" asp-route-id=@item.Id>
                         <img src="~/Images/@item.ThumbnailUrl" class="shopImg card-img-top" alt="@item.Name" />
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title text-truncate">@item.Name </h5>
-                            <p class="card-text">@item.SubCategory</p>
-                            <p class="card-text"><strong>@item.Price.ToString("c")</strong></p>
                             <div class="mt-auto">
+                                <h5 class="card-title text-truncate">@item.Name </h5>
+                                <p class="card-text">@item.SubCategory</p>
+                                <p class="card-text"><strong>@item.Price.ToString("c")</strong></p>
                                 <a href="#" onclick="AddToCart(@item.Id)" class="btn btn-success">Lägg till i varukorg 🛒</a>
                             </div>
                         </div>
