@@ -62,13 +62,23 @@ namespace FroSidanMVC.Controls
             }
         }
         [HttpGet]
-        [Route("AddToCart/{id}")]
+        [Route("AddToCartCheckout/{id}")]
 
-        public async Task<IActionResult> AddToCartAsync(int id)
+        public async Task<IActionResult> AddToCartCheckoutAsync(int id)
         {
             var shoppingCart = await pService.AddToCartAsync(id);
             var model = await pService.GetSummaryVMAsync(shoppingCart);
             return PartialView("_OrderSummary", model);
+        }
+
+        [HttpGet]
+        [Route("AddToCartShop/{id}")]
+
+        public async Task<IActionResult> AddToCartShopAsync(int id)
+        {
+            var shoppingCart = await pService.AddToCartAsync(id);
+            var model = pService.GetAllProducts();
+            return PartialView("_ShopProducts", model);
         }
 
         [HttpGet]
@@ -100,16 +110,6 @@ namespace FroSidanMVC.Controls
             var shoppingCart = pService.RemoveAllFromCart(id);
             var model = await pService.GetSummaryVMAsync(shoppingCart);
             return PartialView("_OrderSummary", model);
-        }
-
-        [HttpGet]
-        [Route("Summary")]
-
-        public async Task<IActionResult> Summary()
-        {
-            SummaryVM[] input = await pService.GetSummaryVMAsync();
-
-            return View(input);
         }
 
         [Route("Checkout")]

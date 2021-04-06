@@ -83,7 +83,7 @@
     <script type="text/javascript">
         function AddToCart(id) {
             $.ajax({
-                url: "/AddToCart/" + id,
+                url: "/AddToCartCheckout/" + id,
                 type: "GET",
                 success: (result) => $("#partial").html(result)
             });

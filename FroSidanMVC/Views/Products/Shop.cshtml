@@ -38,54 +38,34 @@
 <div id="partial">
     <partial name="_ShopProducts" model="Model" />
 </div>
-@*<div class="container">
-        <div class="row row-sm-4">
-            @foreach (var item in Model)
-            {
-                <div class="col col-sm-3 align-items-stretch">
-                    <a asp-controller="Products" asp-action="Detail" asp-route-id=@item.Id>
-                        <div class="card card-body" style="height: 350px">
-                            <img src="~/Images/@item.ThumbnailUrl" style="height: 100px" class="card-img-top" alt="@item.Name" />
-                            <div class="card-body">
-                                <h5 class="card-title">@item.Name </h5>
-                                <p class="card-text">@item.SubCategory</p>
-                                <a href="#" onclick="AddToCart(@item.Id)" class="btn btn-success">Lägg till 🛒</a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            }
-        </div>
-    </div>*@
 
-<br />
 
 @section scripts
 {
     <script type="text/javascript">
         function AddToCart(id) {
             $.ajax({
-                url: "/AddToCart/" + id,
+                url: "/AddToCartShop/" + id,
                 type: "GET",
-                success: (result) => console.log(result)
+                success: (result) => $("#partial").html(result)
             });
         };
 
-        function ClearCart() {
-            $.ajax({
-                url: "/ClearCart/",
-                type: "GET",
-                success: (result) => console.log(result)
-            });
-        };
+        //function ClearCart() {
+        //    $.ajax({
+        //        url: "/ClearCart/",
+        //        type: "GET",
+        //        success: (result) => console.log(result)
+        //    });
+        //};
 
-        function RemoveSingle(id) {
-            $.ajax({
-                url: "/RemoveSingleFromCart/" + id,
-                type: "GET",
-                success: (result) => console.log(result)
-            });
-        };
+        //function RemoveSingle(id) {
+        //    $.ajax({
+        //        url: "/RemoveSingleFromCart/" + id,
+        //        type: "GET",
+        //        success: (result) => console.log(result)
+        //    });
+        //};
 
         $("#searchForm").submit(function (e) {
             e.preventDefault();
