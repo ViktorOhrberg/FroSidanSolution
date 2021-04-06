@@ -1,12 +1,33 @@
 ﻿@{ViewBag.Title = "Startsida";}
 
-<h1 id="h1Index">Välkommen till Fröbutiken</h1>
+@*<h1 id="h1Index">Välkommen till Fröbutiken</h1>*@
+
+
+
+<div class="row">
+    <div class="col-6">
+        <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds">
+            <div class="card text-black" style="width: 400px">
+                <img src="~/Images/Seeds_Logo.jpg" height="200" width="400" class="card-img" alt="Kategori fröer">
+            </div>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds">
+            <div class="card text-black" style="width: 400px">
+                <img src="~/Images/Lampor_logo.jpg" height="200" width="400" class="card-img" alt="Kategori fröer">
+            </div>
+        </a>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-6">
         <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds">
             <div class="card text-black">
-                <img src="~/Images/seeds-bags-500x500.jpg" height="200px" class="card-img" alt="Bild på fröpåsar">
+                <img src="~/Images/seeds-bags-500x500.jpg" height="200" width="400" class="card-img" alt="Bild på fröpåsar">
                 <div class="card-img-overlay">
                     <h1 class="card-title">Fröer</h1>
                 </div>
