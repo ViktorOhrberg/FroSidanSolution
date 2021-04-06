@@ -52,7 +52,14 @@ a {
         transform: scale(1.05);
     }
 
-/*Kortens design i shoppen är separata från övriga sidor*/
+/*Cards*/
+/*-----------------------*/
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .card {
     text-align: center;
     position: relative;
@@ -63,6 +70,13 @@ a {
     text-align: center;
     height: 350px;
     margin-bottom: 50px;
+}
+
+.card-img-top {
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    height: 15vw;
+    object-fit: scale-down;
 }
 
 .card-body {
@@ -83,20 +97,6 @@ a {
         background-color: #f29e4cff;
     }
 
-.card-img-top {
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    width: 100%;
-    height: 15vw;
-    object-fit: scale-down;
-}
-
-
-.row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .card:hover {
     border-color: black;
     border-style: solid;
@@ -111,6 +111,8 @@ a {
     transform: scale(1.05);
     transform-origin: 50% 50%;
 }
+/*-----------------------*/
+
 /*allt här nedanför har med forms o göra*/
 .wrapper {
     min-height: 90vh;
