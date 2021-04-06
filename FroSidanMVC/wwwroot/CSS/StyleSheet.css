@@ -3,7 +3,7 @@
 }
 
 nav {
-    background-color: #a0cfac;
+    background-color: #b9d2b1ff;
 }
 
 footer {
@@ -43,7 +43,14 @@ a {
 
 .btn {
     margin-top: auto;
+    background-color: #595a4aff;
+    border: 1px transparent;
+    border-radius: 10px;
+    width: 160px;
 }
+    .btn:hover {
+        background-color: #f29e4cff;
+    }
 
 */.card-img-top {
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
@@ -149,11 +156,11 @@ form {
 
 
 .side-menu {
-    width: 200px;
+    width: 220px;
     height: 100%;
-    padding: 5px 0px ;
+    padding: 5px 0px;
     box-sizing: border-box;
-    background:#a0cfac; 
+    background: #b9d2b1ff;
     display: flex;
     flex-flow: column nowrap;
     box-shadow: 5px 20px 35px 1px rgba(17, 26, 41, 0.6);
@@ -199,13 +206,13 @@ nav a {
     }
 
     nav a .fas {
-        margin-right: 0.7em;
+        margin-right: 0.5em;
         transform: scale(0);
         transition: .5s;
     }
 
     nav a:hover .fas {
-        margin-right: 2.3em;
+        margin-right: 2.2em;
         transform: scale(1);
     }
     /*här slutar vänster navbar*/

@@ -41,11 +41,11 @@
                         <td>@item.Price.ToString("c")</td>
                         <td>
                             @item.Quantity &#9;
-                            <a href="#" class="text-decoration-none" onclick="AddToCart(@item.Id)">➕</a>
-                            <a href="#" class="text-decoration-none" onclick="RemoveSingleFromCart(@item.Id)">➖</a>
+                            <a href="#" class="text-decoration-none" onclick="AddToCart(@item.Id)"><i class="fas fa-plus-circle"></i></a>
+                            <a href="#" class="text-decoration-none" onclick="RemoveSingleFromCart(@item.Id)"><i class="fas fa-minus-circle"></i></a>
                         </td>
                         <td>
-                            <a href="#" class="text-decoration-none" onclick="RemoveAllFromCart(@item.Id)">❌</a>
+                            <a href="#" class="text-decoration-none" onclick="RemoveAllFromCart(@item.Id)"><i class="far fa-times-circle"></i></a>
                         </td>
                     </tr>
                 }
