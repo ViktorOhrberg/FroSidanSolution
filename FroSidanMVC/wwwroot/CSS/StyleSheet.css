@@ -4,6 +4,7 @@
 
 nav {
     background-color: #b9d2b1ff;
+    font-family: Courier New, Courier, monospace;
 }
 
 footer {
@@ -188,7 +189,7 @@ form {
             border: 1px transparent;
             padding: 5px 5px;
             width: 120px;
-            
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
 
 nav a {
@@ -197,7 +198,7 @@ nav a {
     color: #fff;
     text-decoration: none;
     position: relative;
-    font-family: 'Noto Sans TC',sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
     nav a + a::before {
@@ -216,7 +217,7 @@ nav a {
     }
 
     nav a:hover .fas {
-        margin-right: 2.2em;
+        margin-right: 1.9em;
         transform: scale(1);
     }
     /*här slutar vänster navbar*/
