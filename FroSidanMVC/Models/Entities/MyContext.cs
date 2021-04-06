@@ -139,6 +139,8 @@ namespace FroSidanMVC.Models.Entities
 
                 entity.Property(e => e.PaymentMethod).HasMaxLength(50);
 
+                entity.Property(e => e.TotPrice).HasColumnType("money");
+
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)

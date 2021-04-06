@@ -171,7 +171,8 @@ namespace FroSidanMVC.Controls
                 temp.AddRange(q);
             }
 
-            var model = temp.ToArray();
+            var model = temp.Distinct()
+                .ToArray();
 
             return PartialView("_ShopProducts", model);
         }
