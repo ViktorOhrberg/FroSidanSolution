@@ -179,8 +179,9 @@ namespace FroSidanMVC.Models
                 return null;
         }
 
-        internal void PlaceOrder(CheckoutVM input)
+        internal async Task PlaceOrderAsync(CheckoutVM input)
         {
+            decimal? orderPrice = await GetOrderPriceAsync();
             Order myOrder = new Order
             {
                 CustomerId = input.Id,
@@ -190,11 +191,23 @@ namespace FroSidanMVC.Models
                 Zip = input.Zip,
                 City = input.City,
                 Date = DateTime.Now,
-                Cart = accessor.HttpContext.Request.Cookies["shoppingCart"]
+                Cart = accessor.HttpContext.Request.Cookies["shoppingCart"],
+                TotPrice = orderPrice
             };
 
             context.Orders.Add(myOrder);
             context.SaveChanges();
+
+        }
+
+        private async Task<decimal?> GetOrderPriceAsync()
+        {
+            var shoppingCart = await GetSummaryVMAsync();
+            decimal? totPrice = shoppingCart.Sum(p => p.Price * p.Quantity);
+
+            if (totPrice <= 300)
+                totPrice += 39;
+            return totPrice;
 
         }
 
