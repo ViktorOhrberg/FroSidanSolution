@@ -12,44 +12,46 @@
 
 
 <form asp-controller="Products" asp-action="Checkout">
-    <h4>Adress för leverans</h4>
-    <input asp-for="FirstName" />
-    <label asp-for="FirstName"></label>
-    <span asp-validation-for="FirstName"></span>
-    <br />
+    <table>
+        <h4>Adress för leverans</h4>
+        <tr>
+            <td><label asp-for="FirstName">Förnamn: </label></td>
+            <td><input asp-for="FirstName" /></td>
+            <td><span asp-validation-for="FirstName"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="LastName">Efternamn: </label></td>
+            <td><input asp-for="LastName" /></td>
+            <td><span asp-validation-for="LastName"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Street">Gata: </label></td>
+            <td><input asp-for="Street" /></td>
+            <td><span asp-validation-for="Street"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Zip">Postnummer: </label></td>
+            <td><input asp-for="Zip" /></td>
+            <td><span asp-validation-for="Zip"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="City">Stad: </label></td>
+            <td><input asp-for="City" /></td>
+            <td><span asp-validation-for="City"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Email">E-mail</label></td>
+            <td><input asp-for="Email" /></td>
+            <td><span asp-validation-for="Email"></span></td>
+        </tr>
 
-    <input asp-for="LastName" />
-    <label asp-for="LastName"></label>
-    <span asp-validation-for="LastName"></span>
-    <br />
-
-    <input asp-for="Street" />
-    <label asp-for="Street"></label>
-    <span asp-validation-for="Street"></span>
-    <br />
-
-    <input asp-for="Zip" />
-    <label asp-for="Zip"></label>
-    <span asp-validation-for="Zip"></span>
-    <br />
-
-    <input asp-for="City" />
-    <label asp-for="City"></label>
-    <span asp-validation-for="City"></span>
-    <br />
-
-    <input asp-for="Email" />
-    <label asp-for="Email"></label>
-    <span asp-validation-for="Email"></span>
-
+    </table>
     <input type="hidden" asp-for="Id" />
     <input type="hidden" asp-for="OrderCart" />
 
-
-
-
     <br />
     <br />
+
     <h4>Betalningsalternativ</h4>
 
     <div class="form-check">
