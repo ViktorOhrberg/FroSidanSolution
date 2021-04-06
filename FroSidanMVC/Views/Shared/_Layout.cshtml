@@ -12,22 +12,24 @@
 <body>
     <nav class="navbar nav-tabs navbar-expand-md align-left">
         <a class="navbar-brand" href="index">
-            <img src="/Images/Banner_clean.png" width="360" height="100" style="left:auto" class="align-left align-top" alt="">
+            <img src="/Images/Banner_clean_Bueno.png" width="350" height="100" style="left:auto" class="align-left align-top" alt="">
         </a>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" asp-controller="Products" asp-action="Index">Startsida</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-controller="Products" asp-action="Shop">Bläddra</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-controller="Members" asp-action="MyPages">Mina sidor</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-controller="Products" asp-action="Checkout">Varukorg</a>
-            </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent15">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Products" asp-action="Index">Startsida</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Products" asp-action="Shop">Bläddra</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Members" asp-action="MyPages">Mina sidor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Products" asp-action="Checkout">Varukorg</a>
+                </li>
+            </ul>
+        </div>
         @*<partial name="_ShopCartBox" />*@
     </nav>
 
