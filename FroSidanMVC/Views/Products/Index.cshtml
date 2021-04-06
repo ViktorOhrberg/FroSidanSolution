@@ -15,93 +15,108 @@
 </div>
 <div class="row">
     <div class="col-6">
-        <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds">
+        <a asp-controller="Products" asp-action="Shop" asp-route-category="lampor">
             <div class="card text-black" style="width: 600px">
                 <img src="~/Images/Lampor_logo.jpg" height="200" width="600" class="card-img" alt="Kategori fröer">
             </div>
         </a>
     </div>
 </div>
+<div class="row">
+    <div class="col-6">
+        <a asp-controller="Products" asp-action="Shop" asp-route-category="accessories">
+            <div class="card text-black" style="width: 600px">
+                <img src="~/Images/Acc_logo.jpg" height="200" width="600" class="card-img" alt="Kategori fröer">
+            </div>
+        </a>
+    </div>
+</div>
 
 <div class="row">
-    <div class="col-6">
-        <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds">
-            <div class="card text-black">
-                <img src="~/Images/seeds-bags-500x500.jpg" height="200" width="400" class="card-img" alt="Bild på fröpåsar">
-                <div class="card-img-overlay">
-                    <h1 class="card-title">Fröer</h1>
-                </div>
-            </div>
-        </a>
+    <div class="col-3">
     </div>
-</div>
-<div class="row">
+
     <div class="col-2">
-        <div class="card text-black">
+        <div class="card text-black" style="width: 200px">
             <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds" asp-route-subcategory="chili">
-                <img src="~/Images/chilipic.jpg" height="200px" class="card-img" alt="Bild på fröpåsar">
+                <img src="~/Images/chilipic.jpg" height="200" width="200" class="card-img" alt="Bild på fröpåsar">
             </a>
-            <div class="card-img-overlay">
-                <h1 class="card-title">Chili</h1>
-            </div>
         </div>
     </div>
     <div class="col-2">
-        <div class="card text-black">
+        <div class="card text-black" style="width: 200px">
             <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds" asp-route-subcategory="tomato">
-                <img src="~/Images/tomatopic.jpg" height="200px" class="card-img" alt="Bild på fröpåsar">
+                <img src="~/Images/tomatopic.jpg" height="200" width="200" class="card-img" alt="Bild på fröpåsar">
             </a>
-            <div class="card-img-overlay">
-                <h1 class="card-title">Tomater</h1>
-            </div>
         </div>
     </div>
+
     <div class="col-2">
-        <div class="card text-black">
+        <div class="card text-black" style="width: 200px">
             <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds" asp-route-subcategory="squash">
-                <img src="~/Images/pumpasquash.jpg" height="200px" class="card-img" alt="Bild på fröpåsar">
+                <img src="~/Images/pumpasquash.jpg" height="200" width="200" class="card-img" alt="Bild på fröpåsar">
             </a>
-            <div class="card-img-overlay">
-                <h1 class="card-title">Pumpa och squash</h1>
-            </div>
         </div>
+    </div>
+    <div class="col-3">
     </div>
 </div>
-<div class="row">
-    <div class="col-6">
-        <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds">
+    <div class="row">
+        <div class="col-2">
             <div class="card text-black">
-                <img src="~/Images/seeds-bags-500x500.jpg" height="200" width="400" class="card-img" alt="Bild på fröpåsar">
+                <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds" asp-route-subcategory="chili">
+                    <img src="~/Images/chilipic.jpg" height="200px" class="card-img" alt="Bild på fröpåsar">
+                </a>
                 <div class="card-img-overlay">
-                    <h1 class="card-title">Fröer</h1>
+                    <h1 class="card-title">Chili</h1>
                 </div>
             </div>
-        </a>
-    </div>
-</div>
-<br />
-<div class="row">
-    <div class="col-6">
-        <div class="card text-black">
-            <a asp-controller="Products" asp-action="Shop" asp-route-category="lampor">
-                <img src="~/Images/lights.jpg" class="im-fluid" height="200px" class="card-img" alt="Bild på lampor">
-            </a>
-            <div class="card-img-overlay">
-                <h1 class="card-title">Lampor</h1>
+        </div>
+        <div class="col-2">
+            <div class="card text-black">
+                <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds" asp-route-subcategory="tomato">
+                    <img src="~/Images/tomatopic.jpg" height="200px" class="card-img" alt="Bild på fröpåsar">
+                </a>
+                <div class="card-img-overlay">
+                    <h1 class="card-title">Tomater</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="card text-black">
+                <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds" asp-route-subcategory="squash">
+                    <img src="~/Images/pumpasquash.jpg" height="200px" class="card-img" alt="Bild på fröpåsar">
+                </a>
+                <div class="card-img-overlay">
+                    <h1 class="card-title">Pumpa och squash</h1>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<br />
-<div class="row">
-    <div class="col-6">
-        <div class="card text-black">
-            <a asp-controller="Products" asp-action="Shop" asp-route-category="accessories">
-                <img src="~/Images/odlingstillbehor.jpg" class="im-fluid" height="200px" class="card-img" alt="Bild på lampor">
-            </a>
-            <div class="card-img-overlay">
-                <h1 class="card-title">Odlingstillbehör</h1>
+
+    <br />
+    <div class="row">
+        <div class="col-6">
+            <div class="card text-black">
+                <a asp-controller="Products" asp-action="Shop" asp-route-category="lampor">
+                    <img src="~/Images/lights.jpg" class="im-fluid" height="200px" class="card-img" alt="Bild på lampor">
+                </a>
+                <div class="card-img-overlay">
+                    <h1 class="card-title">Lampor</h1>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <br />
+    <div class="row">
+        <div class="col-6">
+            <div class="card text-black">
+                <a asp-controller="Products" asp-action="Shop" asp-route-category="accessories">
+                    <img src="~/Images/odlingstillbehor.jpg" class="im-fluid" height="200px" class="card-img" alt="Bild på lampor">
+                </a>
+                <div class="card-img-overlay">
+                    <h1 class="card-title">Odlingstillbehör</h1>
+                </div>
+            </div>
+        </div>
+    </div>
