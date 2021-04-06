@@ -145,9 +145,9 @@ namespace FroSidanMVC.Controls
         }
         [Route("Checkout")]
         [HttpPost]
-        public IActionResult CheckoutAsync(CheckoutVM input)
+        public async Task<IActionResult> CheckoutAsync(CheckoutVM input)
         {
-            pService.PlaceOrderAsync(input);
+            await pService.PlaceOrderAsync(input);
             pService.DeleteCart();
             return Redirect("index");
         }
