@@ -52,6 +52,10 @@ a {
         transform: scale(1.05);
     }
 
+td{
+    padding: 5px;
+}
+
 /*Cards*/
 /*-----------------------*/
 .row {
