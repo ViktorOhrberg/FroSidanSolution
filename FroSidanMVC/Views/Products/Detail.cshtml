@@ -6,16 +6,18 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px">
-    <img src="/Images/@Model.Url" class="card-img-top" alt="Produktbild">
     <div class="card-img-top">
+    <img src="/Images/@Model.Url" class="card-img-top" alt="Produktbild">
         <br />
         <h3>@Model.ProductName</h3>
+    </div>
+    <div>
+        <br />
         <br />
         <p class="card-text">@Model.Description</p>
         <h6>@Model.Price.ToString("c")</h6><a href="#" onclick="AddToCart(@Model.Id)" class="btn btn-primary">Lägg i varukorg <i class="fas fa-shopping-cart"></i></a>
     </div>
 </div>
-
 
 
 @section scripts
