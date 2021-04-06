@@ -25,9 +25,9 @@
     <script type="text/javascript">
         function AddToCart(id) {
             $.ajax({
-                url: "/AddToCart/" + id,
+                url: "/AddToCartShop/" + id,
                 type: "GET",
-                success: (result) => console.log(result)
+                success: (result) => alert(result)
             });
         };
     </script>

@@ -47,25 +47,9 @@
             $.ajax({
                 url: "/AddToCartShop/" + id,
                 type: "GET",
-                success: (result) => $("#partial").html(result)
+                success: (result) => alert(result)
             });
         };
-
-        //function ClearCart() {
-        //    $.ajax({
-        //        url: "/ClearCart/",
-        //        type: "GET",
-        //        success: (result) => console.log(result)
-        //    });
-        //};
-
-        //function RemoveSingle(id) {
-        //    $.ajax({
-        //        url: "/RemoveSingleFromCart/" + id,
-        //        type: "GET",
-        //        success: (result) => console.log(result)
-        //    });
-        //};
 
         $("#searchForm").submit(function (e) {
             e.preventDefault();

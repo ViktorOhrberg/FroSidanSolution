@@ -50,7 +50,7 @@ namespace FroSidanMVC.Controls
                 var allProducts = pService.GetAllProducts();
                 return View(allProducts);
             }
-            else if(subcategory == null)
+            else if (subcategory == null)
             {
                 var productsByCategory = pService.GetProductsByCategory(category, sortBy);
                 return View(productsByCategory);
@@ -78,7 +78,13 @@ namespace FroSidanMVC.Controls
         {
             var shoppingCart = await pService.AddToCartAsync(id);
             var model = pService.GetAllProducts();
-            return PartialView("_ShopProducts", model);
+            if (shoppingCart == null)
+                TempData["Message"] = "Varan är tillfälligt slut i lager och kunde inte lägga till i din varukorg";
+            else
+                TempData["Message"] = "Varan är tillagd i din varukorg";
+            
+            return Content((string)TempData["Message"]);
+
         }
 
         [HttpGet]
@@ -125,7 +131,7 @@ namespace FroSidanMVC.Controls
                 {
                     Id = User.Id,
                     FirstName = User.FirstName,
-                    LastName =  User.LastName,
+                    LastName = User.LastName,
                     Email = User.Email,
                     Street = User.Street,
                     Zip = User.Zip,
@@ -166,7 +172,7 @@ namespace FroSidanMVC.Controls
             foreach (string search in words)
             {
                 var q = products
-                    .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.SubCategory.ToLower().Contains(search.ToLower())) 
+                    .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.SubCategory.ToLower().Contains(search.ToLower()))
                     .ToList();
                 temp.AddRange(q);
             }
