@@ -57,7 +57,7 @@ td {
     padding: 5px;
 }
 
-/*Cards*/
+/*Cards i Index*/
 /*-----------------------*/
 .rowIndex {
     display: flex;
@@ -70,6 +70,25 @@ td {
     position: relative;
     margin-top: 20px;
 }
+
+    .cardIndex:hover {
+        border-color: black;
+        border-style: solid;
+    }
+
+    .cardIndex:hover {
+        transition: transform 0.4s ease-out;
+        box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+        top: -4px;
+        border: 1px solid #cccccc;
+        background-color: white;
+        transform: scale(1.05);
+        transform-origin: 50% 50%;
+    }
+
+
+/*Cards i Shop*/
+/*-----------------------*/
 
 .row {
     display: flex;
