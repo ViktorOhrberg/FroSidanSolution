@@ -45,8 +45,11 @@ a {
     margin-top: auto;
 }
 
-*/.card-img-top {
+.card-img-top {
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    height: 15vw;
+    object-fit: scale-down;
 }
 
 
