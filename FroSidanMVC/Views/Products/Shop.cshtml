@@ -16,9 +16,21 @@
 
 <div class="side-menu">
     <form id="searchForm">
-        <input type="text" placeholder="Sökfält..." id="searchStr" />
+        <input type="text" id="searchStr" />
         <input type="submit" value="Sök" />
     </form>
+    <ul>
+    <li class="nav-item dropdown" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Sortera efter
+        </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="/products/shop?category=@Context.Request.Query["category"]&subcategory=@Context.Request.Query["subcategory"]&sortBy=recommeded">Rekommenderat</a>
+            <a class="dropdown-item" href="/products/shop?category=@Context.Request.Query["category"]&subcategory=@Context.Request.Query["subcategory"]&sortBy=price">Pris</a>
+            <a class="dropdown-item" href="/products/shop?category=@Context.Request.Query["category"]&subcategory=@Context.Request.Query["subcategory"]&sortBy=name">Namn</a>
+        </div>
+    </li>
+    </ul>
     <nav>
         <hr />
         <p style="padding-left: 10px;">Frösorter</p>

@@ -36,8 +36,9 @@ namespace FroSidanMVC.Models
             var user = accessor.HttpContext.User.Identity;
             var id = context.AspNetUsers
                 .Where(x => x.UserName == user.Name)
-                .Select(x => x.Id).Single();
-            return context.Orders.Where(x => x.CustomerId == id).ToArray();
+                .Select(x => x.Id).FirstOrDefault();
+            var x = context.Orders.Where(x => x.CustomerId == id).ToArray();
+            return x;
              //går det möjligen få detta till ett db-anrop istället för 2?
         }
 
