@@ -1,8 +1,8 @@
 ﻿@model ShopVM[]
 @{ViewBag.Title = "Shop";}
 
-<div class="dropdown" >
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float: right" >
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float: right">
         Sortera
     </button>
     <ul class="dropdown-menu">
@@ -12,11 +12,9 @@
     </ul>
 </div>
 
-
-
 <div class="side-menu">
     <form id="searchForm">
-        <input type="text" value="Sökfält..." id="searchStr"/>
+        <input type="text" placeholder="Sökfält..." id="searchStr" />
         <input type="submit" value="Sök" />
     </form>
     <nav>
@@ -27,64 +25,46 @@
         <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds" asp-route-subcategory="tomato"><i class="fas fa-leaf"></i>Tomater</a>
         <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds" asp-route-subcategory="squash"><i class="fas fa-tree"></i>Squash och Pumpa</a>
         <hr />
-        <p  style="padding-left: 10px;">Tillbehör</p>
+        <p style="padding-left: 10px;">Tillbehör</p>
         <a asp-controller="Products" asp-action="Shop" asp-route-category="accessories" asp-route-subcategory="lamps"><i class="fas fa-lightbulb"></i>Lampor</a>
         <a href="#"><i class="fas fa-hammer"></i>Övriga tillbehör</a>
     </nav>
-    
+
 </div>
 
 
 <div id="partial">
     <partial name="_ShopProducts" model="Model" />
 </div>
-@*<div class="container">
-        <div class="row row-sm-4">
-            @foreach (var item in Model)
-            {
-                <div class="col col-sm-3 align-items-stretch">
-                    <a asp-controller="Products" asp-action="Detail" asp-route-id=@item.Id>
-                        <div class="card card-body" style="height: 350px">
-                            <img src="~/Images/@item.ThumbnailUrl" style="height: 100px" class="card-img-top" alt="@item.Name" />
-                            <div class="card-body">
-                                <h5 class="card-title">@item.Name </h5>
-                                <p class="card-text">@item.SubCategory</p>
-                                <a href="#" onclick="AddToCart(@item.Id)" class="btn btn-success">Lägg till 🛒</a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            }
-        </div>
-    </div>*@
 
-<br />
+<!-- Modal -->
+<div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Varukorg</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalResult"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 @section scripts
 {
     <script type="text/javascript">
         function AddToCart(id) {
             $.ajax({
-                url: "/AddToCart/" + id,
+                url: "/AddToCartShop/" + id,
                 type: "GET",
-                success: (result) => console.log(result)
+                success: (result) => $("#modalResult").html(result)
             });
-        };
 
-        function ClearCart() {
-            $.ajax({
-                url: "/ClearCart/",
-                type: "GET",
-                success: (result) => console.log(result)
-            });
-        };
-
-        function RemoveSingle(id) {
-            $.ajax({
-                url: "/RemoveSingleFromCart/" + id,
-                type: "GET",
-                success: (result) => console.log(result)
-            });
         };
 
         $("#searchForm").submit(function (e) {

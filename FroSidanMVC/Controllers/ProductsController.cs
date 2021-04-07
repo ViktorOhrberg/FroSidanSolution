@@ -50,7 +50,7 @@ namespace FroSidanMVC.Controls
                 var allProducts = pService.GetAllProducts();
                 return View(allProducts);
             }
-            else if(subcategory == null)
+            else if (subcategory == null)
             {
                 var productsByCategory = pService.GetProductsByCategory(category, sortBy);
                 return View(productsByCategory);
@@ -62,13 +62,29 @@ namespace FroSidanMVC.Controls
             }
         }
         [HttpGet]
-        [Route("AddToCart/{id}")]
+        [Route("AddToCartCheckout/{id}")]
 
-        public async Task<IActionResult> AddToCartAsync(int id)
+        public async Task<IActionResult> AddToCartCheckoutAsync(int id)
         {
             var shoppingCart = await pService.AddToCartAsync(id);
             var model = await pService.GetSummaryVMAsync(shoppingCart);
             return PartialView("_OrderSummary", model);
+        }
+
+        [HttpGet]
+        [Route("AddToCartShop/{id}")]
+
+        public async Task<IActionResult> AddToCartShopAsync(int id)
+        {
+            var shoppingCart = await pService.AddToCartAsync(id);
+            var model = pService.GetAllProducts();
+            if (shoppingCart == null)
+                TempData["Message"] = "Varan är tillfälligt slut i lager och kunde inte lägga till i din varukorg";
+            else
+                TempData["Message"] = "Varan är tillagd i din varukorg";
+
+            return Content((string)TempData["Message"]);
+
         }
 
         [HttpGet]
@@ -102,16 +118,6 @@ namespace FroSidanMVC.Controls
             return PartialView("_OrderSummary", model);
         }
 
-        [HttpGet]
-        [Route("Summary")]
-
-        public async Task<IActionResult> Summary()
-        {
-            SummaryVM[] input = await pService.GetSummaryVMAsync();
-
-            return View(input);
-        }
-
         [Route("Checkout")]
         [HttpGet]
         public async Task<IActionResult> CheckoutAsync()
@@ -125,7 +131,7 @@ namespace FroSidanMVC.Controls
                 {
                     Id = User.Id,
                     FirstName = User.FirstName,
-                    LastName =  User.LastName,
+                    LastName = User.LastName,
                     Email = User.Email,
                     Street = User.Street,
                     Zip = User.Zip,
@@ -147,9 +153,10 @@ namespace FroSidanMVC.Controls
         [HttpPost]
         public async Task<IActionResult> CheckoutAsync(CheckoutVM input)
         {
-            await pService.PlaceOrderAsync(input);
+            int orderNum = await pService.PlaceOrderAsync(input);
             pService.DeleteCart();
-            return Redirect("index");
+
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
@@ -166,7 +173,7 @@ namespace FroSidanMVC.Controls
             foreach (string search in words)
             {
                 var q = products
-                    .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.SubCategory.ToLower().Contains(search.ToLower())) 
+                    .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.SubCategory.ToLower().Contains(search.ToLower()))
                     .ToList();
                 temp.AddRange(q);
             }
