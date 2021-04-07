@@ -75,7 +75,7 @@ Trivs i soligt fönster, uterum, växthus, utomhus i soligt och skyddat läge un
 Vid odling under vinterhalvåret krävs i regel någon form av växtbelysning.
 Hjälp blommorna med pollinering genom att skaka plantan eller med en liten pensel.
 Fleråring - Beskäres på hösten - Övervintras inomhus i ljust läge', 'aji_amarillo-websmall.jpg', 'aji_amarillo-web.jpg', 10, null, 29, 'Aji Amarillo'),
-
+go
 insert into Products ([Quantity], [SubCategory], [Category], [Description], [ThumbRef], [ImgRef], [Balance], [TempPrice], [Price], [Name])
 values
 (6, 'tomato', 'seeds', 'Spännande körsbärstomat som väcker uppmärksamhet med både smaken och utseendet. Mängder av 2-3 cm stora, mycket söta och välsmakande, guldgula frukter med orangeröda strimmor. Högavkastande för växthus och varma utelägen. Uppbindes.
@@ -89,7 +89,7 @@ Förkultiveras inomhus i krukor februari-april. Fyll krukorna med 2/3 plantering
 Odling från frö:
 Förkultiveras inomhus i krukor februari-april. Fyll krukorna med 2/3 planteringsjord och 1/3 såjord ovanpå. Täck sådden med klar plast försedd med lufthål. Håll sådden vid 22-25 grader, efter groning 18-20 grader och så ljust som möjligt. Utplanteras efter avhärdning i växthus eller på varmt frilandsläge när frostrisken är över. Uppbindes. Sidoskotten tjyvas.
 ', '9692_S.jpg', '9692.jpg', 10, null, 23, 'Oxheart')
-
+go
 insert into Products ([Quantity], [SubCategory], [Category], [Description], [ThumbRef], [ImgRef], [Balance], [TempPrice], [Price], [Name])
 values
 (6, 'squash', 'seeds', 'Sommarsquash. Cremevita, plattrunda, mussellika frukter med vågad kant. Krispigt fruktkött med mild god smak. Frukter kan ätas hela med skal precis som zucchini, färska i sallader, ugnsbakad, grillad m.m. Buskigt växtsätt, lämplig även för containerodling. Mycket lättodlad med stor växtkraft. Kan lagras en kortare tid. Ranklängd 1-2 m.
@@ -105,5 +105,5 @@ Förkultiveras inomhus i planteringsjord i april-maj. Transparent täckning för
 Odling från frö:
 Förkultiveras inomhus i planteringsjord i april-maj. Transparent täckning försedd med lufthål, alternativt lufta regelbundet. Håll sådden vid ca 25 grader, efter groning ca 20 grader. Utplanteras efter avhärdning när frostrisken är över. Kan även direktsås när jorden blivit uppvärmd till ca 15 grader. För varmt uteläge eller drivbänk. Skördas efterhand 20-30 cm långa.
 ', '97553_S.jpg', '97553.jpg', 10, null, 28, 'Sunstripe')
-
+go
 
