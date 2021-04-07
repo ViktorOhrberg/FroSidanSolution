@@ -6,13 +6,13 @@
 
 @{
     if (Model.Email == null)
-    {<p>Du är inte inloggad. Vill du <text><strong style="color:blue"><a asp-controller="Members" asp-action="Login" asp-route-returnUrl="Checkout">logga in</a></strong></text>?</p>}
+    {<p style="padding-left:30px">Du är inte inloggad. Vill du <text><strong style="color:blue"><a asp-controller="Members" asp-action="Login" asp-route-returnUrl="Checkout">logga in</a></strong></text>?</p>}
 }
 
 @if (Model.OrderCart.Length != 0)
 {
 
-    <form asp-controller="Products" asp-action="Checkout">
+    <form asp-controller="Products" asp-action="Checkout" style="padding-left:30px">
         <table>
             <h4>Adress för leverans</h4>
             <tr>
