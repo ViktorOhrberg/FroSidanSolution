@@ -1,19 +1,6 @@
 ﻿@model ShopVM[]
 @{ViewBag.Title = "Shop";}
 
-<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float: right">
-        Sortera
-    </button>
-    <ul class="dropdown-menu">
-        <li><a href="/products/shop?category=@Context.Request.Query["category"]&subcategory=@Context.Request.Query["subcategory"]&sortBy=recommeded">Rekommenderat</a></li>
-        <li><a href="/products/shop?category=@Context.Request.Query["category"]&subcategory=@Context.Request.Query["subcategory"]&sortBy=price">Pris</a></li>
-        <li><a href="/products/shop?category=@Context.Request.Query["category"]&subcategory=@Context.Request.Query["subcategory"]&sortBy=name">Namn</a></li>
-    </ul>
-</div>
-
-
-
 <div class="side-menu">
     <form id="searchForm">
         <input type="text" id="searchStr" />
