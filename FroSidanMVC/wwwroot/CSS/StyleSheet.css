@@ -64,40 +64,11 @@ a {
         color: black;
     }
 
-#emptyCart {
-    text-align: center;
-}
-
-#btnLogIn {
-    width: 150px;
-    margin-top: 10px;
-    background-color: #b9d2b1ff;
-    font-size: 23px;
-}
-
-    #btnLogIn:hover {
-        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-        transform: scale(1.05);
-    }
-
-#btnLogOut {
-    width: 150px;
-    margin-left: 20px;
-    background-color: #b9d2b1ff;
-    font-size: 23px;
-}
-
-    #btnLogOut:hover {
-        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-        transform: scale(1.05);
-    }
-
 td {
     padding: 5px;
 }
 
 /*Cards i Index*/
-/*-----------------------*/
 .rowIndex {
     display: flex;
     align-items: center;
@@ -127,8 +98,6 @@ td {
 
 
 /*Cards i Shop*/
-/*-----------------------*/
-
 .row {
     display: flex;
     align-items: center;
@@ -186,39 +155,40 @@ td {
     transform: scale(1.05);
     transform-origin: 50% 50%;
 }
-/*-----------------------*/
 
-/*allt här nedanför har med forms o göra*/
-.wrapper {
+/*Registrera användare-formuläret:*/
+.wrapper { /*Hela formulär-sidan*/
     min-height: 90vh;
-    background-size: cover;
-    background-repeat: no-repeat;
     display: flex;
-    align-items: center;
-    padding-top: 70px;
+    padding-top: 0px;
     padding-bottom: 70px;
 }
 
-.inner {
-    min-width: 800px;
+.inner { /*Formuläret*/
+    border-radius: 0px;
+    width: 1000px;
     margin: auto;
-    padding-top: 30px;
-    padding-bottom: 50px;
-    background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,0.8212418756565126) 11%, rgba(207,182,160,0.7960317916228992) 100%);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*border: solid 2px;*/
 }
 
-    .inner h3 {
+    .inner h2 { /*h2 rubriken*/
+        text-align: left;
+        padding: 10px;
+    }
+
+    .inner h3 { /*label texten*/
         font-size: 20px;
-        text-align: center;
         margin-bottom: 32px;
         color: black;
         letter-spacing: 3px;
     }
 
-form {
-    width: 55%;
+form { /*Formulärets input rutor*/
+    width: 60%;
     padding-left: 10px;
+    border-radius: 0;
 }
 
 .form-group {
@@ -229,34 +199,53 @@ form {
         width: 55%;
     }
 
-        .form-group .form-wrapper:first-child {
-            margin-right: 18px;
+        .form-group .form-wrapper:first-child { /*För- och efternamn*/
+            margin-right: 10px;
+            max-width: 38%;
         }
 
-.form-wrapper {
+.form-wrapper { /*Mellanrum mellan input rutorna*/
     margin-bottom: 15px;
 }
 
-    .form-wrapper label {
-        margin-bottom: 10px;
+    .form-wrapper label { /*Mellanrum mellan label och input*/
+        margin-bottom: 2px;
         display: inline-block;
     }
 
-.form-control {
+.control { /*Input rutorna*/
     border: 1px solid black;
     display: inline-block;
     width: 90%;
-    height: 40px;
+    height: 35px;
     padding: 0 18px;
-    border-radius: 18px;
-    background: none;
+    border-radius: 6px;
 }
 
-    .form-control:focus {
-        border: 5px solid #ae3c33;
-    }
-/*här slutar formstjafset och vänster navbar tar vid*/
+.control:hover { /*Input rutorna*/
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.1);
+}
 
+#btnSubmit {
+    width: 25%;
+    height: 40px;
+    color: white;
+    background-color: #389823;
+    border: none;
+    border-radius: 10px;
+}
+
+    #btnSubmit:hover {
+        box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.3);
+        transition: 0.1s;
+        opacity: 0.8;
+    }
+
+.required {
+    color: red;
+}
+
+/*här slutar formstjafset och vänster navbar tar vid*/
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,regular,500,700,900);
 
 * {

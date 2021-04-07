@@ -47,7 +47,7 @@ namespace FroSidanMVC.Controls
         {
             if (subcategory == null && category == null)
             {
-                var allProducts = pService.GetAllProducts();
+                var allProducts = pService.GetAllProductsAndSort(sortBy);
                 return View(allProducts);
             }
             else if (subcategory == null)
