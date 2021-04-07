@@ -1,7 +1,6 @@
 ﻿@model SummaryVM[]
 <h2 style="padding-left:30px">Varukorg</h2>
 
-
 @{
 
     decimal sum = Model.Sum(p => p.Price * p.Quantity);

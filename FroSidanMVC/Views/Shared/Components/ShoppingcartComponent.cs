@@ -15,9 +15,9 @@ namespace FroSidanMVC.Views.Shared.Components
         {
             this.service = service;
         }
-        public async Task<IViewComponentResult> InvokeAsync(int count)
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            ShoppingCartComponentVM input = new ShoppingCartComponentVM { NoOfItems = 3, TotPrice = 87.00m };
+            ShoppingCartComponentVM input = new ShoppingCartComponentVM { NoOfItems = service.GetShoppingCart().Count, TotPrice = await service.GetOrderPriceAsync()??0 };
             return View(input);
         }
     }

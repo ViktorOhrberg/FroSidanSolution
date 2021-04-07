@@ -79,7 +79,7 @@ namespace FroSidanMVC.Models
 
         internal ShopVM[] GetProductsBySubCategory(string subcategory, string sortArray)
         {
-            
+
             var q = GetAllProducts();
             var qq = q.Where(q => q.SubCategory.ToLower() == subcategory.ToLower())
                 .ToArray();
@@ -92,13 +92,13 @@ namespace FroSidanMVC.Models
 
         internal ShopVM[] SortByName(ShopVM[] list)
         {
-            
+
             return list.OrderBy(x => x.Name).ToArray();
         }
 
         internal ShopVM[] SortByPrice(ShopVM[] list)
         {
-            
+
             var sorted = list.OrderBy(x => x.Price).ToArray();
             return sorted;
 
@@ -215,12 +215,14 @@ namespace FroSidanMVC.Models
             return result[0];
         }
 
-        private async Task<decimal?> GetOrderPriceAsync()
+        public async Task<decimal?> GetOrderPriceAsync()
         {
             var shoppingCart = await GetSummaryVMAsync();
             decimal? totPrice = shoppingCart.Sum(p => p.Price * p.Quantity);
 
-            if (totPrice <= 300)
+            if (totPrice == 0)
+                totPrice = 0;
+            else if (totPrice <= 300)
                 totPrice += 39;
             return totPrice;
 
