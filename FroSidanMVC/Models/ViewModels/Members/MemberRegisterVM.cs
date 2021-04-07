@@ -4,23 +4,23 @@ namespace FroSidanMVC.Models
 {
     public class MemberRegisterVM
     {
-        [Required]
+        [Required(ErrorMessage = "Ange ett lösenord")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Matchar ej angivet lösenord")]
         [DataType(DataType.Password)]
         [Display(Name = "Repeat password")]
         [Compare(nameof(MemberRegisterVM.Password))]
         public string PasswordRepeat { get; set; }
 
         public string UserName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Ej korrekt angiven epostadress")]
         [EmailAddress]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Ange förnamn")]
         public string FirstName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Ange efternamn")]
         public string LastName { get; set; }
         public string Street { get; set; }
         public string City { get; set; }
