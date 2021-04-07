@@ -1,17 +1,21 @@
 ﻿@model MyPagesVM
 @{ViewBag.Title = "Mina sidor";}
 
-<p>Inloggad som @Model.Username</p>
-@foreach(var item in Model.Orders)
-            {
-                <p>Beställningstid - @item.Date<br />
-                OrderID @item.Id 
-                </p> 
+<div style="padding-left:30px">
 
-                @*detta måste givetvis fixas, mest för att se så allt funkar. diskutera vad som ska visas? 
-                  bilder eller produktnamn och pris direkt här eller klickbar länk?
-                  bör pris på varukorgen kanske sparas som en prop?
-                  ändras priset efter ordern är lagd kommer priset bli ett annat..? *@
-    
-            }
-<a asp-action="Logout"><button id="btn"> Logga ut</button></a>
+    <p>Inloggad som @Model.Username</p>
+    @foreach (var item in Model.Orders)
+    {
+        <p>
+            Beställningstid - @item.Date<br />
+            OrderID @item.Id
+        </p>
+
+        @*detta måste givetvis fixas, mest för att se så allt funkar. diskutera vad som ska visas?
+            bilder eller produktnamn och pris direkt här eller klickbar länk?
+            bör pris på varukorgen kanske sparas som en prop?
+            ändras priset efter ordern är lagd kommer priset bli ett annat..? *@
+
+    }
+    <a asp-action="Logout"><button id="btn"> Logga ut</button></a>
+</div>
