@@ -1,5 +1,5 @@
 ﻿body {
-    background-color: #FFFFFF;
+    background-color: #fffdfa;
 }
 
 nav {
@@ -116,33 +116,32 @@ a {
 /*allt här nedanför har med forms o göra*/
 .wrapper {
     min-height: 90vh;
-    background-size: cover;
-    background-repeat: no-repeat;
+
     display: flex;
-    align-items: center;
-    padding-top: 70px;
+
+    padding-top: 0px;
     padding-bottom: 70px;
 }
 
 .inner {
-    min-width: 800px;
+    border-radius: 0px;
+    width: 300px;
     margin: auto;
     padding-top: 30px;
     padding-bottom: 50px;
-    background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,0.8212418756565126) 11%, rgba(207,182,160,0.7960317916228992) 100%);
+    background-color: #f29e4cff;
 }
 
     .inner h3 {
         font-size: 20px;
-        text-align: center;
+
         margin-bottom: 32px;
         color: black;
         letter-spacing: 3px;
     }
 
 form {
-    width: 55%;
+    width: 90%;
     padding-left: 10px;
 }
 
