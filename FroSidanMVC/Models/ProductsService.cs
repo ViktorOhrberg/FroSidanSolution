@@ -55,6 +55,16 @@ namespace FroSidanMVC.Models
             return products;
         }
 
+        internal ShopVM[] GetAllProductsAndSort(string sortArray)
+        {
+            var q = GetAllProducts();
+            if (sortArray == "price")
+                return SortByPrice(q);
+            else if (sortArray == "name")
+                return SortByName(q);
+            else return q.OrderBy(x => x.Id).ToArray();
+        }
+
         internal ShopVM[] GetProductsByCategory(string category, string sortArray)
         {
             var q = GetAllProducts();
