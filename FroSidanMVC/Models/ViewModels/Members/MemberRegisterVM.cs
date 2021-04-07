@@ -4,6 +4,7 @@ namespace FroSidanMVC.Models
 {
     public class MemberRegisterVM
     {
+        [StringLength(100, ErrorMessage = "Lösenordet måste vara minst 6 tecken långt.", MinimumLength = 6)]
         [Required(ErrorMessage = "Ange ett lösenord")]
         [DataType(DataType.Password)]
         public string Password { get; set; }

@@ -170,8 +170,8 @@ td {
     margin: auto;
     padding-top: 10px;
     padding-bottom: 10px;
-    /*border: solid 2px;*/
-}
+/*    border: solid 2px;
+*/}
 
     .inner h2 { /*h2 rubriken*/
         text-align: left;
@@ -186,7 +186,7 @@ td {
     }
 
 form { /*Formulärets input rutor*/
-    width: 60%;
+    width: 50%;
     padding-left: 10px;
     border-radius: 0;
 }
