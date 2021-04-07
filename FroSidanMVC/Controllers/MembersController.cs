@@ -31,6 +31,9 @@ namespace FroSidanMVC.Controllers
         [Route("login")]
         public IActionResult Login(string returnUrl)
         {
+            if (returnUrl == null)
+                returnUrl = "MyPages";
+
             return View(new MembersLoginVM { ReturnUrl = returnUrl });
             
         }
