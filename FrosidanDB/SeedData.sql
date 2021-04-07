@@ -74,7 +74,7 @@ Plantera om efterhand som plantan växer och rötterna utvecklas.
 Trivs i soligt fönster, uterum, växthus, utomhus i soligt och skyddat läge under sommaren.
 Vid odling under vinterhalvåret krävs i regel någon form av växtbelysning.
 Hjälp blommorna med pollinering genom att skaka plantan eller med en liten pensel.
-Fleråring - Beskäres på hösten - Övervintras inomhus i ljust läge', 'aji_amarillo-websmall.jpg', 'aji_amarillo-web.jpg', 10, null, 29, 'Aji Amarillo'),
+Fleråring - Beskäres på hösten - Övervintras inomhus i ljust läge', 'aji_amarillo-websmall.jpg', 'aji_amarillo-web.jpg', 10, null, 29, 'Aji Amarillo')
 go
 insert into Products ([Quantity], [SubCategory], [Category], [Description], [ThumbRef], [ImgRef], [Balance], [TempPrice], [Price], [Name])
 values
