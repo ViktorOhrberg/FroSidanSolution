@@ -9,74 +9,75 @@
     {<p>Du är inte inloggad. Vill du <text><strong style="color:blue"><a asp-controller="Members" asp-action="Login" asp-route-returnUrl="Checkout">logga in</a></strong></text>?</p>}
 }
 
+@if (Model.OrderCart.Length != 0)
+{
 
+    <form asp-controller="Products" asp-action="Checkout">
+        <table>
+            <h4>Adress för leverans</h4>
+            <tr>
+                <td><label asp-for="FirstName">Förnamn: </label></td>
+                <td><input asp-for="FirstName" /></td>
+                <td><span asp-validation-for="FirstName"></span></td>
+            </tr>
+            <tr>
+                <td><label asp-for="LastName">Efternamn: </label></td>
+                <td><input asp-for="LastName" /></td>
+                <td><span asp-validation-for="LastName"></span></td>
+            </tr>
+            <tr>
+                <td><label asp-for="Street">Gata: </label></td>
+                <td><input asp-for="Street" /></td>
+                <td><span asp-validation-for="Street"></span></td>
+            </tr>
+            <tr>
+                <td><label asp-for="Zip">Postnummer: </label></td>
+                <td><input asp-for="Zip" /></td>
+                <td><span asp-validation-for="Zip"></span></td>
+            </tr>
+            <tr>
+                <td><label asp-for="City">Stad: </label></td>
+                <td><input asp-for="City" /></td>
+                <td><span asp-validation-for="City"></span></td>
+            </tr>
+            <tr>
+                <td><label asp-for="Email">E-mail</label></td>
+                <td><input asp-for="Email" /></td>
+                <td><span asp-validation-for="Email"></span></td>
+            </tr>
 
-<form asp-controller="Products" asp-action="Checkout">
-    <table>
-        <h4>Adress för leverans</h4>
-        <tr>
-            <td><label asp-for="FirstName">Förnamn: </label></td>
-            <td><input asp-for="FirstName" /></td>
-            <td><span asp-validation-for="FirstName"></span></td>
-        </tr>
-        <tr>
-            <td><label asp-for="LastName">Efternamn: </label></td>
-            <td><input asp-for="LastName" /></td>
-            <td><span asp-validation-for="LastName"></span></td>
-        </tr>
-        <tr>
-            <td><label asp-for="Street">Gata: </label></td>
-            <td><input asp-for="Street" /></td>
-            <td><span asp-validation-for="Street"></span></td>
-        </tr>
-        <tr>
-            <td><label asp-for="Zip">Postnummer: </label></td>
-            <td><input asp-for="Zip" /></td>
-            <td><span asp-validation-for="Zip"></span></td>
-        </tr>
-        <tr>
-            <td><label asp-for="City">Stad: </label></td>
-            <td><input asp-for="City" /></td>
-            <td><span asp-validation-for="City"></span></td>
-        </tr>
-        <tr>
-            <td><label asp-for="Email">E-mail</label></td>
-            <td><input asp-for="Email" /></td>
-            <td><span asp-validation-for="Email"></span></td>
-        </tr>
+        </table>
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="OrderCart" />
 
-    </table>
-    <input type="hidden" asp-for="Id" />
-    <input type="hidden" asp-for="OrderCart" />
+        <br />
+        <br />
 
-    <br />
-    <br />
+        <h4>Betalningsalternativ</h4>
 
-    <h4>Betalningsalternativ</h4>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+                Kort (Visa/Master Card/American Express)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+            <label class="form-check-label" for="exampleRadios2">
+                Faktura
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+            <label class="form-check-label" for="exampleRadios3">
+                Klarna
+            </label>
+        </div>
+        <input type="submit" value="Lägg order" data-bs-toggle="modal" data-bs-target="#checkoutModal" />
+        <br />
 
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-        <label class="form-check-label" for="exampleRadios1">
-            Kort (Visa/Master Card/American Express)
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-        <label class="form-check-label" for="exampleRadios2">
-            Faktura
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
-        <label class="form-check-label" for="exampleRadios3">
-            Klarna
-        </label>
-    </div>
-    <input type="submit" value="Lägg order" />
-    <br />
-
-</form>
-
+    </form>
+}
 
 @section scripts
 {

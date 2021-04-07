@@ -82,7 +82,7 @@ namespace FroSidanMVC.Controls
                 TempData["Message"] = "Varan är tillfälligt slut i lager och kunde inte lägga till i din varukorg";
             else
                 TempData["Message"] = "Varan är tillagd i din varukorg";
-            
+
             return Content((string)TempData["Message"]);
 
         }
@@ -153,9 +153,10 @@ namespace FroSidanMVC.Controls
         [HttpPost]
         public async Task<IActionResult> CheckoutAsync(CheckoutVM input)
         {
-            await pService.PlaceOrderAsync(input);
+            int orderNum = await pService.PlaceOrderAsync(input);
             pService.DeleteCart();
-            return Redirect("index");
+
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
