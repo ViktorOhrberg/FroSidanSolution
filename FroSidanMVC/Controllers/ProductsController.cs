@@ -155,8 +155,21 @@ namespace FroSidanMVC.Controls
         {
             int orderNum = await pService.PlaceOrderAsync(input);
             pService.DeleteCart();
+            TempData["Message"] = $"{orderNum}";
 
-            return RedirectToAction(nameof(Index));
+
+            return RedirectToAction(nameof(CheckoutConfirmed));
+        }
+        [Route("CheckoutConfirmed")]
+        [HttpGet]
+        public IActionResult CheckoutConfirmed()
+        {
+            string ID = ((string)TempData["Message"]);
+            CheckoutConfirmedVM input = new CheckoutConfirmedVM
+            {
+                OrderID = ID
+            };
+            return View(input);
         }
 
         [HttpGet]

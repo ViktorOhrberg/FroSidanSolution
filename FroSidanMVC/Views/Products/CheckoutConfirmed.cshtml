@@ -1,0 +1,9 @@
+﻿@model CheckoutConfirmedVM
+
+    <div style="padding-left:30px">
+
+        <h3>Beställning slutförd</h3>
+        <p>Tack för din beställning. Din order behandlas och beräknas vara levererad inom 1-3 vardagar.</p>
+        <p>Ditt ordernummer är: <strong>@Model.OrderID</strong></p>
+        <a asp-controller="Members" asp-action="Mypages">Gå till <strong>mina sidor</strong>.</a>
+</div>
