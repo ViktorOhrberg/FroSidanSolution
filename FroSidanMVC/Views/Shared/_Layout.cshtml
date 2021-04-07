@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
 </head>
-<body style="        background-color: #fffdfa">
+<body style="background-color: #fffdfa">
     <nav class="navbar nav-tabs navbar-expand-md align-left">
         <a class="navbar-brand" href="index">
             <img src="/Images/Banner_clean2.png" width="350" height="100" style="left:auto" class="align-left align-top" alt="">
@@ -30,6 +30,7 @@
                 </li>
             </ul>
         </div>
+        <div style="float:right">@await Component.InvokeAsync("ShoppingcartComponent", 3)</div>
         @*<partial name="_ShopCartBox" />*@
     </nav>
 
@@ -38,27 +39,27 @@
     </div>
 
     @*<footer class="page-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-12">
-                    <a href="https://facebook.com" target="_blank" title="Facebook" class="fa fa-facebook"></a>
-                    <a href="https://twitter.com/?lang=sv" target="_blank" title="Twitter" class="fa fa-twitter"></a>
-                    <a href="https://www.instagram.com" target="_blank" title="Instagram" class="fa fa-instagram"></a>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <h6 class="text-uppercase font-weight-bold">Kontakt</h6>
-                    <p>
-                        Borgarfjordsgatan 4, 164 55 Kista, Stockholm
-                        <br /><a href="mailto:emil.91@hotmail.com"><u>chilibueno@gmail.com</u></a>
-                    <br />+ 01 234 567 88
-                    </p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-12">
+                        <a href="https://facebook.com" target="_blank" title="Facebook" class="fa fa-facebook"></a>
+                        <a href="https://twitter.com/?lang=sv" target="_blank" title="Twitter" class="fa fa-twitter"></a>
+                        <a href="https://www.instagram.com" target="_blank" title="Instagram" class="fa fa-instagram"></a>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <h6 class="text-uppercase font-weight-bold">Kontakt</h6>
+                        <p>
+                            Borgarfjordsgatan 4, 164 55 Kista, Stockholm
+                            <br /><a href="mailto:emil.91@hotmail.com"><u>chilibueno@gmail.com</u></a>
+                        <br />+ 01 234 567 88
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-copyright text-center">
-            © 2021 Copyright: ChiliBueno.com
-        </div>
-    </footer>*@
+            <div class="footer-copyright text-center">
+                © 2021 Copyright: ChiliBueno.com
+            </div>
+        </footer>*@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
