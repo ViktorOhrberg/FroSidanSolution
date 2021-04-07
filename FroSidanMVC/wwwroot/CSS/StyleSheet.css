@@ -241,6 +241,10 @@ form { /*Formulärets input rutor*/
         opacity: 0.8;
     }
 
+.required {
+    color: red;
+}
+
 /*här slutar formstjafset och vänster navbar tar vid*/
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,regular,500,700,900);
 

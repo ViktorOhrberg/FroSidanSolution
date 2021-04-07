@@ -6,28 +6,28 @@
             <h2>Registrera medlem</h2>
             <div class="form-group">
                 <div class="form-wrapper">
-                    <label asp-for="FirstName">Förnamn:</label><br />
+                    <label asp-for="FirstName">Förnamn:</label><span class="required">*</span><br />
                     <input asp-for="FirstName" class="control">
-                    <span asp-validation-for="FirstName"></span>
+                    <span class="required" asp-validation-for="FirstName"></span>
                 </div>
                 <div class="form-wrapper">
-                    <label asp-for="LastName">Efternamn:</label><br />
+                    <label asp-for="LastName">Efternamn:</label><span class="required">*</span><br />
                     <input asp-for="LastName" class="control">
                     <span asp-validation-for="LastName"></span>
                 </div>
             </div>
             <div class="form-wrapper">
-                <label asp-for="Email">E-post:</label><br />
+                <label asp-for="Email">E-post:</label><span class="required">*</span><br />
                 <input asp-for="Email" class="control">
                 <span asp-validation-for="Email"></span>
             </div>
             <div class="form-wrapper">
-                <label asp-for="Password">Lösenord:</label><br />
+                <label asp-for="Password">Lösenord:</label><span class="required">*</span><br />
                 <input asp-for="Password" class="control">
                 <span asp-validation-for="Password"></span>
             </div>
             <div class="form-wrapper">
-                <label asp-for="PasswordRepeat">Repetera Lösenord:</label><br />
+                <label asp-for="PasswordRepeat">Repetera Lösenord:</label><span class="required">*</span><br />
                 <input asp-for="PasswordRepeat" class="control">
                 <span asp-validation-for="PasswordRepeat"></span>
             </div>
@@ -49,6 +49,7 @@
             <br />
             <input id="btnSubmit" type="submit" value="Registrera" />
             <div asp-validation-summary="All"></div>
+            <p><span class="required">*</span> = Obligatorisk</p>
         </form>
     </div>
 </div>
