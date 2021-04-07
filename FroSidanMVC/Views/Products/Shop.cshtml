@@ -48,7 +48,7 @@
             $.ajax({
                 url: "/AddToCartShop/" + id,
                 type: "GET",
-                success: (result) => Component.InvokeAsync("ShoppingcartCompoonent")
+                success: (result) => $("#component").html(result)
             });
 
         };

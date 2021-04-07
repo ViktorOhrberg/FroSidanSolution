@@ -1,6 +1,8 @@
 ﻿@model ShoppingCartComponentVM
 
 <div>
-    <p>Antal varor: @Model.NoOfItems <br />
-    Pris: @Model.TotPrice.ToString("c")</p>
+    <p>
+        Antal varor: <span id="items"> @Model.NoOfItems </span> <br />
+        Pris: <span id="price">@Model.TotPrice.ToString("c") </span>
+     </p>
 </div>

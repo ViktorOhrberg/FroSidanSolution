@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Http;
 using FroSidanMVC.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http.Extensions;
+using FroSidanMVC.Views.Shared.Components;
+using Newtonsoft.Json;
 
 namespace FroSidanMVC.Controls
 {
@@ -77,14 +79,11 @@ namespace FroSidanMVC.Controls
         public async Task<IActionResult> AddToCartShopAsync(int id)
         {
             var shoppingCart = await pService.AddToCartAsync(id);
-            var model = pService.GetAllProducts();
-            if (shoppingCart == null)
-                TempData["Message"] = "Varan är tillfälligt slut i lager och kunde inte lägga till i din varukorg";
-            else
-                TempData["Message"] = "Varan är tillagd i din varukorg";
 
-            return Content((string)TempData["Message"]);
+            //var model = JsonConvert.SerializeObject(new ShoppingCartComponentVM { NoOfItems = pService.GetShoppingCart().Count, TotPrice = await pService.GetOrderPriceAsync() ?? 0 });
+            var model = new ShoppingCartComponentVM { NoOfItems = pService.GetShoppingCart(JsonConvert.SerializeObject(shoppingCart)).Count, TotPrice = await pService.GetOrderPriceAsync(shoppingCart) ?? 0 };
 
+            return ViewComponent("ShoppingcartComponent", model);
         }
 
         [HttpGet]
