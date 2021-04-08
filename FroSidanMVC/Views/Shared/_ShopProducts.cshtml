@@ -13,7 +13,7 @@
                                 <h5 class="card-title text-truncate">@item.Name </h5>
                                 <p class="card-text">@item.SubCategory</p>
                                 <p class="card-text"><strong>@item.Price.ToString("c")</strong></p>
-                                <a href="#" onclick="AddToCart(@item.Id)" @*data-bs-toggle="modal" data-bs-target="#purchaseModal"*@ class="btn btn-primary">Lägg i varukorg <i class="fas fa-shopping-cart"></i></a>
+                                <a onclick="AddToCart(@item.Id)" @*data-bs-toggle="modal" data-bs-target="#purchaseModal"*@ class="btn btn-primary">Lägg i varukorg <i class="fas fa-shopping-cart"></i></a>
                             </div>
                         </div>
                     </a>

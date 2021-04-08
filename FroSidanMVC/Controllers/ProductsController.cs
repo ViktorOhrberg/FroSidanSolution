@@ -79,11 +79,7 @@ namespace FroSidanMVC.Controls
         public async Task<IActionResult> AddToCartShopAsync(int id)
         {
             var shoppingCart = await pService.AddToCartAsync(id);
-
-            //var model = JsonConvert.SerializeObject(new ShoppingCartComponentVM { NoOfItems = pService.GetShoppingCart().Count, TotPrice = await pService.GetOrderPriceAsync() ?? 0 });
-            var model = new ShoppingCartComponentVM { NoOfItems = pService.GetShoppingCart(JsonConvert.SerializeObject(shoppingCart)).Count, TotPrice = await pService.GetOrderPriceAsync(shoppingCart) ?? 0 };
-
-            return ViewComponent("ShoppingcartComponent", model);
+            return ViewComponent("ShoppingcartComponent", shoppingCart);
         }
 
         [HttpGet]
