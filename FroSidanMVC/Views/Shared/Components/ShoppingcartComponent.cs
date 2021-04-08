@@ -32,7 +32,7 @@ namespace FroSidanMVC.Views.Shared.Components
             }
 
             //var model = JsonConvert.SerializeObject(new ShoppingCartComponentVM { NoOfItems = pService.GetShoppingCart().Count, TotPrice = await pService.GetOrderPriceAsync() ?? 0 });
-            var model = new ShoppingCartComponentVM { NoOfItems = items, TotPrice = price };
+            var model = new ShoppingCartComponentVM { NoOfItems = items, TotPrice = decimal.ToInt32(price) };
 
             return View("default", model);
         }
@@ -40,6 +40,6 @@ namespace FroSidanMVC.Views.Shared.Components
     public class ShoppingCartComponentVM
     {
         public int NoOfItems { get; set; }
-        public decimal TotPrice { get; set; }
+        public int TotPrice { get; set; }
     }
 }
