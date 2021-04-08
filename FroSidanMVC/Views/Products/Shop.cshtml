@@ -7,16 +7,17 @@
         <input type="submit" value="Sök" />
     </form>
     <ul>
-    <li class="nav-item dropdown" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            Sortera efter
-        </a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="/products/shop?category=@Context.Request.Query["category"]&subcategory=@Context.Request.Query["subcategory"]&sortBy=recommeded">Rekommenderat</a>
-            <a class="dropdown-item" href="/products/shop?category=@Context.Request.Query["category"]&subcategory=@Context.Request.Query["subcategory"]&sortBy=price">Pris</a>
-            <a class="dropdown-item" href="/products/shop?category=@Context.Request.Query["category"]&subcategory=@Context.Request.Query["subcategory"]&sortBy=name">Namn</a>
-        </div>
-    </li>
+        <li class="nav-item dropdown" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                Sortera efter
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/products/shop?category=@Context.Request.Query["category"]&subcategory=@Context.Request.Query["subcategory"]&sortBy=recommeded">Rekommenderat</a>
+                <a class="dropdown-item" href="/products/shop?category=@Context.Request.Query["category"]&subcategory=@Context.Request.Query["subcategory"]&sortBy=price">Pris</a>
+                <a class="dropdown-item" href="/products/shop?category=@Context.Request.Query["category"]&subcategory=@Context.Request.Query["subcategory"]&sortBy=name">Namn</a>
+            </div>
+        </li>
+
     </ul>
     <nav class="leftnav">
         <hr />
@@ -30,7 +31,11 @@
         <a asp-controller="Products" asp-action="Shop" asp-route-category="lamps"><i class="fas fa-lightbulb"></i>Lampor</a>
         <a asp-controller="Products" asp-action="Shop" asp-route-category="accessories"><i class="fas fa-hammer"></i>Övriga tillbehör</a>
     </nav>
-
+    <ul>
+        <li class="nav-item">
+            <a class="nav-link active" asp-controller="Products" asp-action="Shop">Rensa filter</a>
+        </li>
+    </ul>
 </div>
 
 
