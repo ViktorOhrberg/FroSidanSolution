@@ -157,15 +157,19 @@ namespace FroSidanMVC.Models
 
         public List<int> GetShoppingCart()
         {
-            var q = accessor.HttpContext.Request.Cookies["shoppingCart"];
+            var shoppingCart = accessor.HttpContext.Request.Cookies["shoppingCart"];
+            return GetShoppingCart(shoppingCart);
+        }
+        public List<int> GetShoppingCart(string shoppingCart)
+        {
 
-            if (q == null)
+            if (shoppingCart == null)
             {
                 return new List<int>();
             }
             else
             {
-                return JsonConvert.DeserializeObject<List<int>>(q);
+                return JsonConvert.DeserializeObject<List<int>>(shoppingCart);
             }
         }
 
@@ -215,6 +219,18 @@ namespace FroSidanMVC.Models
             return result[0];
         }
 
+        public async Task<decimal?> GetOrderPriceAsync(List<int> input)
+        {
+            var shoppingCart = await GetSummaryVMAsync(input);
+            decimal? totPrice = shoppingCart.Sum(p => p.Price * p.Quantity);
+
+            if (totPrice == 0)
+                totPrice = 0;
+            else if (totPrice <= 300)
+                totPrice += 39;
+            return totPrice;
+
+        }
         public async Task<decimal?> GetOrderPriceAsync()
         {
             var shoppingCart = await GetSummaryVMAsync();
@@ -225,7 +241,6 @@ namespace FroSidanMVC.Models
             else if (totPrice <= 300)
                 totPrice += 39;
             return totPrice;
-
         }
 
         public List<int> RemoveAllFromCart(int id)
