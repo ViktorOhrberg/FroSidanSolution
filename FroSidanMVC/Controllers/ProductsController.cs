@@ -174,22 +174,16 @@ namespace FroSidanMVC.Controls
         {
 
             var products = pService.GetAllProducts();
-            List<ShopVM> temp = new List<ShopVM>();
             var words = searchStr.Split(' ');
-
 
             foreach (string search in words)
             {
-                var q = products
+                products = products
                     .Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.SubCategory.ToLower().Contains(search.ToLower()))
-                    .ToList();
-                temp.AddRange(q);
+                    .ToArray();
             }
 
-            var model = temp.Distinct()
-                .ToArray();
-
-            return PartialView("_ShopProducts", model);
+            return PartialView("_ShopProducts", products);
         }
     }
 }
