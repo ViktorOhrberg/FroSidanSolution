@@ -1,21 +1,22 @@
 ﻿@model MembersLoginVM
-
-<form asp-controller="Members" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
-    @*<div asp-validation-summary="All"></div>*@
-    <table id="tableLogIn">
-        <h3>Logga in</h3>
-        <tr>
-            <td><label asp-for="Username">E-mail: </label></td>
-            <td><input asp-for="Username" /></td>
-            <td><span asp-validation-for="Username"></span></td>
-        </tr>
-        <tr>
-            <td><label asp-for="Password">Lösenord: </label></td>
-            <td><input asp-for="Password" /></td>
-            <td><span asp-validation-for="Password"></span></td>
-        </tr>
-    </table>
-    <input type="submit" value="Logga in" id="btn" />
-</form>
-<br />
-<p>Inte medlem än?<a asp-controller="Members" asp-action="Register"> <u>Registrera konto</u></a></p>
+    <div style="padding-left: 30px;">
+        <form asp-controller="Members" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+            @*<div asp-validation-summary="All"></div>*@
+            <table id="tableLogIn">
+                <h3>Logga in</h3>
+                <tr>
+                    <td><label asp-for="Username">E-mail: </label></td>
+                    <td><input asp-for="Username" /></td>
+                    <td><span asp-validation-for="Username"></span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Password">Lösenord: </label></td>
+                    <td><input asp-for="Password" /></td>
+                    <td><span asp-validation-for="Password"></span></td>
+                </tr>
+            </table>
+            <input type="submit" value="Logga in" id="btn" />
+        </form>
+        <br />
+        <p>Inte medlem än?<a asp-controller="Members" asp-action="Register"> <u>Registrera konto</u></a></p>
+    </div>
