@@ -10,32 +10,34 @@
 
 </head>
 <body style="background-color: #fffdfa">
-    <nav class="navbar nav-tabs navbar-expand-md align-left">
-        <a class="navbar-brand" href="index">
-            <img src="/Images/Banner_clean2.png" width="350" height="100" style="left:auto" class="align-left align-top" alt="">
-        </a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent15">
-            <ul class="navbar-nav" style="font-size: 20px;">
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Products" asp-action="Index">Startsida</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Products" asp-action="Shop">Bläddra</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Members" asp-action="MyPages">Mina sidor</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Products" asp-action="Checkout">Varukorg</a>
-                </li>
-            </ul>
-        </div>
-        @if (ViewBag.HideCart == null || !ViewBag.HideCart) 
-        { 
-                <div style="float:right; padding-right:30px;">@await Component.InvokeAsync("ShoppingcartComponent")</div>
-        }
-    </nav>
+    <div>
+        <nav class="navbar nav-tabs navbar-expand-md align-left">
+            <a class="navbar-brand" href="index">
+                <img src="/Images/Banner_clean2.png" width="350" height="100" style="left:auto" class="align-left align-top" alt="">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent15">
+                <ul class="navbar-nav" style="font-size: 20px;">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Products" asp-action="Index">Startsida</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Products" asp-action="Shop">Bläddra</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Members" asp-action="MyPages">Mina sidor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Products" asp-action="Checkout">Varukorg</a>
+                    </li>
+                </ul>
+            </div>
+            @if (ViewBag.HideCart == null || !ViewBag.HideCart)
+            {
+                <div class="shoppingCart">@await Component.InvokeAsync("ShoppingcartComponent")</div>
+            }
+        </nav>
 
+    </div>
     <div>
         @RenderBody()
     </div>

@@ -294,8 +294,21 @@ nav a {
     position: relative;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+.shoppingCart {
+    float:right; 
+    padding-right:30px;
+    color: black;
+    position: sticky;
+}
 
-    nav a + a::before {
+.shoppingCart a{
+    
+    color: black;
+}
+
+
+
+    .leftnav a + a::before {
         content: '';
         position: absolute;
         border-top: 1px solid #fff;
@@ -304,13 +317,13 @@ nav a {
         top: 0;
     }
 
-    nav a .fas {
+    .leftnav a .fas {
         margin-right: 0.5em;
         transform: scale(0);
         transition: .5s;
     }
 
-    nav a:hover .fas {
+    .leftnav a:hover .fas {
         margin-right: 1.9em;
         transform: scale(1);
     }

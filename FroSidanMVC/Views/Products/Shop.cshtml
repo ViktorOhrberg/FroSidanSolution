@@ -18,7 +18,7 @@
         </div>
     </li>
     </ul>
-    <nav>
+    <nav class="leftnav">
         <hr />
         <p style="padding-left: 10px;">Frösorter</p>
         <a asp-controller="Products" asp-action="Shop" asp-route-category="seeds"><i class="fas fa-seedling"></i>Bläddra alla frön</a>
@@ -49,6 +49,8 @@
                 type: "GET",
                 success: (result) => $("#component").html(result)
             });
+            let x = document.getElementById(id+'button');
+            x.style.color = "blue";
             console.log("efter ajax");
         };
 
