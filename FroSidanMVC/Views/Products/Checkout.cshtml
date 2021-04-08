@@ -1,5 +1,5 @@
 ﻿@model CheckoutVM
-
+@{ViewBag.HideCart = true;}
 <div id="partial">
     <partial name="_OrderSummary" model="Model.OrderCart" />
 </div>
@@ -94,7 +94,7 @@
             $.ajax({
                 url: "/RemoveAllFromCart/" + id,
                 type: "GET",
-                success: (result) => $("#partial").html(result)
+                success: (result) => $("#partial").html(result);
             });
         };
 

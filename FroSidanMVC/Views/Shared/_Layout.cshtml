@@ -30,7 +30,10 @@
                 </li>
             </ul>
         </div>
-        <div style="float:right; padding-right:30px;">@await Component.InvokeAsync("ShoppingcartComponent")</div>
+        @if (ViewBag.HideCart == null || !ViewBag.HideCart) 
+        { 
+                <div style="float:right; padding-right:30px;">@await Component.InvokeAsync("ShoppingcartComponent")</div>
+        }
     </nav>
 
     <div>
