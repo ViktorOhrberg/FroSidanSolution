@@ -45,12 +45,13 @@
 {
     <script type="text/javascript">
         function AddToCart(id) {
+            console.log("före ajax");
             $.ajax({
                 url: "/AddToCartShop/" + id,
                 type: "GET",
                 success: (result) => $("#component").html(result)
             });
-
+            console.log("efter ajax");
         };
 
         $("#searchForm").submit(function (e) {
