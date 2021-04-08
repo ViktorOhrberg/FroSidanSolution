@@ -1,6 +1,6 @@
 ﻿@model ShoppingCartComponentVM
 
-<div>
-    <p>Antal varor: @Model.NoOfItems <br />
-    Pris: @Model.TotPrice.ToString("c")</p>
+<div style="border: solid white 2px; border-radius:30px; text-align:center; padding: 5px 5px 5px 5px">
+    <h5 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: white;"><i class="fas fa-shopping-cart"></i> @Model.NoOfItems <br />
+    @Model.TotPrice.ToString("c")</h5>
 </div>
