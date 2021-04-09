@@ -55,6 +55,15 @@ namespace FroSidanMVC.Models
             return products;
         }
 
+        internal string GetShoppingCartFromOrder(int orderID)
+        {
+            var q = context.Orders
+                .Where(x => x.Id == orderID)
+                .Select(x => x.Cart)
+                .FirstOrDefault();
+            return q;
+        }
+
         internal ShopVM[] GetAllProductsAndSort(string sortArray)
         {
             var q = GetAllProducts();

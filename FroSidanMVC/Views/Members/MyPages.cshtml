@@ -6,10 +6,13 @@
     <p>Inloggad som @Model.Username</p>
     @foreach (var item in Model.Orders)
     {
-        <p>
-            Beställningstid - @item.Date<br />
-            OrderID @item.Id
-        </p>
+<p>
+    Beställningstid - @item.Date<br />
+    OrderID: <a asp-controller="Members" asp-action="MyOrder" asp-route-id=@item.Id> <strong> @item.Id </strong>  </a>
+    @*OrderID: <a asp-controller="Members" asp-action="MyOrder" > <strong> @item.Id </strong>  </a>*@
+    @*<a asp-controller="Products" asp-action="Detail" asp-route-id=@item.Id>
+
+*@</p>
 
         @*detta måste givetvis fixas, mest för att se så allt funkar. diskutera vad som ska visas?
             bilder eller produktnamn och pris direkt här eller klickbar länk?
