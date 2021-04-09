@@ -8,7 +8,8 @@
     {
 <p>
     Beställningstid - @item.Date<br />
-    OrderID: <a asp-controller="Members" asp-action="MyOrder" asp-route-id=@item.Id> <strong> @item.Id </strong>  </a>
+    OrderID: @*<a asp-controller="Members" asp-action="MyOrder" asp-route-id=@item.Id> <strong> @item.Id </strong>  </a>*@
+    OrderID: <a href="MyOrder/@item.Id"> <strong> @item.Id </strong>  </a>
     @*OrderID: <a asp-controller="Members" asp-action="MyOrder" > <strong> @item.Id </strong>  </a>*@
     @*<a asp-controller="Products" asp-action="Detail" asp-route-id=@item.Id>
 
